@@ -36,6 +36,8 @@ License
 
 _ldp-coap-core_, _ldp-coap-android_ and _ldp-coap-raspberry_ modules are distributed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
+_californium-core-ldp_ and _ldp-coap-proxy_ are distributed under the [Eclipse Public License, Version 1.0](https://www.eclipse.org/legal/epl-v10.html) as derived projects.
+
 
 Contact
 -------------
