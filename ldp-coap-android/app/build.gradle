@@ -1,0 +1,124 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "it.poliba.sisinflab.coap.ldp"
+        minSdkVersion 22
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dexOptions {
+        incremental = false
+        preDexLibraries = false
+        javaMaxHeapSize "4g" //specify the heap size for the dex process
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:support-v4:22.2.1'
+    compile 'com.android.support:design:22.2.1'
+
+    //*************************************
+    //   LDP-CoAP core library
+    //*************************************
+
+    compile files('libs/ldp-coap-core-0.0.1-SNAPSHOT.jar')
+
+    //*************************************
+    //   CoAP-based communication
+    //*************************************
+
+    compile 'org.eclipse.californium:element-connector:1.0.3'
+
+    //*************************************
+    //   In-memory RDF data management
+    //*************************************
+
+    compile 'org.openrdf.sesame:sesame-repository-sail:2.8.10'
+    compile 'org.openrdf.sesame:sesame-repository-api:2.8.10'
+    compile 'org.openrdf.sesame:sesame-repository-sparql:2.8.10'
+
+    compile 'org.openrdf.sesame:sesame-sail-memory:2.8.10'
+    compile 'org.openrdf.sesame:sesame-sail-api:2.8.10'
+    compile 'org.openrdf.sesame:sesame-sail-base:2.8.10'
+    compile 'org.openrdf.sesame:sesame-sail-model:2.8.10'
+    compile 'org.openrdf.sesame:sesame-sail-inferencer:2.8.10'
+
+    compile 'org.openrdf.sesame:sesame-http-client:2.8.10'
+    compile 'org.openrdf.sesame:sesame-http-protocol:2.8.10'
+
+    compile 'org.openrdf.sesame:sesame-queryparser-api:2.8.10'
+    compile 'org.openrdf.sesame:sesame-queryparser-sparql:2.8.10'
+    compile 'org.openrdf.sesame:sesame-queryalgebra-model:2.8.10'
+    compile 'org.openrdf.sesame:sesame-queryalgebra-evaluation:2.8.10'
+    compile 'org.openrdf.sesame:sesame-queryresultio-api:2.8.10'
+    compile 'org.openrdf.sesame:sesame-queryresultio-sparqlxml:2.8.10'
+
+    compile 'org.openrdf.sesame:sesame-rio-api:2.8.10'
+    compile 'org.openrdf.sesame:sesame-rio-turtle:2.8.10'
+    compile 'org.openrdf.sesame:sesame-rio-rdfjson:2.8.10'
+    compile 'org.openrdf.sesame:sesame-rio-datatypes:2.8.10'
+    compile 'org.openrdf.sesame:sesame-rio-languages:2.8.10'
+
+    compile 'org.openrdf.sesame:sesame-query:2.8.10'
+    compile 'org.openrdf.sesame:sesame-model:2.8.10'
+    compile 'org.openrdf.sesame:sesame-util:2.8.10'
+
+    compile 'org.slf4j:slf4j-android:1.7.20'
+    compile 'org.slf4j:slf4j-api:1.7.20'
+
+    compile 'commons-io:commons-io:2.4'
+
+    compile 'org.apache.httpcomponents:httpclient:4.5.2'
+    compile 'org.apache.httpcomponents:httpcore:4.4.4'
+
+    //*************************************
+    //   RDF Patch format support
+    //*************************************
+
+    compile 'org.apache.marmotta:marmotta-util-rdfpatch:3.3.0'
+
+    //*************************************
+    //   JSON-LD specification support
+    //*************************************
+
+    compile 'com.github.jsonld-java:jsonld-java:0.8.2'
+    compile 'com.github.jsonld-java:jsonld-java-tools:0.8.2'
+    compile 'com.github.jsonld-java:jsonld-java-sesame:0.5.1'
+
+    compile 'com.fasterxml.jackson.core:jackson-core:2.7.3'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
+}
+
+//************************************************
+//   Disable All Transitive Dependencies
+//************************************************
+
+configurations.all {
+    transitive = false
+}

@@ -1,0 +1,3 @@
+org.openrdf.repository.sail.config.SailRepositoryFactory
+org.openrdf.repository.sail.config.ProxyRepositoryFactory
+org.openrdf.repository.sparql.config.SPARQLRepositoryFactory
