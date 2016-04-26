@@ -20,7 +20,7 @@ LDP-CoAP consists of the following sub-projects:
 - _californium-core-ldp_: a modified version of the [Californium CoAP framework](https://github.com/eclipse/californium). Californium-core library was extended to support LDP features;
 - _ldp-coap-proxy_: a modified version of the [californium-proxy](http://github.com/eclipse/californium/tree/master/californium-proxy) used to translate LDP-HTTP request methods and headers 
 into the corresponding LDP-CoAP ones and then map back LDP-CoAP responses to LDP-HTTP;
-- _ldp-coap-android_: porting of _ldp-coap-core_ on Android platform;
+- _ldp-coap-android_: simple project using _ldp-coap-core_ on Android platform;
 - _ldp-coap-raspberry_: usage examples exploiting _ldp-coap-core_ on a [Raspberry Pi board](http://www.raspberrypi.org/);
 
 Usage with Eclipse and Maven
