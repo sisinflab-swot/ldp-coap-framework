@@ -26,7 +26,7 @@ into the corresponding LDP-CoAP ones and then map back LDP-CoAP responses to LDP
 Usage with Eclipse and Maven
 -------------
 
-Each module also includes the project files for Eclipse. Make sure to have the following plugins before importing LDP-CoAP projects:
+Each module can be imported as Maven project in Eclipse. Make sure to have the following plugins before importing LDP-CoAP projects:
 
 - [Eclipse EGit](http://www.eclipse.org/egit/)
 - [M2Eclipse - Maven Integration for Eclipse](http://www.eclipse.org/m2e/)
