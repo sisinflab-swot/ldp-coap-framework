@@ -1,4 +1,4 @@
-LDP-CoAP: A CoAP Mapping for Linked Data Platform
+LDP-CoAP: Linked Data Platform for the Constrained Application Protocol
 ===================
 
 [W3C Linked Data Platform 1.0 specification](http://www.w3.org/TR/ldp/) defines resource management primitives for HTTP only, pushing into the background not-negligible 
