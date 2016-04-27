@@ -48,6 +48,15 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 
 	@Override
 	public void handlePOST(CoapExchange exchange) {
+		this.postResource(exchange, false);
+	}
+
+	@Override
+	protected void handleLDPPutToCreate(CoapExchange exchange) {
+		this.postResource(exchange, true);
+	}
+	
+	private void postResource(CoapExchange exchange, boolean putToCreate){
 		Request req = exchange.advanced().getCurrentRequest();
 		HashMap<String, String> atts = serializeAttributes(req.getOptions().getUriQuery());
 
@@ -65,59 +74,17 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 				String childName = getURI() + "/" + title;
 
 				if (mng.isDeleted(childName)) {
-					title = getAnonymousResource();
-					childName = getURI() + "/" + title;
+					if (!putToCreate){
+						title = getAnonymousResource();
+						childName = getURI() + "/" + title;
+					} else {
+						throw new CoAPLDPException("LDP Resource previously deleted!");
+					}
 				}
 
 				if (!existChild(childName)) {
 
 					this.addNewResource(exchange, ct, rt, childName, title);
-
-					mng.setLDPContainsRelationship(mng.getBaseURI() + childName, mng.getBaseURI() + getURI());
-
-					exchange.setLocationPath(childName);
-					exchange.setLocationQuery(
-							LinkFormat.RESOURCE_TYPE + "=" + LDP.LINK_LDP + ":" + LDP.CLASS_LNAME_RESOURCE);
-					exchange.respond(ResponseCode.CREATED);
-				} else
-					exchange.respond(ResponseCode.FORBIDDEN);
-
-			} catch (CoAPLDPContentFormatException e) {
-				e.printStackTrace();
-				exchange.respond(ResponseCode.UNSUPPORTED_CONTENT_FORMAT);
-			} catch (RDFParseException | CoAPLDPException e) {
-				e.printStackTrace();
-				exchange.respond(ResponseCode.BAD_REQUEST);
-			} catch (RepositoryException | IOException e) {
-				e.printStackTrace();
-				exchange.respond(ResponseCode.INTERNAL_SERVER_ERROR);
-			}
-		} else {
-			exchange.respond(ResponseCode.BAD_REQUEST);
-		}
-	}
-
-	@Override
-	protected void handleLDPPutToCreate(CoapExchange exchange) {
-		Request req = exchange.advanced().getCurrentRequest();
-		HashMap<String, String> atts = serializeAttributes(req.getOptions().getUriQuery());
-
-		int ct = exchange.getRequestOptions().getContentFormat();
-		String title = atts.get(LinkFormat.TITLE);
-		String rt = atts.get(LinkFormat.RESOURCE_TYPE);
-
-		if (ct != -1) {
-			try {
-				String childName = getURI() + "/" + title;
-
-				if (mng.isDeleted(childName)) {
-					throw new CoAPLDPException("LDP Resource previously deleted!");
-				}
-
-				if (!existChild(childName)) {
-
-					this.addNewResource(exchange, ct, rt, childName, title);
-
 					mng.setLDPContainsRelationship(mng.getBaseURI() + childName, mng.getBaseURI() + getURI());
 
 					exchange.setLocationPath(childName);

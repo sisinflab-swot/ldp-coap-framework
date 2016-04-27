@@ -65,9 +65,6 @@ public class CoAPLDPDirectContainer extends CoAPLDPContainer {
 	private void init() {
 		this.fRDFType = LDP.CLASS_DIRECT_CONTAINER;
 
-		// getAttributes().setAttribute(LinkFormat.RESOURCE_TYPE, this.fRDFType
-		// + " " + LDPConstants.CLASS_CONTAINER + " " +
-		// LDPConstants.CLASS_RESOURCE);
 		getAttributes().addResourceType(LDP.CLASS_DIRECT_CONTAINER);
 
 		mng.addRDFDirectContainer(mng.getBaseURI() + name);
@@ -77,9 +74,18 @@ public class CoAPLDPDirectContainer extends CoAPLDPContainer {
 		options.addAcceptPostType(MediaTypeRegistry.TEXT_TURTLE);
 		options.addAcceptPostType(MediaTypeRegistry.APPLICATION_LD_JSON);
 	}
+	
+	@Override
+	protected void handleLDPPutToCreate(CoapExchange exchange) {
+		this.postResource(exchange, true);
+	}
 
 	@Override
 	public void handlePOST(CoapExchange exchange) {
+		this.postResource(exchange, false);
+	}
+	
+	private void postResource(CoapExchange exchange, boolean putToCreate){
 		Request req = exchange.advanced().getCurrentRequest();
 		HashMap<String, String> atts = serializeAttributes(req.getOptions().getUriQuery());
 
@@ -97,8 +103,12 @@ public class CoAPLDPDirectContainer extends CoAPLDPContainer {
 				String childName = resource.getURI() + "/" + title;
 
 				if (mng.isDeleted(childName)) {
-					title = getAnonymousResource();
-					childName = resource.getURI() + "/" + title;
+					if(!putToCreate){
+						title = getAnonymousResource();
+						childName = resource.getURI() + "/" + title;
+					} else {
+						throw new CoAPLDPException("LDP Resource previously deleted!");
+					}
 				}
 
 				if (!existChild(childName)) {
