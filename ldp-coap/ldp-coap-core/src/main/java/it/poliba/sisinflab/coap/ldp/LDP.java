@@ -12,18 +12,6 @@ public class LDP {
 		return NS;
 	}
 
-	// Content types
-	/*public static final String CT_APPLICATION_JSON = MediaType.APPLICATION_JSON;
-	public static final String CT_APPLICATION_LD_JSON = "application/ld+json";
-	public static final String CT_APPLICATION_RDFXML = "application/rdf+xml";
-	public static final String CT_APPLICATION_XTURTLE = "application/x-turtle";
-	public static final String CT_APPLICATION_SPARQLQUERY = "application/sparql-query";
-	public static final String CT_APPLICATION_SPARQLRESULTSXML = "application/sparql-results+xml";
-	public static final String CT_APPLICATION_SPARQLRESULTSJSON = "application/sparql-results+json";
-	public static final String CT_TEXT_HTML = MediaType.TEXT_HTML;
-	public static final String CT_TEXT_TURTLE = "text/turtle";
-	public static final String CT_TEXT_TRIG = "text/trig";*/
-
 	// HTTP Headers
 	public static final String HDR_ALLOW = "Allow";
 	public static final String HDR_ACCEPT_PATCH = "Accept-Patch";
@@ -91,8 +79,12 @@ public class LDP {
 	public static final String PREFER_INCLUDE = "include";
 	public static final String PREFER_OMIT = "omit";
 	public static final String PREFER_CONTAINMENT = nsName("PreferContainment");
-	public static final String PREFER_MEMBERSHIP = nsName("PreferMembership");
-	public static final String PREFER_MINIMAL_CONTAINER = nsName("PreferMinimalContainer");
+	
+	public static final String PREFER_LNAME_MEMBERSHIP = "PreferMembership";
+	public static final String PREFER_MEMBERSHIP = nsName(PREFER_LNAME_MEMBERSHIP);
+	
+	public static final String PREFER_LNAME_MINIMAL_CONTAINER = "PreferMinimalContainer";
+	public static final String PREFER_MINIMAL_CONTAINER = nsName(PREFER_LNAME_MINIMAL_CONTAINER);
 
 	/**
 	 * Deprecated in LDP, but still supported by this reference implementation. The
