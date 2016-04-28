@@ -242,12 +242,16 @@ public class CoAPLDPResourceManager {
     			writer.handleNamespace(prefix, ns.get(prefix));
     		}
     		
-    		RepositoryResult<Statement> results = con.getStatements(this.createURI(res), null, null, false);
+    		URI uRes = createURI(res);
+    		String hasMemberRel = getHasMemberRelationFromContainer(uRes);
+    		String isMemberOfRel = getIsMemberOfRelationFromContainer(uRes);
+    		
+    		RepositoryResult<Statement> results = con.getStatements(uRes, null, null, false);
     		while(results.hasNext()){
     			Statement s = results.next();
     			if(!s.getPredicate().stringValue().equals(LDP.PROP_MEMBER) 
-    					&& !s.getPredicate().stringValue().equals(LDP.PROP_IS_MEMBER_OF_RELATION)
-    					&& !s.getPredicate().stringValue().equals(LDP.PROP_HAS_MEMBER_RELATION) )
+    					&& !s.getPredicate().stringValue().equals(hasMemberRel)
+    					&& !s.getPredicate().stringValue().equals(isMemberOfRel) )
     				writer.handleStatement(s);
     		}
     		  		
@@ -262,6 +266,38 @@ public class CoAPLDPResourceManager {
 		}	
     	
     	return null;
+	}
+	
+	private String getHasMemberRelationFromContainer(URI res){
+		String hasMemberRel = "";
+		try {
+			RepositoryResult<Statement> results = con.getStatements(res, createURI(LDP.PROP_HAS_MEMBER_RELATION), null, false);
+			while(results.hasNext()){
+				Statement s = results.next();
+				hasMemberRel = s.getObject().stringValue();
+			}
+		} catch (RepositoryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return hasMemberRel;
+	}
+	
+	private String getIsMemberOfRelationFromContainer(URI res){
+		String isMemberOfRel = "";
+		try {
+			RepositoryResult<Statement> results = con.getStatements(res, createURI(LDP.PROP_IS_MEMBER_OF_RELATION), null, false);
+			while(results.hasNext()){
+				Statement s = results.next();
+				isMemberOfRel = s.getObject().stringValue();
+			}
+		} catch (RepositoryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return isMemberOfRel;
 	}
 	
 	private String getMinimalWithMemberResourceTuple(String res, RDFFormat format) {
@@ -306,12 +342,17 @@ public class CoAPLDPResourceManager {
     			writer.handleNamespace(prefix, ns.get(prefix));
     		}
     		
-    		RepositoryResult<Statement> results = con.getStatements(this.createURI(res), null, null, false);
+    		URI uRes = createURI(res);
+    		String hasMemberRel = getHasMemberRelationFromContainer(uRes);
+    		String isMemberOfRel = getIsMemberOfRelationFromContainer(uRes);
+    		
+    		RepositoryResult<Statement> results = con.getStatements(uRes, null, null, false);
     		while(results.hasNext()){
     			Statement s = results.next();
-    			if(!s.getPredicate().stringValue().equals(LDP.PROP_CONTAINS) && !s.getPredicate().stringValue().equals(LDP.PROP_MEMBER) 
-    					&& !s.getPredicate().stringValue().equals(LDP.PROP_IS_MEMBER_OF_RELATION)
-    					&& !s.getPredicate().stringValue().equals(LDP.PROP_HAS_MEMBER_RELATION) )
+    			if(!s.getPredicate().stringValue().equals(LDP.PROP_CONTAINS) 
+    					&& !s.getPredicate().stringValue().equals(LDP.PROP_MEMBER) 
+    					&& !s.getPredicate().stringValue().equals(hasMemberRel)
+    					&& !s.getPredicate().stringValue().equals(isMemberOfRel) )
     				writer.handleStatement(s);
     		}
     		  		
