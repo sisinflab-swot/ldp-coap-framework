@@ -220,7 +220,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		List<String> q = exchange.getRequestOptions().getUriQuery();
 		HashMap<String, String> atts = serializeAttributes(q);
 		if(atts.containsKey(LDP.LINK_LDP_PREF_INCLUDE)){;
-			String[] prefs = atts.get(LDP.LINK_LDP_PREF_INCLUDE).split(" ");
+			String[] prefs = atts.get(LDP.LINK_LDP_PREF_INCLUDE).replace("\"", "").split(" ");
 			for(String p : prefs){
 				pref.add(p.trim());
 			}
@@ -235,7 +235,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		List<String> q = exchange.getRequestOptions().getUriQuery();
 		HashMap<String, String> atts = serializeAttributes(q);
 		if(atts.containsKey(LDP.LINK_LDP_PREF_OMIT)){;
-			String[] prefs = atts.get(LDP.LINK_LDP_PREF_OMIT).split(" ");
+			String[] prefs = atts.get(LDP.LINK_LDP_PREF_OMIT).replace("\"", "").split(" ");
 			for(String p : prefs){
 				pref.add(p.trim());
 			}

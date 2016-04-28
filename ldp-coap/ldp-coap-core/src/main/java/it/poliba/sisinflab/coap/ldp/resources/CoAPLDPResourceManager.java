@@ -302,6 +302,7 @@ public class CoAPLDPResourceManager {
 	
 	private String getMinimalWithMemberResourceTuple(String res, RDFFormat format) {
     	try {    		
+    		String member = null;
     		ByteArrayOutputStream out = new ByteArrayOutputStream();
     		RDFWriter writer = Rio.createWriter(format, out);  
     		
@@ -311,12 +312,19 @@ public class CoAPLDPResourceManager {
     			writer.handleNamespace(prefix, ns.get(prefix));
     		}
     		
-    		RepositoryResult<Statement> results = con.getStatements(this.createURI(res), null, null, false);
+    		RepositoryResult<Statement> results = con.getStatements(createURI(res), null, null, false);
     		while(results.hasNext()){
     			Statement s = results.next();
+    			
     			if(!s.getPredicate().stringValue().equals(LDP.PROP_CONTAINS))
     				writer.handleStatement(s);
+    			
+    			if(s.getPredicate().stringValue().equals(LDP.PROP_MEMBERSHIP_RESOURCE))
+    				member = s.getObject().stringValue();
     		}
+    		
+    		if(member != null)
+    			this.writeStatement(writer, member);
     		  		
     		writer.endRDF();
     		
