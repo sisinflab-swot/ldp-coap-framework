@@ -111,7 +111,6 @@ public class CoAPLDPIndirectContainer extends CoAPLDPContainer {
 		resource.add(res);
 
 		String r = checkURI(res.getFullName());
-		String m = checkURI(resource.getFullName());
 		String c = checkURI(name);
 
 		mng.setLDPContainsRelationship(mng.getBaseURI() + "/" + r, mng.getBaseURI() + "/" + c);
@@ -119,6 +118,15 @@ public class CoAPLDPIndirectContainer extends CoAPLDPContainer {
 
 	@Override
 	public void handlePOST(CoapExchange exchange) {
+		this.postResource(exchange, false);
+	}
+	
+	@Override
+	protected void handleLDPPutToCreate(CoapExchange exchange) {
+		this.postResource(exchange, true);
+	}
+	
+	private void postResource(CoapExchange exchange, boolean putToCreate){
 		Request req = exchange.advanced().getCurrentRequest();
 		HashMap<String, String> atts = serializeAttributes(req.getOptions().getUriQuery());
 
@@ -136,8 +144,12 @@ public class CoAPLDPIndirectContainer extends CoAPLDPContainer {
 				String childName = resource.getURI() + "/" + title;
 
 				if (mng.isDeleted(childName)) {
-					title = getAnonymousResource();
-					childName = resource.getURI() + "/" + title;
+					if(!putToCreate){
+						title = getAnonymousResource();
+						childName = resource.getURI() + "/" + title;
+					} else {
+						throw new CoAPLDPException("LDP Resource previously deleted!");
+					}
 				}
 
 				if (!existChild(childName)) {
