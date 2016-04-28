@@ -9,6 +9,9 @@ dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
 
+# Californium files
+Californium.properties
+
 # Eclipse Project
 .metadata
 bin/
