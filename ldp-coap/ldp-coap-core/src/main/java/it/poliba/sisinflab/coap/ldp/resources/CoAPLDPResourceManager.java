@@ -246,7 +246,8 @@ public class CoAPLDPResourceManager {
     		while(results.hasNext()){
     			Statement s = results.next();
     			if(!s.getPredicate().stringValue().equals(LDP.PROP_MEMBER) 
-    					&& !s.getPredicate().stringValue().equals(LDP.PROP_IS_MEMBER_OF_RELATION))
+    					&& !s.getPredicate().stringValue().equals(LDP.PROP_IS_MEMBER_OF_RELATION)
+    					&& !s.getPredicate().stringValue().equals(LDP.PROP_HAS_MEMBER_RELATION) )
     				writer.handleStatement(s);
     		}
     		  		
@@ -309,7 +310,8 @@ public class CoAPLDPResourceManager {
     		while(results.hasNext()){
     			Statement s = results.next();
     			if(!s.getPredicate().stringValue().equals(LDP.PROP_CONTAINS) && !s.getPredicate().stringValue().equals(LDP.PROP_MEMBER) 
-    					&& !s.getPredicate().stringValue().equals(LDP.PROP_IS_MEMBER_OF_RELATION))
+    					&& !s.getPredicate().stringValue().equals(LDP.PROP_IS_MEMBER_OF_RELATION)
+    					&& !s.getPredicate().stringValue().equals(LDP.PROP_HAS_MEMBER_RELATION) )
     				writer.handleStatement(s);
     		}
     		  		
