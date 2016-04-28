@@ -210,20 +210,57 @@ public class CoAPLDPResourceManager {
 	}
 	
 	public String getTurtleResourceGraph(String res, List<String> include, List<String> omit){		
-		if (!include.isEmpty() && include.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MINIMAL_CONTAINER) 
-				&& !include.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MEMBERSHIP)){
-			return getMinimalResourceTuple(res, RDFFormat.TURTLE); 
-		} else if (!include.isEmpty() && include.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MINIMAL_CONTAINER) 
-				&& include.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MEMBERSHIP)){
-			return getMinimalWithMemberResourceTuple(res, RDFFormat.TURTLE); 
+		if (!include.isEmpty() && include.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MINIMAL_CONTAINER)){
+			if (include.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MEMBERSHIP))
+				return getMinimalWithMemberResourceTuple(res, RDFFormat.TURTLE);
+			else
+				return getMinimalResourceTuple(res, RDFFormat.TURTLE); 
 		} else if (!omit.isEmpty()){
-			return null;
-		} else
-			return this.getFullResourceTuple(res, RDFFormat.TURTLE); 
+			if(omit.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MEMBERSHIP) && omit.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_CONTAINMENT))
+				return getMinimalResourceTuple(res, RDFFormat.TURTLE);
+			else if (!omit.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MEMBERSHIP) && omit.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_CONTAINMENT))
+				return getMinimalWithMemberResourceTuple(res, RDFFormat.TURTLE);
+			else if (omit.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MEMBERSHIP) && !omit.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_CONTAINMENT))
+				return getNoContainResourceTuple(res, RDFFormat.TURTLE);
+		} 
+		
+		return this.getFullResourceTuple(res, RDFFormat.TURTLE); 
 	}
 	
 	public String getJSONLDResourceGraph(String res){
 		return this.getFullResourceTuple(res, RDFFormat.JSONLD);
+	}
+	
+	private String getNoContainResourceTuple(String res, RDFFormat format) {
+    	try {    		
+    		ByteArrayOutputStream out = new ByteArrayOutputStream();
+    		RDFWriter writer = Rio.createWriter(format, out);  
+    		
+    		writer.startRDF();
+    		
+    		for(String prefix : ns.keySet()){
+    			writer.handleNamespace(prefix, ns.get(prefix));
+    		}
+    		
+    		RepositoryResult<Statement> results = con.getStatements(this.createURI(res), null, null, false);
+    		while(results.hasNext()){
+    			Statement s = results.next();
+    			if(!s.getPredicate().stringValue().equals(LDP.PROP_MEMBER) 
+    					&& !s.getPredicate().stringValue().equals(LDP.PROP_IS_MEMBER_OF_RELATION))
+    				writer.handleStatement(s);
+    		}
+    		  		
+    		writer.endRDF();
+    		
+    		return out.toString();
+
+		} catch (RepositoryException e) {
+			e.printStackTrace();
+		} catch (RDFHandlerException e) {
+			e.printStackTrace();
+		}	
+    	
+    	return null;
 	}
 	
 	private String getMinimalWithMemberResourceTuple(String res, RDFFormat format) {

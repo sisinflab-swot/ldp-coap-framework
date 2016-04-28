@@ -222,7 +222,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		if(atts.containsKey(LDP.LINK_LDP_PREF_INCLUDE)){;
 			String[] prefs = atts.get(LDP.LINK_LDP_PREF_INCLUDE).split(" ");
 			for(String p : prefs){
-				pref.add(p);
+				pref.add(p.trim());
 			}
 		}
 		
@@ -237,7 +237,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		if(atts.containsKey(LDP.LINK_LDP_PREF_OMIT)){;
 			String[] prefs = atts.get(LDP.LINK_LDP_PREF_OMIT).split(" ");
 			for(String p : prefs){
-				pref.add(p);
+				pref.add(p.trim());
 			}
 		}
 		

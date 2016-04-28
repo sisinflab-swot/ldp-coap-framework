@@ -78,7 +78,9 @@ public class LDP {
 	public static final String PREFER_RETURN_REPRESENTATION = "return=representation";
 	public static final String PREFER_INCLUDE = "include";
 	public static final String PREFER_OMIT = "omit";
-	public static final String PREFER_CONTAINMENT = nsName("PreferContainment");
+	
+	public static final String PREFER_LNAME_CONTAINMENT = "PreferContainment";
+	public static final String PREFER_CONTAINMENT = nsName(PREFER_LNAME_CONTAINMENT);
 	
 	public static final String PREFER_LNAME_MEMBERSHIP = "PreferMembership";
 	public static final String PREFER_MEMBERSHIP = nsName(PREFER_LNAME_MEMBERSHIP);
