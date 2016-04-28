@@ -30,6 +30,7 @@ import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPBasicContainer;
 import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPDirectContainer;
 import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPRDFSource;
 import it.poliba.sisinflab.coap.ldp.server.CoAPLDPServer;
+import it.poliba.sisinflab.coap.ldp.server.CoAPLDPTestSuiteServer;
 import it.poliba.sisinflab.rdf.vocabulary.SSN_XG;
 
 public class MainActivity extends AppCompatActivity
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity
     ArrayList<CoapResource> mListItems;
 
     CoAPLDPServer server;
+    String BASE_URI = "coap://192.168.2.210:5683";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,13 +74,24 @@ public class MainActivity extends AppCompatActivity
     public void onPostCreate (Bundle savedInstanceState){
         super.onPostCreate(savedInstanceState);
 
-        initLDPServer();
+        //initLDPServer();
+        initLDPTestServer();
 
         listView = (ListView) findViewById(R.id.listRes);
         initResourceList();
 
         View parentLayout = findViewById(R.id.fab);
         Snackbar.make(parentLayout, "LDP-CoAP Started!", Snackbar.LENGTH_LONG).show();
+    }
+
+    private void initLDPTestServer() {
+        //used to avoid Read Only File System IOException
+        String filePath = this.getBaseContext().getFilesDir().getPath().toString() + "/Californium.properties";
+        File f = new File(filePath);
+        NetworkConfig config = NetworkConfig.createStandardWithFile(f);
+
+        server = new CoAPLDPTestSuiteServer(BASE_URI, config, 5683);
+        server.start();
     }
 
     private void initResourceList(){
@@ -106,7 +119,6 @@ public class MainActivity extends AppCompatActivity
         File f = new File(filePath);
         NetworkConfig config = NetworkConfig.createStandardWithFile(f);
 
-        String BASE_URI = "coap://192.168.2.210:5683";
         server = new CoAPLDPServer(BASE_URI, config, 5683);
         server.addHandledNamespace(SSN_XG.PREFIX, SSN_XG.NAMESPACE + "#");
 
