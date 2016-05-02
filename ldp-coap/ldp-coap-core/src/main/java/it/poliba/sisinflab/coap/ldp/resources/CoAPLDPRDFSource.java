@@ -91,6 +91,8 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		
 		options.setAllowedMethod(LDP.Code.PATCH, true);
 		options.addAcceptPatchType(MediaTypeRegistry.APPLICATION_RDF_PATCH);
+		
+		getAttributes().addContentType(MediaTypeRegistry.TEXT_TURTLE);
 	}
 
 	public void handleGET(CoapExchange exchange) {

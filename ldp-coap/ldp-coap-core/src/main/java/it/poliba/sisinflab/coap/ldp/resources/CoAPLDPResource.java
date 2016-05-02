@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.eclipse.californium.core.CoapResource;
 import org.eclipse.californium.core.Utils;
-import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 
 import it.poliba.sisinflab.coap.ldp.LDP;
@@ -27,7 +26,6 @@ public abstract class CoAPLDPResource extends CoapResource {
 		this.fRDFType = LDP.CLASS_RESOURCE;
 		// set display name
         getAttributes().setTitle(name);		
-		getAttributes().addContentType(MediaTypeRegistry.TEXT_TURTLE);
 		getAttributes().addResourceType(LDP.CLASS_RESOURCE);
 		
 		options = new LDPOptions();
