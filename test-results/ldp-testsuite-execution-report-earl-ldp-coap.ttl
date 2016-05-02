@@ -1,0 +1,2893 @@
+@prefix rdft:  <http://www.w3.org/ns/rdftest#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix earl:  <http://www.w3.org/ns/earl#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix td:    <http://www.w3.org/2006/03/test-description#> .
+@prefix mf:    <http://www.w3.org/2001/sw/DataAccess/tests/test-manifest#> .
+@prefix doap:  <http://usefulinc.com/ns/doap#> .
+@prefix ldpt:  <http://w3c.github.io/ldp-testsuite/manifest#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.462Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PreferMembershipTriples
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.45Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.CommonResourceTest.testIsHttp11Manual(CommonResourceTest.java:130)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-IsHttp11Manual
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.475Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-GetResponseHeaders
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.466Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-AcceptPatchHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.465Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-AcceptTurtle
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.469Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PutRequiresIfMatch
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.457Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-MemberRelationOrIsMemberOfRelationTripleExists
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.467Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PostNoSlug
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.46Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-PostResourceAndGetFromContainer
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.456Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PreferContainmentTriples
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.447Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.testng.SkipException: Covered indirectly by the MUST tests defined in RdfSourceTest class\r\n\tat org.w3.ldp.testsuite.test.CommonContainerTest.testConformsContainerRdfResource(CommonContainerTest.java:889)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-ConformsContainerRdfResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.473Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-ETagHeadersHead
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.464Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-ContentTypeHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.459Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-NullRelativeUriPost
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.454Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PutToCreate
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.462Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PutToCreate
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.456Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-AcceptTurtle
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.466Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-DeleteRemovesContainmentTriple
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.465Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-GetResourceAcceptTurtle
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.459Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-RdfTypeLdpContainer
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.471Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PublishConstraintsReadOnlyProp
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.462Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-JsonLdRepresentation
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.458Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-RestrictUriReUseSlug
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.461Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-GetResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.478Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PostContainer
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.464Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-Head
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.481Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-PostNonRDFSource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.468Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-ETagHeadersGet
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.457Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-RestrictUriReUseSlug
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.474Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-PreconditionRequiredStatusCode
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.46Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PutPropertiesNotPersisted
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.477Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-AcceptPostResponseHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.463Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-ActAsIfInsertedContentRelationTripleExists
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.48Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PutBadETag
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.467Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-RequestedInteractionModelHeaders
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.456Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-RejectPutModifyingContainmentTriples
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.483Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PostContainer
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.479Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-Head
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.472Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PutBadETag
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.459Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-CreateWithoutConstraints
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.482Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-UseMemberPredicate
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.475Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-JsonLdRepresentation
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.462Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-GetResourceAsTurtleNoAccept
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.479Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PutReadOnlyProperties4xxStatus
+] .
+
+<http://sisinflab.poliba.it/swottools/ldp-coap>
+        a                          doap:Project , earl:Software , earl:TestSubject ;
+        dcterms:title              "LDP-CoAP Reference Implementation" ;
+        doap:description           "Testing against: BasicContainer, DirectContainer, IndirectContainer, RDFSource, NonRDFSource, Container as Resource interaction model." ;
+        doap:developer             [ a          foaf:Person ;
+                                     foaf:name  "Michele Ruta, Eugenio Di Sciascio, Floriano Scioscia, Giuseppe Loseto, Saverio Ieva, Filippo Gramegna"
+                                   ] ;
+        doap:homepage              "http://sisinflab.poliba.it/swottools/ldp-coap" ;
+        doap:name                  "LDP-CoAP" ;
+        doap:programming-language  "Java" .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.465Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-Head
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.482Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PatchMethod
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.477Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-NoRdfBagSeqOrList
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.458Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PutRequiresIfMatch
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.48Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-RestrictPutReUseUri
+] .
+
+<michele.ruta@poliba.it>
+        a       earl:Assertor .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.461Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-GetResourceAcceptTurtle
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.464Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-PutRequiresIfMatch
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.476Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-TypeRdfSource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.441Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testReUseVocabularies(RdfSourceTest.java:231)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-ReUseVocabularies
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.453Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.CommonResourceTest.testIsHttp11Manual(CommonResourceTest.java:130)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-IsHttp11Manual
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.479Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-Options
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.482Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-ETagHeadersGet
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.438Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "java.lang.AssertionError: No Link response header with relation \"describedby\" and anchor parameter matching the newly-created resource URI expected object to not be null\r\n\tat org.w3.ldp.testsuite.test.NonRDFSourceTest.testPostResourceAndCheckAssociatedResource(NonRDFSourceTest.java:313)\r\n... Removed 26 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:failed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-PostResourceAndCheckAssociatedResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.449Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-OptionsHasSameLinkHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.478Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-GetResponseHeaders
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.481Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PutBadETag
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.444Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.testng.SkipException: Covered indirectly by the MUST tests defined in CommonContainerTest class\r\n\tat org.w3.ldp.testsuite.test.BasicContainerTest.testConformsBcLdpContainer(BasicContainerTest.java:42)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-ConformsBcLdpContainer
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.454Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-Head
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.445Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.testng.SkipException: Covered indirectly by the MUST tests defined in CommonResourceTest class\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testConformsRdfSourceLdpResource(RdfSourceTest.java:477)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-ConformsRdfSourceLdpResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.477Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-4xxErrorHasResponseBody
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.48Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-TypeRdfSource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.454Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-ETagHeadersGet
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.44Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipException: Skipping test because there are restrictions on PUT content for this resource. The requirement needs to be tested manually.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.putReplaceResource(RdfSourceTest.java:572)\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testPutReplacesResource(RdfSourceTest.java:144)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PutReplacesResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.483Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-RdfTypeLdpContainer
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.451Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.testng.SkipException: Covered indirectly by the MUST tests defined in RdfSourceTest class\r\n\tat org.w3.ldp.testsuite.test.CommonContainerTest.testConformsContainerRdfResource(CommonContainerTest.java:889)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-ConformsContainerRdfResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.466Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-PutPropertiesNotPersisted
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.47Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-GetResourceAsTurtleNoAccept
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.448Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.testng.SkipException: Covered indirectly by the MUST tests defined in RdfSourceTest class\r\n\tat org.w3.ldp.testsuite.test.CommonContainerTest.testConformsContainerRdfResource(CommonContainerTest.java:889)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-ConformsContainerRdfResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.455Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-JsonLdRepresentation
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.468Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-ResponsePropertiesNotPersisted
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.456Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-GetResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.473Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-OptionsAllowHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.466Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-RelativeUriResolutionPost
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.46Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PutToCreate
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.443Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.testng.SkipException: Covered indirectly by the MUST tests defined in CommonResourceTest class\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testConformsRdfSourceLdpResource(RdfSourceTest.java:477)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-ConformsRdfSourceLdpResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.471Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PostContainer
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.463Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PutReadOnlyProperties4xxStatus
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.453Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testReUseVocabularies(RdfSourceTest.java:231)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-ReUseVocabularies
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.467Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-ContainsRdfType
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.455Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-ConditionFailedStatusCode
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.471Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PublishConstraintsReadOnlyProp
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.458Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PutReadOnlyProperties4xxStatus
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.439Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testUseStandardVocabularies(RdfSourceTest.java:256)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-UseStandardVocabularies
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.469Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-RequestedInteractionModelHeaders
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.461Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PostNoSlug
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.457Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PreferContainmentTriples
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.45Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testRestrictClientInference(RdfSourceTest.java:276)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-RestrictClientInference
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.474Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-ServerHonorsSlug
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.465Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-PostResourceAndCheckLink
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.46Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-DeleteResourceUpdatesTriples
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.463Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-OptionsAllowHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.457Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-ContainsRdfType
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.467Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-AcceptTurtle
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.46Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PostJsonLd
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.456Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-GetResourceAsTurtleNoAccept
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.472Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-ETagHeadersHead
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.463Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-PutSimpleUpdate
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.459Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PostResourceUpdatesTriples
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.475Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-OptionsAllowHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.462Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-ServerHonorsSlug
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.479Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-AcceptPostResponseHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.466Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PreconditionRequiredStatusCode
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.465Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PatchMethod
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.482Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-ResponsePropertiesNotPersisted
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.471Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-PutRequiresIfMatch
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.458Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-RestrictUriReUseNoSlug
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.461Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-RejectPutModifyingContainmentTriples
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.478Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-TypeRdfSource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.464Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-OptionsAllowHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.481Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-LdpLinkHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.476Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-RequestedInteractionModelCreateNotAllowed
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.468Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-CreateWithoutConstraints
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.457Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-ContentTypeHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.48Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-LdpLinkHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.474Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-RestrictPutReUseUri
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.46Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-ConditionFailedStatusCode
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.483Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-PublishConstraintsUnknownProp
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.476Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PutPropertiesNotPersisted
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.463Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-DeleteRemovesContainmentTriple
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.48Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-ContentTypeHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.456Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-ContainsRdfType
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.483Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-RequestedInteractionModelHeaders
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.479Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-Options
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.459Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-ConditionFailedStatusCode
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.481Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-RdfTypeLdpContainer
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.462Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-PutReplacesResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.465Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-LdpLinkHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.446Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testRestrictClientInference(RdfSourceTest.java:276)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-RestrictClientInference
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.477Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PublishConstraintsUnknownProp
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.454Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-AcceptPostResponseHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.48Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-ContainsRdfType
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.476Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-RestrictUriReUseNoSlug
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.441Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipException: Skipping test because there are restrictions on PUT content for this resource. The requirement needs to be tested manually.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.putReplaceResource(RdfSourceTest.java:572)\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testPutReplacesResource(RdfSourceTest.java:144)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PutReplacesResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.453Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testRestrictClientInference(RdfSourceTest.java:276)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-RestrictClientInference
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.479Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-GetResourceAsTurtleNoAccept
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.482Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-Options
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.449Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.CommonResourceTest.testIsHttp11Manual(CommonResourceTest.java:130)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-IsHttp11Manual
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.455Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-OptionsAllowHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.438Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "java.lang.AssertionError: No Link response header with relation \"describedby\" and anchor parameter matching the newly-created resource URI expected object to not be null\r\n\tat org.w3.ldp.testsuite.test.NonRDFSourceTest.testPostResourceGetMetadataAndBinary(NonRDFSourceTest.java:219)\r\n... Removed 26 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:failed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-PostResourceGetMetadataAndBinary
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.449Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipException: Skipping test because there are restrictions on PUT content for this resource. The requirement needs to be tested manually.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testRelativeUriResolutionPut(RdfSourceTest.java:79)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-RelativeUriResolutionPut
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.478Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PreconditionRequiredStatusCode
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.481Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-ContainerHasInsertedContentRelation
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.443Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testUseStandardVocabularies(RdfSourceTest.java:256)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-UseStandardVocabularies
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.454Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.CommonResourceTest.testIsHttp11Manual(CommonResourceTest.java:130)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-IsHttp11Manual
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.467Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-AcceptPatchHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.472Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-PublishConstraintsReadOnlyProp
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.44Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipException: Skipping test because there are restrictions on PUT content for this resource. The requirement needs to be tested manually.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.putReplaceResource(RdfSourceTest.java:572)\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testPutReplacesResource(RdfSourceTest.java:144)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PutReplacesResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.45Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testUseStandardVocabularies(RdfSourceTest.java:256)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-UseStandardVocabularies
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.466Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-ConditionFailedStatusCode
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.47Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-ContainerSupportsHttpLinkHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.457Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-DeleteRemovesContainmentTriple
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.468Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-RestrictUriReUseSlug
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.461Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-PreconditionRequiredStatusCode
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.447Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipException: Skipping test because there are restrictions on PUT content for this resource. The requirement needs to be tested manually.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testRelativeUriResolutionPut(RdfSourceTest.java:79)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-RelativeUriResolutionPut
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.473Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-GetResourceAcceptTurtle
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.464Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PatchMethod
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.455Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-AcceptPatchHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.468Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-AcceptPatchHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.456Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PublishConstraintsUnknownProp
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.473Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-RelativeUriResolutionPost
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.466Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-Head
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.459Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-RestrictUriReUseNoSlug
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.442Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testReUseVocabularies(RdfSourceTest.java:231)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-ReUseVocabularies
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.471Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PreferContainmentTriples
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.463Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-ETagHeadersHead
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.458Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-ETagHeadersGet
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.453Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testRestrictClientInference(RdfSourceTest.java:276)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-RestrictClientInference
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.461Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-GetResponseHeaders
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.455Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-4xxErrorHasResponseBody
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.464Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-GetResponseHeaders
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.458Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-NoRdfBagSeqOrList
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.468Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PublishConstraintsReadOnlyProp
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.461Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-PutReadOnlyProperties4xxStatus
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.457Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-ETagHeadersGet
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.474Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-4xxErrorHasResponseBody
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.464Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-4xxErrorHasResponseBody
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.46Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-ResponsePropertiesNotPersisted
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.477Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PostResponseStatusAndLocation
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.463Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-PutBadETag
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.48Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-AcceptPatchHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.467Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-ETagHeadersHead
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.456Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-GetResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.483Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-Options
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.472Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PutPropertiesNotPersisted
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.459Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-CreateWithoutConstraints
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.475Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-ContainerSupportsHttpLinkHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.462Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-JsonLdRepresentation
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.479Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-LdpLinkHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.466Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-ETagHeadersHead
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.465Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PostNoSlug
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.482Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-GetResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.478Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PublishConstraintsUnknownProp
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.47Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-LdpLinkHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.458Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-PutBadETag
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.481Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-RequestedInteractionModelCreateNotAllowed
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.461Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-ConditionFailedStatusCode
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.478Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-RequestedInteractionModelCreateNotAllowed
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.464Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-PostResourceGetBinary
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.481Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-RelativeUriResolutionPost
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.476Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-ResponsePropertiesNotPersisted
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.457Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-MemberResourceTriple
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.48Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-TypeRdfSource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.46Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-NullRelativeUriPost
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.482Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-RestrictPutReUseUri
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.463Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-GetResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.439Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testReUseVocabularies(RdfSourceTest.java:231)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-ReUseVocabularies
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.449Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipException: Skipping test because there are restrictions on PUT content for this resource. The requirement needs to be tested manually.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.putReplaceResource(RdfSourceTest.java:572)\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testPutSimpleUpdate(RdfSourceTest.java:158)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PutSimpleUpdate
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.478Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PreconditionRequiredStatusCode
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.481Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PutRequiresIfMatch
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.446Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.testng.SkipException: Covered indirectly by the MUST tests defined in CommonResourceTest class\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testConformsRdfSourceLdpResource(RdfSourceTest.java:477)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-ConformsRdfSourceLdpResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.477Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-RelativeUriResolutionPut
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.48Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-ServerHonorsSlug
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.454Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-NullRelativeUriPost
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.441Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-DeleteNonRDFSourceDeletesAssociatedResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.452Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.testng.SkipException: Covered indirectly by the MUST tests defined in CommonContainerTest class\r\n\tat org.w3.ldp.testsuite.test.DirectContainerTest.testConformsDcLdpContainer(DirectContainerTest.java:324)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-ConformsDcLdpContainer
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.475Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-NoRdfBagSeqOrList
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.441Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipException: Skipping test because there are restrictions on PUT content for this resource. The requirement needs to be tested manually.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testRelativeUriResolutionPut(RdfSourceTest.java:79)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-RelativeUriResolutionPut
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.452Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipException: Skipping test because there are restrictions on PUT content for this resource. The requirement needs to be tested manually.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.putReplaceResource(RdfSourceTest.java:572)\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testPutSimpleUpdate(RdfSourceTest.java:158)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PutSimpleUpdate
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "NonRDFSourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.479Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:NonRDFSource-Options
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.482Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-PostResponseStatusAndLocation
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.449Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipException: Skipping test because there are restrictions on PUT content for this resource. The requirement needs to be tested manually.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.putReplaceResource(RdfSourceTest.java:572)\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testPutSimpleUpdate(RdfSourceTest.java:158)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PutSimpleUpdate
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.455Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PostJsonLd
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.468Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PostJsonLd
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "MemberResourceTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.474Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:MemberResource-GetResourceAcceptTurtle
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.443Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.CommonResourceTest.testIsHttp11Manual(CommonResourceTest.java:130)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-IsHttp11Manual
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "BasicContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:manual ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.453Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.w3.ldp.testsuite.exception.SkipNotTestableException: This requirement or recommendation must be tested manually. It is difficult or impossible to write automated tests for and is not part of the testsuite.\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testUseStandardVocabularies(RdfSourceTest.java:256)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:untested
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:BasicContainer-UseStandardVocabularies
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.467Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-HttpLinkHeader
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.455Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-GetResponseHeaders
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "DirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.472Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:DirectContainer-PostResponseStatusAndLocation
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.458Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-RejectPutModifyingContainmentTriples
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a                    earl:TestResult ;
+                     dcterms:date         "2016-05-02T09:50:56.44Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     dcterms:description  "org.testng.SkipException: Covered indirectly by the MUST tests defined in CommonResourceTest class\r\n\tat org.w3.ldp.testsuite.test.RdfSourceTest.testConformsRdfSourceLdpResource(RdfSourceTest.java:477)\r\n... Removed 24 stack frames"^^<http://www.w3.org/2001/XMLSchema#string> ;
+                     earl:outcome         earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-ConformsRdfSourceLdpResource
+] .
+
+[ a                earl:Assertion ;
+  ldpt:ranAsClass  "IndirectContainerTest"^^<http://www.w3.org/2001/XMLSchema#string> ;
+  earl:assertedBy  <michele.ruta@poliba.it> ;
+  earl:mode        earl:automatic ;
+  earl:result      [ a             earl:TestResult ;
+                     dcterms:date  "2016-05-02T09:50:56.469Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+                     earl:outcome  earl:passed
+                   ] ;
+  earl:subject     <http://sisinflab.poliba.it/swottools/ldp-coap> ;
+  earl:test        ldpt:IndirectContainer-PostResource
+] .
