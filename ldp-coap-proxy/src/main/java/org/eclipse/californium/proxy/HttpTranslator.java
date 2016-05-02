@@ -1271,8 +1271,8 @@ public final class HttpTranslator {
 		// TODO Auto-generated method stub
 		String response = coapResponse.getPayloadString();
 
-		int start_index = response.indexOf('"', 0);
-		String substring = response.substring(start_index+1);
+		int start_index = response.indexOf("rt=\"", 0);
+		String substring = response.substring(start_index+4);
 		int end_index = substring.indexOf('"', 0);
 		String rt = substring.substring(0, end_index);
 		StringTokenizer tokenizer = new StringTokenizer(rt, " ");
