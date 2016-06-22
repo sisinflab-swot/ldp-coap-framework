@@ -3,7 +3,7 @@ package it.poliba.sisinflab.coap.ldp.handler;
 import java.lang.management.ManagementFactory;
 import java.util.Date;
 
-import org.openrdf.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 
 import com.sun.management.OperatingSystemMXBean;
 

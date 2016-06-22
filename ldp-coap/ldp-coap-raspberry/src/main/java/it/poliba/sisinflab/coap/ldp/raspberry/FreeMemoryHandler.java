@@ -3,7 +3,7 @@ package it.poliba.sisinflab.coap.ldp.raspberry;
 import java.io.IOException;
 import java.util.Date;
 
-import org.openrdf.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 
 import com.pi4j.system.SystemInfo;
 
