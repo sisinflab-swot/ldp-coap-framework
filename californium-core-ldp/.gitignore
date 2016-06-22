@@ -1,5 +1,8 @@
 /target/
 
+# Californium Project
+Californium.properties
+
 # Eclipse Project
 .metadata
 bin/
