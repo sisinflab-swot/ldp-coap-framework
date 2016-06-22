@@ -19,10 +19,10 @@ Also two resource handlers were implemented:
 _ldp-coap-core_ requires the following libraries:
 
 - _californium-core-ldp_ (included in the LDP-CoAP project) for CoAP-based communication;
-- [OpenRDF Sesame 2.8.10](http://rdf4j.org/) for in-memory RDF data management;
+- [RDF4J 2.0M2](http://rdf4j.org/) for in-memory RDF data management;
+- _RDF4J: Rio JSON-LD_ to format data according to [JSON-LD specification](http://www.w3.org/TR/json-ld/);
 - [JSON-java](http://github.com/stleary/JSON-java) (v.20160212) to format data in JSON;
-- [jsonld-java 0.8.2](http://github.com/jsonld-java) to format data according to [JSON-LD specification](http://www.w3.org/TR/json-ld/);
-- [Apache Marmotta RDF Patch Util 3.3](http://marmotta.apache.org/sesame.html) to update RDF statements of a Sesame Repository according to the [RDF Patch](http://afs.github.io/rdf-patch/) format;
+- Modified version of [Apache Marmotta RDF Patch Util 3.3](http://marmotta.apache.org/sesame.html) to update RDF statements of a RDF4J Repository according to the [RDF Patch](http://afs.github.io/rdf-patch/) format;
 
 ### Java SE Development Kit 
 
