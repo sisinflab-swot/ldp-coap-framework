@@ -20,7 +20,6 @@ import org.eclipse.rdf4j.model.Literal;
 import org.eclipse.rdf4j.model.Model;
 import org.eclipse.rdf4j.model.Resource;
 import org.eclipse.rdf4j.model.Statement;
-import org.eclipse.rdf4j.model.URI;
 import org.eclipse.rdf4j.model.Value;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
@@ -193,7 +192,7 @@ public class CoAPLDPResourceManager {
 		if(!this.verifyReadOnly(name, rdf, format)){
 			if(!this.verifyNotPersisted(rdf, format)){
 				ValueFactory f = repo.getValueFactory();
-				URI node = f.createIRI(name);
+				IRI node = f.createIRI(name);
 				con.remove(con.getStatements(node, null, null, true));
 				
 				/*** POST ***/
@@ -243,7 +242,7 @@ public class CoAPLDPResourceManager {
     			writer.handleNamespace(prefix, ns.get(prefix));
     		}
     		
-    		URI uRes = createURI(res);
+    		IRI uRes = createIRI(res);
     		String hasMemberRel = getHasMemberRelationFromContainer(uRes);
     		String isMemberOfRel = getIsMemberOfRelationFromContainer(uRes);
     		
@@ -269,10 +268,10 @@ public class CoAPLDPResourceManager {
     	return null;
 	}
 	
-	private String getHasMemberRelationFromContainer(URI res){
+	private String getHasMemberRelationFromContainer(IRI res){
 		String hasMemberRel = "";
 		try {
-			RepositoryResult<Statement> results = con.getStatements(res, createURI(LDP.PROP_HAS_MEMBER_RELATION), null, false);
+			RepositoryResult<Statement> results = con.getStatements(res, createIRI(LDP.PROP_HAS_MEMBER_RELATION), null, false);
 			while(results.hasNext()){
 				Statement s = results.next();
 				hasMemberRel = s.getObject().stringValue();
@@ -285,10 +284,10 @@ public class CoAPLDPResourceManager {
 		return hasMemberRel;
 	}
 	
-	private String getIsMemberOfRelationFromContainer(URI res){
+	private String getIsMemberOfRelationFromContainer(IRI res){
 		String isMemberOfRel = "";
 		try {
-			RepositoryResult<Statement> results = con.getStatements(res, createURI(LDP.PROP_IS_MEMBER_OF_RELATION), null, false);
+			RepositoryResult<Statement> results = con.getStatements(res, createIRI(LDP.PROP_IS_MEMBER_OF_RELATION), null, false);
 			while(results.hasNext()){
 				Statement s = results.next();
 				isMemberOfRel = s.getObject().stringValue();
@@ -313,7 +312,7 @@ public class CoAPLDPResourceManager {
     			writer.handleNamespace(prefix, ns.get(prefix));
     		}
     		
-    		RepositoryResult<Statement> results = con.getStatements(createURI(res), null, null, false);
+    		RepositoryResult<Statement> results = con.getStatements(createIRI(res), null, null, false);
     		while(results.hasNext()){
     			Statement s = results.next();
     			
@@ -351,7 +350,7 @@ public class CoAPLDPResourceManager {
     			writer.handleNamespace(prefix, ns.get(prefix));
     		}
     		
-    		URI uRes = createURI(res);
+    		IRI uRes = createIRI(res);
     		String hasMemberRel = getHasMemberRelationFromContainer(uRes);
     		String isMemberOfRel = getIsMemberOfRelationFromContainer(uRes);
     		
@@ -405,7 +404,7 @@ public class CoAPLDPResourceManager {
 	
 	private void writeStatement(RDFWriter writer, String res) throws RDFHandlerException, RepositoryException {
 		String member = null;
-		RepositoryResult<Statement> results = con.getStatements(this.createURI(res), null, null, false);
+		RepositoryResult<Statement> results = con.getStatements(this.createIRI(res), null, null, false);
 		while(results.hasNext()){
 			Statement s = results.next();
 			writer.handleStatement(s);
@@ -428,7 +427,7 @@ public class CoAPLDPResourceManager {
 		return out.trim();
 	}
 	
-	public void addRDFStatement(Resource s, URI p, Value o){
+	public void addRDFStatement(Resource s, IRI p, Value o){
 		try {
 			con.add(s, p, o);
 		} catch (RepositoryException e) {
@@ -439,13 +438,13 @@ public class CoAPLDPResourceManager {
 	
 	public void addRDFSource(String name){		
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(name);		
+		IRI node = f.createIRI(name);		
 		addRDFStatement(node, RDF.TYPE, f.createIRI(LDP.CLASS_RDFSOURCE));
 	}
 	
 	public void addRDFSource(String name, String type){		
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(name);		
+		IRI node = f.createIRI(name);		
 		addRDFStatement(node, RDF.TYPE, f.createIRI(type));
 	}
 	
@@ -461,45 +460,45 @@ public class CoAPLDPResourceManager {
 
 	public void addRDFContainer(String name) {
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(name);		
+		IRI node = f.createIRI(name);		
 		addRDFStatement(node, RDF.TYPE, f.createIRI(LDP.CLASS_CONTAINER));		
 	}
 
 	public void addRDFBasicContainer(String name) {
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(name);		
+		IRI node = f.createIRI(name);		
 		addRDFStatement(node, RDF.TYPE, f.createIRI(LDP.CLASS_BASIC_CONTAINER));
 	}
 	
 	public void addRDFDirectContainer(String name) {
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(name);		
+		IRI node = f.createIRI(name);		
 		addRDFStatement(node, RDF.TYPE, f.createIRI(LDP.CLASS_DIRECT_CONTAINER));
 	}
 	
 	public void addRDFIndirectContainer(String name) {
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(name);		
+		IRI node = f.createIRI(name);		
 		addRDFStatement(node, RDF.TYPE, f.createIRI(LDP.CLASS_INDIRECT_CONTAINER));
 	}
 
 	public void setRDFDescription(String name, String description) {
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(name);		
+		IRI node = f.createIRI(name);		
 		addRDFStatement(node, DCTERMS.DESCRIPTION, f.createLiteral(description));		
 	}
 	
 	public void setRDFTitle(String name, String title){
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(name);		
+		IRI node = f.createIRI(name);		
 		addRDFStatement(node, DCTERMS.TITLE, f.createLiteral(title));		
 	}	
 	
 	public void updateRDFStatement(String subj, String pred, String obj) {
 		ValueFactory f = repo.getValueFactory();
-		URI s = f.createIRI(subj);
-		URI p = f.createIRI(pred);
-		URI o = f.createIRI(obj);
+		IRI s = f.createIRI(subj);
+		IRI p = f.createIRI(pred);
+		IRI o = f.createIRI(obj);
 		
 		try {
 			RepositoryConnection c_upd = repo.getConnection();
@@ -514,8 +513,8 @@ public class CoAPLDPResourceManager {
 	
 	public void updateRDFLiteralStatement(String subj, String pred, Double obj) {
 		ValueFactory f = repo.getValueFactory();
-		URI s = f.createIRI(subj);
-		URI p = f.createIRI(pred);
+		IRI s = f.createIRI(subj);
+		IRI p = f.createIRI(pred);
 		DecimalFormat ft = new DecimalFormat("#0.00");		
 		Literal o = f.createLiteral(ft.format(obj), XMLSchema.DOUBLE);
 		
@@ -532,8 +531,8 @@ public class CoAPLDPResourceManager {
 	
 	public void updateRDFLiteralStatement(String subj, String pred, Date obj) {
 		ValueFactory f = repo.getValueFactory();
-		URI s = f.createIRI(subj);
-		URI p = f.createIRI(pred);
+		IRI s = f.createIRI(subj);
+		IRI p = f.createIRI(pred);
 		Literal o = f.createLiteral(obj);
 		
 		try {
@@ -549,7 +548,7 @@ public class CoAPLDPResourceManager {
 	
 	public void setRDFCreated(String name){
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(name);		
+		IRI node = f.createIRI(name);		
 		addRDFStatement(node, DCTERMS.CREATED, f.createLiteral(new Date()));		
 	}
 
@@ -560,7 +559,7 @@ public class CoAPLDPResourceManager {
 
 	public void deleteRDFSource(String name){
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(name);
+		IRI node = f.createIRI(name);
 		
 		try {
 			con.remove(con.getStatements(null, null, node, true));
@@ -576,7 +575,7 @@ public class CoAPLDPResourceManager {
 	
 	public void deleteRDFBasicContainer(String name){
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(name);
+		IRI node = f.createIRI(name);
 		try {
 			RepositoryResult<Statement> statements = con.getStatements(node, f.createIRI(LDP.PROP_CONTAINS), null, true);
 			while(statements.hasNext()){ 
@@ -593,7 +592,7 @@ public class CoAPLDPResourceManager {
 	
 	public void deleteRDFDirectContainer(String name){
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(name);
+		IRI node = f.createIRI(name);
 		try {
 			RepositoryResult<Statement> statements = con.getStatements(node, f.createIRI(LDP.PROP_MEMBERSHIP_RESOURCE), null, true);
 			while(statements.hasNext()){ 
@@ -639,8 +638,8 @@ public class CoAPLDPResourceManager {
 		addRDFStatement(f.createIRI(s), f.createIRI(p), f.createLiteral(ft.format(v), XMLSchema.DOUBLE));	
 	}
 	
-	public URI createURI(String uri){
-		return repo.getValueFactory().createURI(uri);
+	public IRI createIRI(String uri){
+		return repo.getValueFactory().createIRI(uri);
 	}
 
 	public void deleteMemberResourceStatement(String title) {
@@ -649,7 +648,7 @@ public class CoAPLDPResourceManager {
 			title = title.substring(1);
 		
 		ValueFactory f = repo.getValueFactory();
-		URI node = f.createIRI(this.getBaseURI() + "/" + title);		
+		IRI node = f.createIRI(this.getBaseURI() + "/" + title);		
 		try {
 			RepositoryResult<Statement> s = con.getStatements(node, f.createIRI(LDP.PROP_MEMBERSHIP_RESOURCE), null, true);
 			while(s.hasNext()){
@@ -720,7 +719,7 @@ public class CoAPLDPResourceManager {
 		return false;
 	}
 	
-	private String getMemberResource(URI res) throws RepositoryException{
+	private String getMemberResource(IRI res) throws RepositoryException{
 		ValueFactory f = repo.getValueFactory();
 		String member = null;
 		if(con.hasStatement(res, f.createIRI(LDP.PROP_MEMBERSHIP_RESOURCE), null, false)){

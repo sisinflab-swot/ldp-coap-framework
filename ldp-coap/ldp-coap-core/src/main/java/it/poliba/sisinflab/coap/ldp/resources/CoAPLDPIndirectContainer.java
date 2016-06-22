@@ -9,7 +9,7 @@ import org.eclipse.californium.core.coap.Request;
 import org.eclipse.californium.core.coap.CoAP.ResponseCode;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.eclipse.californium.core.server.resources.Resource;
-import org.eclipse.rdf4j.model.URI;
+import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.repository.RepositoryException;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
@@ -96,7 +96,7 @@ public class CoAPLDPIndirectContainer extends CoAPLDPContainer {
 			return s;
 	}
 
-	private void addRDFResource(CoAPLDPResource res, URI contentRes) {
+	private void addRDFResource(CoAPLDPResource res, IRI contentRes) {
 		resource.add(res);
 
 		String r = checkURI(res.getFullName());
@@ -170,14 +170,14 @@ public class CoAPLDPIndirectContainer extends CoAPLDPContainer {
 							/*** Add LDP-RDFSource ***/
 							CoAPLDPRDFSource s = new CoAPLDPRDFSource(title, resource.getURI(), mng);
 							if (indirectResource != null)
-								this.addRDFResource(s, mng.createURI(indirectResource.replaceAll("<>", "")));
+								this.addRDFResource(s, mng.createIRI(indirectResource.replaceAll("<>", "")));
 							else
 								this.addRDFResource(s);
 						} else if (rt.equals(LDP.LINK_LDP + ":" + LDP.CLASS_LNAME_BASIC_CONTAINER)) {
 							/*** Add LDP-BasicContainer ***/
 							CoAPLDPBasicContainer bc = new CoAPLDPBasicContainer(title, mng);
 							bc.setRDFCreated();
-							this.addRDFResource(bc, mng.createURI(indirectResource));
+							this.addRDFResource(bc, mng.createIRI(indirectResource));
 						} else
 							throw new CoAPLDPException("Invalid RT query parameter.");
 					} else {
@@ -222,13 +222,13 @@ public class CoAPLDPIndirectContainer extends CoAPLDPContainer {
 	
 	public CoAPLDPRDFSource createRDFSourceWithDerivedURI(String name, String uri) {
 		CoAPLDPRDFSource res = new CoAPLDPRDFSource(name, resource.getFullName(), mng);
-		this.addRDFResource(res, mng.createURI(uri));
+		this.addRDFResource(res, mng.createIRI(uri));
 		return res;
 	}
 	
 	public CoAPLDPRDFSource createRDFSourceWithDerivedURI(String name, String type, String uri) {
 		CoAPLDPRDFSource res = new CoAPLDPRDFSource(name, resource.getFullName(), mng, type);
-		this.addRDFResource(res, mng.createURI(uri));
+		this.addRDFResource(res, mng.createIRI(uri));
 		return res;
 	}
 
