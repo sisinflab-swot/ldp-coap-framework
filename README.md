@@ -31,6 +31,13 @@ Each module can be imported as Maven project in Eclipse. Make sure to have the f
 - [Eclipse EGit](http://www.eclipse.org/egit/)
 - [M2Eclipse - Maven Integration for Eclipse](http://www.eclipse.org/m2e/)
 
+Documentation
+-------------
+
+Hands-on introduction to LDP-CoAP using [basic code samples](http://sisinflab.poliba.it/swottools/ldp-coap/usage.html) available on the project webpage.
+
+More details about packages and methods can be found on the official [Javadoc](http://sisinflab.poliba.it/swottools/ldp-coap/docs/javadoc/v1_0/).
+
 License
 -------------
 
