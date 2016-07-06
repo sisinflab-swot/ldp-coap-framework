@@ -13,6 +13,12 @@ import org.eclipse.californium.core.server.resources.Resource;
 
 import it.poliba.sisinflab.coap.ldp.LDP;
 
+/**
+ * Extends the basic Californium CoAP ServerMessageDeliverer to enable LDP-CoAP PUT-to-Create features
+ *
+ * @see org.eclipse.californium.core.server.ServerMessageDeliverer
+ */
+
 public class CoAPLDPServerMessageDeliverer extends ServerMessageDeliverer {
 
 	public CoAPLDPServerMessageDeliverer(Resource root) {

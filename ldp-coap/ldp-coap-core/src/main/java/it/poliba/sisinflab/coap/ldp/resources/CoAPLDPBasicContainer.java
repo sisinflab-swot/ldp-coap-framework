@@ -17,14 +17,38 @@ import it.poliba.sisinflab.coap.ldp.LDP;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPContentFormatException;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPException;
 
+/**
+ * Represents an LDP Basic Container
+ * <p> 
+ * @see <a href="https://www.w3.org/TR/ldp/#ldpbc">#LDP Basic Container</a>
+ *
+ */
+
 public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 
+	/**
+	 * Creates a new LDP Basic Container.
+	 *
+	 * @param  	name 	the name of the resource
+	 * @param	mng		the reference resource manager
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPBasicContainer(String name, CoAPLDPResourceManager mng) {
 		super(name, "", mng);
 		this.name = "/" + name;
 		initBasicContainer();
 	}
 
+	/**
+	 * Creates a new LDP Basic Container (as subresource).
+	 *
+	 * @param  	name 	the name of the resource
+	 * @param	path	the path of the root resource
+	 * @param	mng		the reference resource manager
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPBasicContainer(String name, String path, CoAPLDPResourceManager mng) {
 		super(name, "", mng);
 		this.name = path + "/" + name;
@@ -46,6 +70,14 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 		options.addAcceptPostType(MediaTypeRegistry.IMAGE_PNG);
 	}
 
+	/**
+	 * Manages LDP-CoAP POST requests.
+	 *
+	 * @param  exchange 	the request object
+	 * 
+	 * @see CoapExchange
+	 * 
+	 */
 	@Override
 	public void handlePOST(CoapExchange exchange) {
 		this.postResource(exchange, false);
@@ -109,6 +141,14 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 		}
 	}
 
+	/**
+	 * Manages LDP-CoAP DELETE requests.
+	 *
+	 * @param  exchange 	the request object
+	 * 
+	 * @see CoapExchange
+	 * 
+	 */
 	public void handleDELETE(CoapExchange exchange) {
 		mng.deleteRDFBasicContainer(mng.getBaseURI() + this.getURI());
 		// mng.deleteRDFSource(mng.getBaseURI() + this.getURI());
@@ -172,7 +212,6 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 			throw new CoAPLDPContentFormatException("Content-Format (CT) Not Accepted.");
 	}
 
-	@Override
 	public CoAPLDPRDFSource createRDFSource(String name) {
 		CoAPLDPRDFSource res = new CoAPLDPRDFSource(name, getFullName(), mng);
 		mng.setLDPContainsRelationship(mng.getBaseURI() + res.getFullName(), mng.getBaseURI() + getFullName());
@@ -180,7 +219,6 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 		return res;
 	}
 
-	@Override
 	public CoAPLDPRDFSource createRDFSource(String name, String type) {
 		CoAPLDPRDFSource res = new CoAPLDPRDFSource(name, getFullName(), mng, type);
 		mng.setLDPContainsRelationship(mng.getBaseURI() + res.getFullName(), mng.getBaseURI() + getFullName());
@@ -188,7 +226,6 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 		return res;
 	}
 
-	@Override
 	public CoAPLDPBasicContainer createBasicContainer(String name) {
 		CoAPLDPBasicContainer bc = new CoAPLDPBasicContainer(name, this.getFullName(), mng);
 		mng.setLDPContainsRelationship(mng.getBaseURI() + bc.getFullName(), mng.getBaseURI() + getFullName());
@@ -196,7 +233,6 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 		return bc;
 	}
 
-	@Override
 	public CoAPLDPNonRDFSource createNonRDFSource(String name, int mediaType) {
 		CoAPLDPNonRDFSource nr = new CoAPLDPNonRDFSource(name, mng, mediaType);
 		mng.setLDPContainsRelationship(mng.getBaseURI() + "/" + nr.getURI(), mng.getBaseURI() + getFullName());
@@ -204,7 +240,6 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 		return nr;
 	}
 
-	@Override
 	public CoAPLDPDirectContainer createDirectContainer(String name, String member, String memberType,
 			String memberRelation, String isMemberOfRelation) {
 		CoAPLDPRDFSource memberRes = new CoAPLDPRDFSource(member, this.getFullName() + "/" + name, mng, memberType);
@@ -220,7 +255,6 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 		return dc;
 	}
 
-	@Override
 	public CoAPLDPIndirectContainer createIndirectContainer(String name, String member, String memberType,
 			String memberRelation, String insertedContentRelation) {
 		CoAPLDPRDFSource memberResIC = new CoAPLDPRDFSource(member, this.getFullName()+"/"+name, mng, memberType);       

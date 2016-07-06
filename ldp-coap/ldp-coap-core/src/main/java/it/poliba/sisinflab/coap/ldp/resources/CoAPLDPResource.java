@@ -11,6 +11,13 @@ import org.eclipse.californium.core.server.resources.CoapExchange;
 import it.poliba.sisinflab.coap.ldp.LDP;
 import it.poliba.sisinflab.coap.ldp.LDPOptions;
 
+/**
+ * Represents an LDP Resource
+ * <p> 
+ * @see <a href="https://www.w3.org/TR/ldp/#ldpr-resource">#LDP Resource</a>
+ *
+ */
+
 public abstract class CoAPLDPResource extends CoapResource {
 	
 	protected String name;
@@ -18,6 +25,12 @@ public abstract class CoAPLDPResource extends CoapResource {
 	protected String fRDFType;	
 	protected LDPOptions options;
 
+	/**
+	 * Creates a new LDP Resource.
+	 *
+	 * @param  name 	the name of the resource
+	 * 
+	 */
 	public CoAPLDPResource(String name) {
 		super(name);
 		
@@ -70,6 +83,13 @@ public abstract class CoAPLDPResource extends CoapResource {
 		return atts;
 	}
 	
+	/**
+	 * Returns the resource name within the LDP-CoAP server (including the full path).
+	 *
+	 * @return the full resource name
+	 * 
+	 * @see LDP.Code
+	 */
 	public String getFullName(){
 		return this.name;
 	}

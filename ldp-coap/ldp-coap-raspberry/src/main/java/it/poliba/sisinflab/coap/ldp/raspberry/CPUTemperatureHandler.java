@@ -10,6 +10,13 @@ import com.pi4j.system.SystemInfo;
 import it.poliba.sisinflab.coap.ldp.resources.LDPDataHandler;
 import it.poliba.sisinflab.rdf.vocabulary.SSN_XG;
 
+/**
+ * Retrieves data about the CPU Temperature and update the LDP RDF repository 
+ * <p>
+ * @see <a href="http://pi4j.com/">Pi4j Library</a>
+ *
+ */
+
 public class CPUTemperatureHandler extends LDPDataHandler {
 
 	@Override

@@ -7,6 +7,11 @@ import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPDirectContainer;
 import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPIndirectContainer;
 import it.poliba.sisinflab.rdf.vocabulary.SSN_XG;
 
+/**
+ * Test Server used to run evaluation according to the <a href="http://w3c.github.io/ldp-testsuite/">Test Suite for W3C Linked Data Platform 1.0</a> 
+ *
+ */
+
 public class CoAPLDPTestSuiteServer extends CoAPLDPServer {
 	
 	final static String BASE_URI = "coap://192.168.2.16:5683";
@@ -21,16 +26,36 @@ public class CoAPLDPTestSuiteServer extends CoAPLDPServer {
     	server.start();
     }
     
+    /**
+	 * Creates a CoAPLDPTestSuiteServer.
+	 * 
+	 */
     public CoAPLDPTestSuiteServer(){
     	super(BASE_URI);		
 		init();		
     }
     
+    /**
+	 * Creates a CoAPLDPTestSuiteServer.
+	 *
+	 * @param  	URI		the repository base URI
+	 * 
+	 */
     public CoAPLDPTestSuiteServer(String URI){
     	super(URI);		
 		init();		
     }
     
+    /**
+	 * Creates a CoAPLDPTestSuiteServer.
+	 *
+	 * @param  	baseUri		the repository base URI
+	 * @param	config		a custom CoAP network configuration
+	 * @param	port		the reference port for the server (default 5683)
+	 * 
+	 * @see org.eclipse.californium.core.network.config.NetworkConfig
+	 * 
+	 */
     public CoAPLDPTestSuiteServer(String URI, NetworkConfig config, int port){
     	super(URI, config, port);		
 		init();		

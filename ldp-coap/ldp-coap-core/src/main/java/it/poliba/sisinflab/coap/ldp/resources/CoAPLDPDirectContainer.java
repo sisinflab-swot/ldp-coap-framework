@@ -17,13 +17,32 @@ import it.poliba.sisinflab.coap.ldp.LDP;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPContentFormatException;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPException;
 
+/**
+ * Represents an LDP Direct Container
+ * <p> 
+ * @see <a href="https://www.w3.org/TR/ldp/#ldpdc">#LDP Direct Container</a>
+ *
+ */
+
 public class CoAPLDPDirectContainer extends CoAPLDPContainer {
 
 	CoAPLDPRDFSource resource;
 	String memberRelation;
 	String isMemberOfRelation;
 	boolean directRel = true;
-
+	
+	/**
+	 * Creates a new LDP Direct Container.
+	 *
+	 * @param  	name 				the name of the contained resource
+	 * @param	mng					the reference resource manager
+	 * @param  	member 				the name of the member resource of the created Direct Container
+	 * @param  	memberType 			the type of the member resource of the created Direct Container
+	 * @param  	memberRelation 		the memberRelation property of the created Direct Container (if present)
+	 * @param  	isMemberOfRelation 	the isMemberOfRelation property of the created Direct Container (if present)
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPDirectContainer(String name, CoAPLDPResourceManager mng, CoAPLDPRDFSource resource,
 			String memberRelation, String isMemberOfRelation) throws CoAPLDPException {
 		super(name, "", mng);
@@ -43,6 +62,19 @@ public class CoAPLDPDirectContainer extends CoAPLDPContainer {
 		addMembershipResource(resource);
 	}
 
+	/**
+	 * Creates a new LDP Direct Container (as subresource).
+	 *
+	 * @param  	name 				the name of the contained resource
+	 * @param	path				the path of the root resource
+	 * @param	mng					the reference resource manager
+	 * @param  	member 				the name of the member resource of the created Direct Container
+	 * @param  	memberType 			the type of the member resource of the created Direct Container
+	 * @param  	memberRelation 		the memberRelation property of the created Direct Container (if present)
+	 * @param  	isMemberOfRelation 	the isMemberOfRelation property of the created Direct Container (if present)
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPDirectContainer(String name, String path, CoAPLDPResourceManager mng, CoAPLDPRDFSource resource,
 			String memberRelation, String isMemberOfRelation) throws CoAPLDPException {
 		super(name, path, mng);
@@ -80,6 +112,14 @@ public class CoAPLDPDirectContainer extends CoAPLDPContainer {
 		this.postResource(exchange, true);
 	}
 
+	/**
+	 * Manages LDP-CoAP POST requests.
+	 *
+	 * @param  exchange 	the request object
+	 * 
+	 * @see CoapExchange
+	 * 
+	 */
 	@Override
 	public void handlePOST(CoapExchange exchange) {
 		this.postResource(exchange, false);
@@ -185,6 +225,14 @@ public class CoAPLDPDirectContainer extends CoAPLDPContainer {
 		}
 	}
 
+	/**
+	 * Manages LDP-CoAP DELETE requests.
+	 *
+	 * @param  exchange 	the request object
+	 * 
+	 * @see CoapExchange
+	 * 
+	 */
 	public void handleDELETE(CoapExchange exchange) {
 		mng.deleteRDFDirectContainer(mng.getBaseURI() + this.getURI());
 		// mng.deleteRDFSource(mng.getBaseURI() + this.getURI());
@@ -233,39 +281,40 @@ public class CoAPLDPDirectContainer extends CoAPLDPContainer {
 			return s;
 	}
 
+	/**
+	 * Returns the member resource.
+	 *
+	 * @return CoAPLDPRDFSource	the container member resource
+	 * 
+	 */
 	public CoAPLDPRDFSource getMemberResource() {
 		return this.resource;
 	}
 
-	@Override
 	public CoAPLDPRDFSource createRDFSource(String name, String type) {
 		CoAPLDPRDFSource res = new CoAPLDPRDFSource(name, resource.getFullName(), mng, type);
 		this.addRDFResource(res);
 		return res;
 	}
 
-	@Override
 	public CoAPLDPRDFSource createRDFSource(String name) {
 		CoAPLDPRDFSource res = new CoAPLDPRDFSource(name, resource.getFullName(), mng);
 		this.addRDFResource(res);
 		return res;
 	}
 
-	@Override
 	public CoAPLDPBasicContainer createBasicContainer(String name) {
 		CoAPLDPBasicContainer bc = new CoAPLDPBasicContainer(name, resource.getFullName(), mng);
 		this.addRDFResource(bc);
 		return bc;
 	}
 
-	@Override
 	public CoAPLDPNonRDFSource createNonRDFSource(String name, int mediaType) {
 		CoAPLDPNonRDFSource nr = new CoAPLDPNonRDFSource(name, mng, mediaType);
 		this.addRDFResource(nr);
 		return nr;
 	}
 
-	@Override
 	public CoAPLDPIndirectContainer createIndirectContainer(String name, String member, String memberType,
 			String memberRelation, String insertedContentRelation) {
 		CoAPLDPRDFSource memberResIC = new CoAPLDPRDFSource(member, resource.getFullName()+"/"+name, mng, memberType);       
@@ -274,7 +323,6 @@ public class CoAPLDPDirectContainer extends CoAPLDPContainer {
 		return ic;
 	}
 
-	@Override
 	public CoAPLDPDirectContainer createDirectContainer(String name, String member, String memberType,
 			String memberRelation, String isMemberOfRelation) {
 		CoAPLDPRDFSource memberRes = new CoAPLDPRDFSource(member, resource.getFullName() + "/" + name, mng, memberType);

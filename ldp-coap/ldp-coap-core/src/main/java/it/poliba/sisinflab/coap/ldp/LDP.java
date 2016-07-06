@@ -1,11 +1,25 @@
 package it.poliba.sisinflab.coap.ldp;
 
+/**
+ * Linked Data Platform Reference Class.
+ * <p>
+ * Namespace http://www.w3.org/ns/ldp#.
+ * <p>
+ * Prefix: {@code <http://www.w3.org/ns/ldp#>}
+ * <p>
+ * @see <a href="https://www.w3.org/TR/ldp/">Linked Data Platform 1.0 - W3C Recommendation 26 February 2015</a>
+ *
+ */
+
 public class LDP {
 	
+	/** {@code http://www.w3.org/ns/ldp#} **/
 	protected static final String NS = "http://www.w3.org/ns/ldp#";
 
 	/**
-	 * The namespace of the vocabulary as a string
+	 * Returns the namespace of the LDP vocabulary as a string
+	 * 
+	 * @return a string representing the LDP namespace
 	 */
 	public static String getNSURI()
 	{
@@ -95,6 +109,12 @@ public class LDP {
 	 */
 	public static final String DEPRECATED_PREFER_EMPTY_CONTAINER = nsName("PreferEmptyContainer");
 
+	/**
+	 * Returns the full IRI of a LDP term as a string
+	 *
+	 * @param  local  the local name of a LDP term
+	 * @return a string representing the resource full IRI
+	 */
 	public static String nsName(String local) {
 		return NS + local;
 	}

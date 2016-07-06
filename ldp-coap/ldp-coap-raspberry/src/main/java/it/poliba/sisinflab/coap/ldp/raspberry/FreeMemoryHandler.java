@@ -10,7 +10,14 @@ import com.pi4j.system.SystemInfo;
 import it.poliba.sisinflab.coap.ldp.resources.LDPDataHandler;
 import it.poliba.sisinflab.rdf.vocabulary.SSN_XG;
 
-public class FreeMemoryHandler extends LDPDataHandler {
+/**
+ * Retrieves data about system free memory and update the LDP RDF repository 
+ * <p>
+ * @see <a href="http://pi4j.com/">Pi4j Library</a>
+ *
+ */
+
+public class FreeMemoryHandler extends LDPDataHandler {		
 
 	@Override
 	protected void handleData() {

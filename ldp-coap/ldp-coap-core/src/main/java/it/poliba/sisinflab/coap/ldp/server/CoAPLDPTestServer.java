@@ -14,10 +14,14 @@ import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPNonRDFSource;
 import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPRDFSource;
 import it.poliba.sisinflab.rdf.vocabulary.SSN_XG;
 
+/**
+ * Test Server used to show main features of LDP-CoAP framework
+ *
+ */
 
 public class CoAPLDPTestServer {
 	
-	final static String BASE_URI = "coap://192.168.2.16:5683"; //"coap://sisinflab.poliba.it/ldp-coap";
+	final static String BASE_URI = "coap://192.168.2.16:5683";
     static CoAPLDPServer server;    	
 	
     public static void main(String[] args) {        
@@ -35,10 +39,10 @@ public class CoAPLDPTestServer {
 		}
     }
     
-    /*
-     * Constructor for a new CoAP LDP server. Here, the resources
-     * of the server are initialized.
-     */
+    /**
+	 * Initializes all the resources of the server.
+	 * 
+	 */
     public static void init() throws SocketException, CoAPLDPException {
     	
     	server.addHandledNamespace(SSN_XG.PREFIX, SSN_XG.NAMESPACE + "#");
@@ -83,7 +87,7 @@ public class CoAPLDPTestServer {
         CoAPLDPDirectContainer dc = server.createDirectContainer("obs-dc", "tempSensor", SSN_XG.SensingDevice.toString(), SSN_XG.observes.toString(), null);
         if(dc != null){
         	dc.setRDFTitle("Product description of LDP Demo product which is also an LDP-DC"); 
-        	dc.setAcceptPostType(MediaTypeRegistry.TEXT_PLAIN);
+        	dc.addAcceptPostType(MediaTypeRegistry.TEXT_PLAIN);
         	dc.getMemberResource().setRDFTitle("LDP-DC Resource");
         	
         	CoAPLDPRDFSource resDC = dc.createRDFSource("obs1", SSN_XG.Observation.toString());

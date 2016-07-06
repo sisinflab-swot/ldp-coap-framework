@@ -24,11 +24,26 @@ import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPContentFormatException;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPException;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPPreconditionFailedException;
 
+/**
+ * Represents an LDP RDF Source
+ * <p> 
+ * @see <a href="https://www.w3.org/TR/ldp/#ldprs">#LDP RDF Source</a>
+ *
+ */
+
 public class CoAPLDPRDFSource extends CoAPLDPResource {
 
 	protected CoAPLDPResourceManager mng = null;	
 	protected LDPDataHandler dh = null;
-
+	
+	/**
+	 * Creates a new LDP RDF Source.
+	 *
+	 * @param  	name 	the name of the resource
+	 * @param	mng		the reference resource manager
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPRDFSource(String name, CoAPLDPResourceManager mng) {
 		super(name);
 
@@ -40,6 +55,15 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		initRDFSource();
 	}
 
+	/**
+	 * Creates a new LDP RDF Source (as subresource).
+	 *
+	 * @param  	name 	the name of the resource
+	 * @param	path	the path of the root resource
+	 * @param	mng		the reference resource manager
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPRDFSource(String name, String path, CoAPLDPResourceManager mng) {
 		super(name);
 
@@ -51,6 +75,15 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		initRDFSource();
 	}
 
+	/**
+	 * Creates a new LDP RDF Source with a specific type (in addition to the basic RDFSource type).
+	 *
+	 * @param  	name 	the name of the resource
+	 * @param	mng		the reference resource manager
+	 * @param	type	the additional type for the resource
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPRDFSource(String name, CoAPLDPResourceManager mng, String type) {
 		super(name);
 
@@ -62,6 +95,16 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		initRDFSource();
 	}
 
+	/**
+	 * Creates a new LDP RDF Source (as subresource) with a specific type (in addition to the basic RDFSource type).
+	 *
+	 * @param  	name 	the name of the resource
+	 * @param	path	the path of the root resource
+	 * @param	mng		the reference resource manager
+	 * @param	type	the additional type for the resource
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPRDFSource(String name, String path, CoAPLDPResourceManager mng, String type) {
 		super(name);
 
@@ -95,6 +138,14 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		getAttributes().addContentType(MediaTypeRegistry.TEXT_TURTLE);
 	}
 
+	/**
+	 * Manages LDP-CoAP requests (GET, OPTIONS, HEAD) exploiting the basic CoAP GET method.
+	 *
+	 * @param  exchange 	the request object
+	 * 
+	 * @see CoapExchange
+	 * 
+	 */
 	public void handleGET(CoapExchange exchange) {
 		
 		Code m = getLDPMethod(exchange);
@@ -108,6 +159,14 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		}
 	}
 	
+	/**
+	 * Manages LDP-CoAP requests (PUT, PATCH) exploiting the basic CoAP PUT method.
+	 *
+	 * @param  exchange 	the request object
+	 * 
+	 * @see CoapExchange
+	 * 
+	 */
 	public void handlePUT(CoapExchange exchange) {
 		
 		Code m = getLDPMethod(exchange);
@@ -255,7 +314,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 			exchange.respond(ResponseCode.INTERNAL_SERVER_ERROR);
 		}		
 	}
-
+	
 	protected void handleLDPHEAD(CoapExchange exchange) {
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch(); 
 		String rdf = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI());
@@ -280,13 +339,22 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		}		
 	}
 
+	
+	/**
+	 * Manages LDP-CoAP DELETE requests.
+	 *
+	 * @param  exchange 	the request object
+	 * 
+	 * @see CoapExchange
+	 * 
+	 */
 	public void handleDELETE(CoapExchange exchange) {
 		mng.deleteRDFSource(mng.getBaseURI() + this.getURI());
 		this.delete();
 		exchange.respond(ResponseCode.DELETED);
 	}
 
-	public void handleLDPPUT(CoapExchange exchange) {
+	protected void handleLDPPUT(CoapExchange exchange) {
 		
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch();
 		if(im.isEmpty()){
@@ -339,14 +407,30 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 			exchange.respond(ResponseCode.BAD_OPTION);
 	}	
 
+	/**
+	 * Sets the description RDF property for the resource.
+	 *
+	 * @param  description	the text to be used as description 
+	 * 
+	 */
 	public void setRDFDescription(String description) {
 		mng.setRDFDescription(mng.getBaseURI() + name, description);
 	}
 
+	/**
+	 * Sets the title RDF property for the resource.
+	 *
+	 * @param  title	the text to be used as title
+	 * 
+	 */
 	public void setRDFTitle(String title) {
 		mng.setRDFTitle(mng.getBaseURI() + name, title);
 	}
 
+	/**
+	 * Sets the created RDF property for the resource using current timestamp.
+	 * 
+	 */
 	public void setRDFCreated() {
 		mng.setRDFCreated(mng.getBaseURI() + name);
 	}	
@@ -355,17 +439,33 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		return "Link: <" + mng.getconstrainedByURI() + ">; rel=\"" + LDP.LINK_REL_CONSTRAINEDBY + "\"";
 	}
 		
+	/**
+	 * Sets a data handler to manage the RDF data
+	 * 
+	 * @param  dh	the data handler to be used
+	 * 
+	 * @see LDPDataHandler
+	 * 
+	 */
 	public void setDataHandler(LDPDataHandler dh){
 		this.dh = dh;
 		dh.init(this.getFullName(), this.mng);
 		dh.start();
 	}
 	
+	/**
+	 * Starts the publication of RDF data retrieved by the resource data handler
+	 * 
+	 */
 	public void startPublishData(){
 		if(dh != null)
 			dh.start();
 	}
 	
+	/**
+	 * Stops the publication of RDF data retrieved by the resource data handler
+	 * 
+	 */
 	public void stopPublishData(){
 		if(dh != null)
 			dh.stop();

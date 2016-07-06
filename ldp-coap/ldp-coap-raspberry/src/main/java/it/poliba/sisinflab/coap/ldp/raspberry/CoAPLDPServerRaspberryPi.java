@@ -11,6 +11,10 @@ import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPRDFSource;
 import it.poliba.sisinflab.coap.ldp.server.CoAPLDPServer;
 import it.poliba.sisinflab.rdf.vocabulary.SSN_XG;
 
+/**
+ * Test Server used to show main features of LDP-CoAP framework on Raspberry Pi board
+ *
+ */
 
 public class CoAPLDPServerRaspberryPi {
 	

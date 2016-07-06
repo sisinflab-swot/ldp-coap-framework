@@ -42,6 +42,11 @@ import it.poliba.sisinflab.coap.ldp.LDP;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPException;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPReadOnlyException;
 
+/**
+ * Manages all the read/write operations on the RDF repository
+ *
+ */
+
 public class CoAPLDPResourceManager {
 	
 	// init RDF Repository
@@ -63,6 +68,12 @@ public class CoAPLDPResourceManager {
 	
 	String BASE_URI;
 	
+	/**
+	 * Creates an in-memory RDF repository.
+	 *
+	 * @param  	baseUri		the repository base URI
+	 * 
+	 */
 	public CoAPLDPResourceManager(String baseUri){
 		BASE_URI = baseUri;
 		repo = new SailRepository(new MemoryStore());
@@ -86,18 +97,45 @@ public class CoAPLDPResourceManager {
 		deleted = new ArrayList<String>();
 	}
 	
+	/**
+	 * Return the repository base URI
+	 *
+	 * @return	the base URI
+	 * 
+	 */
 	public String getBaseURI(){
 		return BASE_URI;
 	}
 	
+	/**
+	 * Adds a well-known namespace
+	 *
+	 * @param  	prefix		the namespace prefix
+	 * @param	namespace	the namespace URI
+	 * 
+	 */
 	public void addHandledNamespace(String prefix, String namespace){
 		ns.put(prefix, namespace);
 	}
 	
+	/**
+	 * Removes a well-known namespace
+	 *
+	 * @param  	prefix		the prefix of the namespace to be removed
+	 * 
+	 */
 	public void removeHandledNamespace(String prefix){
 		ns.remove(prefix);
 	}
 	
+	/**
+	 * Creates a new RDF Source according to an LDP-CoAP POST request on a Basic or Direct Container
+	 *
+	 * @param  	uri		the URI of the resource to be created
+	 * @param	rdf		the RDF text contained in the request
+	 * @param	format	the RDF format of the request body
+	 * 
+	 */
 	public void postRDFSource(String uri, String rdf, RDFFormat format) throws RDFParseException, RepositoryException, IOException, CoAPLDPException{			
 		if(!this.verifyRelation(rdf, LDP.PROP_CONTAINS, format)){		
 			InputStream stream = new ByteArrayInputStream(rdf.trim().getBytes(StandardCharsets.UTF_8));
@@ -107,11 +145,27 @@ public class CoAPLDPResourceManager {
 			throw new CoAPLDPException(LDP.PROP_CONTAINS + " not allowed in POST/PUT requests.");		
 	}
 	
+	/**
+	 * Verifies if a resource was previously deleted from the server
+	 *
+	 * @param  	uri		the URI of the deleted resource
+	 * 
+	 * @return	true if the resource was deleted
+	 */
 	public boolean isDeleted(String uri){
 		uri = this.BASE_URI + uri;
 		return deleted.contains(uri);
 	}
 	
+	/**
+	 * Creates a new RDF Source according to an LDP-CoAP POST request on an Indirect Container
+	 *
+	 * @param  	uri		the URI of the resource to be created
+	 * @param	rdf		the RDF text contained in the request
+	 * @param	rel 	the insertedContentRelation property of the Indirect Container
+	 * @param	format	the RDF format of the request body
+	 * 
+	 */
 	public String postIndirectRDFSource(String uri, String rdf, String rel, RDFFormat format) throws RDFParseException, RepositoryException, IOException, CoAPLDPException{			
 		String name = null;		
 		rdf = rdf.trim();
@@ -149,6 +203,14 @@ public class CoAPLDPResourceManager {
 		return name;
 	}
 	
+	/**
+	 * Returns the memberRelation property contained in a set of RDF statements 
+	 *
+	 * @param	rdf		the set of RDF statements
+	 * @param	format	the RDF format of the input set
+	 * 
+	 * @return	the memberRelation property URI (null, if not present)
+	 */
 	public String getMemberRelation(String rdf, RDFFormat format) throws RDFParseException, UnsupportedRDFormatException, IOException {
 		String name = null;
 		
@@ -162,6 +224,14 @@ public class CoAPLDPResourceManager {
 		return name;
 	}
 	
+	/**
+	 * Returns the isMemberOfRelation property contained in a set of RDF statements 
+	 *
+	 * @param	rdf		the set of RDF statements
+	 * @param	format	the RDF format of the input set
+	 * 
+	 * @return	the isMemberOfRelation property URI (null, if not present)
+	 */
 	public String getIsMemberOfRelation(String rdf, RDFFormat format) throws RDFParseException, UnsupportedRDFormatException, IOException {
 		String name = null;
 		
@@ -175,6 +245,14 @@ public class CoAPLDPResourceManager {
 		return name;
 	}
 	
+	/**
+	 * Returns the memberResource contained in a set of RDF statements 
+	 *
+	 * @param	rdf		the set of RDF statements
+	 * @param	format	the RDF format of the input set
+	 * 
+	 * @return	the memberResource URI (null, if not present)
+	 */
 	public String getMemberResource(String rdf, RDFFormat format) throws RDFParseException, UnsupportedRDFormatException, IOException {
 		String name = null;
 		
@@ -188,6 +266,14 @@ public class CoAPLDPResourceManager {
 		return name;
 	}
 
+	/**
+	 * Creates/modifies a new RDF Source according to an LDP-CoAP PUT request on a Container
+	 *
+	 * @param  	uri		the URI of the resource to be created/modified
+	 * @param	rdf		the RDF text contained in the request
+	 * @param	format	the RDF format of the request body
+	 * 
+	 */
 	public void putRDFSource(String name, String rdf, RDFFormat format) throws RDFParseException, RepositoryException, IOException, CoAPLDPException{
 		if(!this.verifyReadOnly(name, rdf, format)){
 			if(!this.verifyNotPersisted(rdf, format)){
@@ -205,30 +291,53 @@ public class CoAPLDPResourceManager {
 			throw new CoAPLDPReadOnlyException("Read-only property exception in PUT request.");
 	}
 	
-	public String getTurtleResourceGraph(String res){
-		return this.getFullResourceTuple(res, RDFFormat.TURTLE);
+	/**
+	 * Returns the RDF graph associated to a resource in a Turtle serialization
+	 *
+	 * @param  	uri		the URI of the resource 
+	 * 
+	 * @return the RDF resource graph
+	 */
+	public String getTurtleResourceGraph(String uri){
+		return this.getFullResourceTuple(uri, RDFFormat.TURTLE);
 	}
 	
-	public String getTurtleResourceGraph(String res, List<String> include, List<String> omit){		
+	/**
+	 * Returns the RDF graph associated to a resource in a Turtle serialization
+	 *
+	 * @param  	uri			the URI of the resource 
+	 * @param	include		the list of include preference headers
+	 * @param	omi			the list of omit preference headers
+	 * 
+	 * @return the RDF resource graph
+	 */
+	public String getTurtleResourceGraph(String uri, List<String> include, List<String> omit){		
 		if (!include.isEmpty() && include.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MINIMAL_CONTAINER)){
 			if (include.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MEMBERSHIP))
-				return getMinimalWithMemberResourceTuple(res, RDFFormat.TURTLE);
+				return getMinimalWithMemberResourceTuple(uri, RDFFormat.TURTLE);
 			else
-				return getMinimalResourceTuple(res, RDFFormat.TURTLE); 
+				return getMinimalResourceTuple(uri, RDFFormat.TURTLE); 
 		} else if (!omit.isEmpty()){
 			if(omit.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MEMBERSHIP) && omit.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_CONTAINMENT))
-				return getMinimalResourceTuple(res, RDFFormat.TURTLE);
+				return getMinimalResourceTuple(uri, RDFFormat.TURTLE);
 			else if (!omit.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MEMBERSHIP) && omit.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_CONTAINMENT))
-				return getMinimalWithMemberResourceTuple(res, RDFFormat.TURTLE);
+				return getMinimalWithMemberResourceTuple(uri, RDFFormat.TURTLE);
 			else if (omit.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_MEMBERSHIP) && !omit.contains(LDP.LINK_LDP+":"+LDP.PREFER_LNAME_CONTAINMENT))
-				return getNoContainResourceTuple(res, RDFFormat.TURTLE);
+				return getNoContainResourceTuple(uri, RDFFormat.TURTLE);
 		} 
 		
-		return this.getFullResourceTuple(res, RDFFormat.TURTLE); 
+		return this.getFullResourceTuple(uri, RDFFormat.TURTLE); 
 	}
 	
-	public String getJSONLDResourceGraph(String res){
-		return this.getFullResourceTuple(res, RDFFormat.JSONLD);
+	/**
+	 * Returns the RDF graph associated to a resource in a JSON-LD serialization
+	 *
+	 * @param  	uri		the URI of the resource 
+	 * 
+	 * @return the RDF resource graph
+	 */
+	public String getJSONLDResourceGraph(String uri){
+		return this.getFullResourceTuple(uri, RDFFormat.JSONLD);
 	}
 	
 	private String getNoContainResourceTuple(String res, RDFFormat format) {
@@ -427,6 +536,14 @@ public class CoAPLDPResourceManager {
 		return out.trim();
 	}
 	
+	/**
+	 * Adds a single statement to the RDF repository 
+	 *
+	 * @param  	s	the statement subject
+	 * @param	p	the statement predicate 
+	 * @param	o	the statement object
+	 * 
+	 */
 	public void addRDFStatement(Resource s, IRI p, Value o){
 		try {
 			con.add(s, p, o);
@@ -436,18 +553,35 @@ public class CoAPLDPResourceManager {
 		}
 	}
 	
-	public void addRDFSource(String name){		
+	/**
+	 * Adds the ldp:RDFSource type to the resource	 
+	 *
+	 * @param  	uri		the URI of the resource 
+	 * 
+	 */
+	public void addRDFSource(String uri){		
 		ValueFactory f = repo.getValueFactory();
-		IRI node = f.createIRI(name);		
+		IRI node = f.createIRI(uri);		
 		addRDFStatement(node, RDF.TYPE, f.createIRI(LDP.CLASS_RDFSOURCE));
 	}
 	
+	/**
+	 * Adds a specific type to the resource
+	 *
+	 * @param  	uri		the URI of the resource 
+	 * @param	type	the type of resource
+	 * 
+	 */
 	public void addRDFSource(String name, String type){		
 		ValueFactory f = repo.getValueFactory();
 		IRI node = f.createIRI(name);		
 		addRDFStatement(node, RDF.TYPE, f.createIRI(type));
 	}
 	
+	/**
+	 * Closes the RDF repository
+	 * 
+	 */
 	public void close(){
 		try {
 			con.close();
@@ -458,42 +592,88 @@ public class CoAPLDPResourceManager {
 		}
 	}
 
-	public void addRDFContainer(String name) {
+	/**
+	 * Adds the ldp:Container type to the resource	 
+	 *
+	 * @param  	uri		the URI of the resource 
+	 * 
+	 */
+	public void addRDFContainer(String uri) {
 		ValueFactory f = repo.getValueFactory();
-		IRI node = f.createIRI(name);		
+		IRI node = f.createIRI(uri);		
 		addRDFStatement(node, RDF.TYPE, f.createIRI(LDP.CLASS_CONTAINER));		
 	}
 
-	public void addRDFBasicContainer(String name) {
+	/**
+	 * Adds the ldp:BasicContainer type to the resource	 
+	 *
+	 * @param  	uri		the URI of the resource 
+	 * 
+	 */
+	public void addRDFBasicContainer(String uri) {
 		ValueFactory f = repo.getValueFactory();
-		IRI node = f.createIRI(name);		
+		IRI node = f.createIRI(uri);		
 		addRDFStatement(node, RDF.TYPE, f.createIRI(LDP.CLASS_BASIC_CONTAINER));
 	}
 	
-	public void addRDFDirectContainer(String name) {
+	/**
+	 * Adds the ldp:DirectContainer type to the resource	 
+	 *
+	 * @param  	uri		the URI of the resource 
+	 * 
+	 */
+	public void addRDFDirectContainer(String uri) {
 		ValueFactory f = repo.getValueFactory();
-		IRI node = f.createIRI(name);		
+		IRI node = f.createIRI(uri);		
 		addRDFStatement(node, RDF.TYPE, f.createIRI(LDP.CLASS_DIRECT_CONTAINER));
 	}
 	
-	public void addRDFIndirectContainer(String name) {
+	/**
+	 * Adds the ldp:IndirectContainer type to the resource	 
+	 *
+	 * @param  	uri		the URI of the resource 
+	 * 
+	 */
+	public void addRDFIndirectContainer(String uri) {
 		ValueFactory f = repo.getValueFactory();
-		IRI node = f.createIRI(name);		
+		IRI node = f.createIRI(uri);		
 		addRDFStatement(node, RDF.TYPE, f.createIRI(LDP.CLASS_INDIRECT_CONTAINER));
 	}
 
-	public void setRDFDescription(String name, String description) {
+	/**
+	 * Adds the RDF description statement to the resource	 
+	 *
+	 * @param  	uri				the URI of the resource
+	 * @param	description 	the resource description
+	 * 
+	 */
+	public void setRDFDescription(String uri, String description) {
 		ValueFactory f = repo.getValueFactory();
-		IRI node = f.createIRI(name);		
+		IRI node = f.createIRI(uri);		
 		addRDFStatement(node, DCTERMS.DESCRIPTION, f.createLiteral(description));		
 	}
 	
-	public void setRDFTitle(String name, String title){
+	/**
+	 * Adds the RDF title statement to the resource	 
+	 *
+	 * @param  	uri		the URI of the resource
+	 * @param	title 	the resource title
+	 * 
+	 */
+	public void setRDFTitle(String uri, String title){
 		ValueFactory f = repo.getValueFactory();
-		IRI node = f.createIRI(name);		
+		IRI node = f.createIRI(uri);		
 		addRDFStatement(node, DCTERMS.TITLE, f.createLiteral(title));		
 	}	
 	
+	/**
+	 * Updates a single statement of the RDF repository 
+	 *
+	 * @param  	subj	the statement subject
+	 * @param	pred	the statement predicate 
+	 * @param	obj		the statement object
+	 * 
+	 */
 	public void updateRDFStatement(String subj, String pred, String obj) {
 		ValueFactory f = repo.getValueFactory();
 		IRI s = f.createIRI(subj);
@@ -511,6 +691,14 @@ public class CoAPLDPResourceManager {
 		}		
 	}
 	
+	/**
+	 * Updates a single statement of the RDF repository (object is a literal) 
+	 *
+	 * @param  	subj	the statement subject
+	 * @param	pred	the statement predicate 
+	 * @param	obj		the statement object (a Double value)
+	 * 
+	 */
 	public void updateRDFLiteralStatement(String subj, String pred, Double obj) {
 		ValueFactory f = repo.getValueFactory();
 		IRI s = f.createIRI(subj);
@@ -529,6 +717,14 @@ public class CoAPLDPResourceManager {
 		}		
 	}	
 	
+	/**
+	 * Updates a single statement of the RDF repository (object is a literal) 
+	 *
+	 * @param  	subj	the statement subject
+	 * @param	pred	the statement predicate 
+	 * @param	obj		the statement object (a Date value)
+	 * 
+	 */
 	public void updateRDFLiteralStatement(String subj, String pred, Date obj) {
 		ValueFactory f = repo.getValueFactory();
 		IRI s = f.createIRI(subj);
@@ -546,33 +742,58 @@ public class CoAPLDPResourceManager {
 		}		
 	}
 	
-	public void setRDFCreated(String name){
+	/**
+	 * Adds the RDF created statement to the resource	 
+	 *
+	 * @param  	uri		the URI of the resource
+	 * 
+	 */
+	public void setRDFCreated(String uri){
 		ValueFactory f = repo.getValueFactory();
-		IRI node = f.createIRI(name);		
+		IRI node = f.createIRI(uri);		
 		addRDFStatement(node, DCTERMS.CREATED, f.createLiteral(new Date()));		
 	}
 
+	/**
+	 * Adds the LDP contains statement	 
+	 *
+	 * @param  	resource	the URI of the resource
+	 * @param	container 	the URI of the container
+	 * 
+	 */
 	public void setLDPContainsRelationship(String resource, String container) {
 		ValueFactory f = repo.getValueFactory();		
 		addRDFStatement(f.createIRI(container), f.createIRI(LDP.PROP_CONTAINS), f.createIRI(resource));
 	}
 
-	public void deleteRDFSource(String name){
+	/**
+	 * Deletes all statements related to a specific LDP RDF Source
+	 * 
+	 * @param  	uri		the URI of the resource
+	 * 
+	 */
+	public void deleteRDFSource(String uri){
 		ValueFactory f = repo.getValueFactory();
-		IRI node = f.createIRI(name);
+		IRI node = f.createIRI(uri);
 		
 		try {
 			con.remove(con.getStatements(null, null, node, true));
 			con.remove(con.getStatements(node, null, null, true));
 			
-			System.out.println("RDF Resource Deleted: " + name);
-			deleted.add(name);
+			System.out.println("RDF Resource Deleted: " + uri);
+			deleted.add(uri);
 		} catch (RepositoryException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	/**
+	 * Deletes all statements related to a specific LDP Basic Container
+	 * 
+	 * @param  	uri		the URI of the container
+	 * 
+	 */
 	public void deleteRDFBasicContainer(String name){
 		ValueFactory f = repo.getValueFactory();
 		IRI node = f.createIRI(name);
@@ -590,6 +811,12 @@ public class CoAPLDPResourceManager {
 		}
 	}
 	
+	/**
+	 * Deletes all statements related to a specific LDP Direct Container
+	 * 
+	 * @param  	uri		the URI of the container
+	 * 
+	 */
 	public void deleteRDFDirectContainer(String name){
 		ValueFactory f = repo.getValueFactory();
 		IRI node = f.createIRI(name);
@@ -607,48 +834,105 @@ public class CoAPLDPResourceManager {
 		}
 	}
 	
+	/**
+	 * Adds the LDP membershipResource statement	 
+	 *
+	 * @param  	resource	the URI of the resource
+	 * @param	container 	the URI of the container
+	 * 
+	 */
 	public void setLDPMembershipResource(String resource, String container){
 		ValueFactory f = repo.getValueFactory();
 		addRDFStatement(f.createIRI(container), f.createIRI(LDP.PROP_MEMBERSHIP_RESOURCE), f.createIRI(resource));		
 	}
 	
+	/**
+	 * Adds the LDP memberRelation statement	 
+	 *
+	 * @param  	resource	the URI of the resource
+	 * @param	container 	the URI of the container
+	 * 
+	 */
 	public void setLDPMemberRelation(String container, String relation){
 		ValueFactory f = repo.getValueFactory();
 		addRDFStatement(f.createIRI(container), f.createIRI(LDP.PROP_HAS_MEMBER_RELATION), f.createIRI(relation));		
 	}
 	
+	/**
+	 * Adds the LDP inverseMemberRelation statement	 
+	 *
+	 * @param  	resource	the URI of the resource
+	 * @param	container 	the URI of the container
+	 * 
+	 */
 	public void setLDPInverseMemberRelation(String container, String relation){
 		ValueFactory f = repo.getValueFactory();
 		addRDFStatement(f.createIRI(container), f.createIRI(LDP.PROP_IS_MEMBER_OF_RELATION), f.createIRI(relation));		
 	}
 	
+	/**
+	 * Adds the LDP insertedContentRelation statement	 
+	 *
+	 * @param  	resource	the URI of the resource
+	 * @param	container 	the URI of the container
+	 * 
+	 */
 	public void setLDPInsertedContentRelation(String container, String relation){
 		ValueFactory f = repo.getValueFactory();
 		addRDFStatement(f.createIRI(container), f.createIRI(LDP.PROP_INSERTED_CONTENT_RELATION), f.createIRI(relation));		
 	}
 
+	/**
+	 * Updates a single statement of the RDF repository 
+	 *
+	 * @param  	subj	the statement subject
+	 * @param	pred	the statement predicate 
+	 * @param	obj		the statement object
+	 * 
+	 */
 	public void setRDFStatement(String s, String p, String o) {
 		ValueFactory f = repo.getValueFactory();
 		addRDFStatement(f.createIRI(s), f.createIRI(p), f.createIRI(o));	
 	}
 	
+	/**
+	 * Updates a single statement of the RDF repository 
+	 *
+	 * @param  	subj	the statement subject
+	 * @param	pred	the statement predicate 
+	 * @param	obj		the statement object (a Double value)
+	 * 
+	 */
 	public void setRDFStatement(String s, String p, double v) {
 		ValueFactory f = repo.getValueFactory();		
 		DecimalFormat ft = new DecimalFormat("#0.00");		
 		addRDFStatement(f.createIRI(s), f.createIRI(p), f.createLiteral(ft.format(v), XMLSchema.DOUBLE));	
 	}
 	
+	/**
+	 * Creates an IRI from a string 
+	 *
+	 * @param  	uri		the string URI to be converted
+	 * 
+	 * @return the created IRI
+	 */
 	public IRI createIRI(String uri){
 		return repo.getValueFactory().createIRI(uri);
 	}
 
-	public void deleteMemberResourceStatement(String title) {
+	/**
+	 * Deletes all LDP memberResource statements related to a specific resource
+	 *
+	 * @param  	name	the name of the resource
+	 * 
+	 */
+	public void deleteMemberResourceStatement(String name) {
 		
-		if (title.startsWith("/"))
-			title = title.substring(1);
+		if (name.startsWith("/"))
+			name = name.substring(1);
 		
 		ValueFactory f = repo.getValueFactory();
-		IRI node = f.createIRI(this.getBaseURI() + "/" + title);		
+		IRI node = f.createIRI(this.getBaseURI() + "/" + name);		
 		try {
 			RepositoryResult<Statement> s = con.getStatements(node, f.createIRI(LDP.PROP_MEMBERSHIP_RESOURCE), null, true);
 			while(s.hasNext()){
@@ -661,28 +945,62 @@ public class CoAPLDPResourceManager {
 		}
 	}
 	
-	public void setReadOnlyProperty(String p){
+	/**
+	 * Adds a read-only property constraint
+	 * 
+	 * @param  	p	the URI of the read-only property
+	 * 
+	 */
+	public void addReadOnlyProperty(String p){
 		readOnly.add(p);
 	}
 	
-	public void setNotPersistedProperty(String p){
+	/**
+	 * Adds a not-persisted property constraint
+	 * 
+	 * @param  	p	the URI of the not-persisted property
+	 * 
+	 */
+	public void addNotPersistedProperty(String p){
 		notPersisted.add(p);
 	}
 	
+	/**
+	 * Sets the LDP constrainedBy URI
+	 * 
+	 * @param  	uri		the URI of the LDP constrainedBy property
+	 * 
+	 */
 	public void setConstrainedByURI(String uri){
 		constrainedByURI = uri;
 	}
 	
+	/**
+	 * Gets the LDP constrainedBy URI
+	 * 
+	 * @return	the URI of the LDP constrainedBy property
+	 * 
+	 */
 	public String getconstrainedByURI(){
 		return this.constrainedByURI;
 	}
 	
-	private boolean verifyReadOnly(String name, String rdf, RDFFormat format) throws RDFParseException, UnsupportedRDFormatException, IOException, RepositoryException{
+	/**
+	 * Verifies if the input RDF graph contains read-only properties for a specific resource 
+	 * 
+	 * @param 	uri		the resource URI
+	 * @param	rdf 	the input RDF graph
+	 * @param	format	the RDF format of the graph
+	 * 
+	 * @return	true, if the graph contains read-only properties
+	 * 
+	 */
+	private boolean verifyReadOnly(String uri, String rdf, RDFFormat format) throws RDFParseException, UnsupportedRDFormatException, IOException, RepositoryException{
 		ValueFactory f = repo.getValueFactory();		
 		InputStream stream = new ByteArrayInputStream(rdf.trim().getBytes(StandardCharsets.UTF_8));
 		Model m = Rio.parse(stream, BASE_URI, format);
 		
-		IRI res = f.createIRI(name);
+		IRI res = f.createIRI(uri);
 		
 		for(String r : readOnly){
 			IRI prop = f.createIRI(r);
@@ -706,6 +1024,15 @@ public class CoAPLDPResourceManager {
 		return false;
 	}
 	
+	/**
+	 * Verifies if the input RDF graph contains not-persisted properties 
+	 * 
+	 * @param	rdf 	the input RDF graph
+	 * @param	format	the RDF format of the graph
+	 * 
+	 * @return	true, if the graph contains not-persisted properties
+	 * 
+	 */
 	private boolean verifyNotPersisted(String rdf, RDFFormat format) throws RDFParseException, UnsupportedRDFormatException, IOException{
 		ValueFactory f = repo.getValueFactory();		
 		InputStream stream = new ByteArrayInputStream(rdf.trim().getBytes(StandardCharsets.UTF_8));
@@ -731,6 +1058,12 @@ public class CoAPLDPResourceManager {
 		return member;			
 	}
 	
+	/**
+	 * Applies PATCH request 
+	 * 
+	 * @param	patch	the RDF body of the patch request
+	 * 
+	 */
 	public void patchResource(String patch) throws RepositoryException, ParseException, InvalidPatchDocumentException{
 		// Apply a patch to the repository
 		RdfPatchUtil.applyPatch(con, patch);

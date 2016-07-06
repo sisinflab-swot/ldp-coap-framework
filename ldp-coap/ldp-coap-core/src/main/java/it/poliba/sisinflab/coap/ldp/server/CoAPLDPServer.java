@@ -12,6 +12,11 @@ import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPNonRDFSource;
 import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPRDFSource;
 import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPResourceManager;
 
+/**
+ * Implements a CoAP server supporting all LDP-CoAP features
+ *
+ */
+
 public class CoAPLDPServer extends CoapServer {
 	
 	CoAPLDPResourceManager mng;
@@ -20,10 +25,12 @@ public class CoAPLDPServer extends CoapServer {
 	@Deprecated 
 	public CoapServer add(Resource... resources) {return super.add(resources);}
 	
-	/*
-     * Constructor for a new CoAP LDP server. Here, the resources
-     * of the server are initialized.
-     */
+	/**
+	 * Creates a new LDP-CoAP server.
+	 * 
+	 * @param BASE_URI	the base URI for the RDF repository
+	 * 
+	 */
     public CoAPLDPServer(String BASE_URI) {
     	super();
     	
@@ -34,6 +41,14 @@ public class CoAPLDPServer extends CoapServer {
     	this.setMessageDeliverer(smd);
     }
     
+    /**
+	 * Creates a new LDP-CoAP server.
+	 * 
+	 * @param 	BASE_URI	the repository base URI
+	 * @param	config		a custom CoAP network configuration
+	 * @param	port		the reference port for the server (default 5683)
+	 * 
+	 */
     public CoAPLDPServer(String BASE_URI, NetworkConfig config, int port) {
     	super(config, port);
     	
@@ -44,6 +59,10 @@ public class CoAPLDPServer extends CoapServer {
     	this.setMessageDeliverer(smd);
     }
     
+    /**
+	 * Stops the LDP-CoAP server.
+	 * 
+	 */
     public void shutdown(){
     	
     	stopResourceHandler(this.getRoot());
@@ -62,22 +81,55 @@ public class CoAPLDPServer extends CoapServer {
     	}    	
     }
     
+    /**
+	 * Adds a well-known namespace
+	 *
+	 * @param  	prefix		the namespace prefix
+	 * @param	namespace	the namespace URI
+	 * 
+	 */
     public void addHandledNamespace(String prefix, String namespace){
     	mng.addHandledNamespace(prefix, namespace);
     }
     
+    /**
+	 * Adds a read-only property constraint
+	 * 
+	 * @param  	uri	the URI of the read-only property
+	 * 
+	 */
     public void setReadOnlyProperty(String uri){
-    	mng.setReadOnlyProperty(uri);
+    	mng.addReadOnlyProperty(uri);
     }
     
+    /**
+	 * Sets the LDP constrainedBy URI
+	 * 
+	 * @param  	uri		the URI of the LDP constrainedBy property
+	 * 
+	 */
     public void setConstrainedByURI(String uri){
     	mng.setConstrainedByURI(uri);
     }
     
+    /**
+	 * Adds a not-persisted property constraint
+	 * 
+	 * @param  	uri	the URI of the not-persisted property
+	 * 
+	 */
     public void setNotPersistedProperty(String uri){
-    	mng.setNotPersistedProperty(uri);
+    	mng.addNotPersistedProperty(uri);
     }
     
+    /**
+	 * Creates a new LDP RDF Source.
+	 *
+	 * @param  name 	the name of the contained resource
+	 * 
+	 * @return CoAPLDPRDFSource		the created resource
+	 * 
+	 */
     public CoAPLDPRDFSource createRDFSource(String name){
     	CoAPLDPRDFSource src = new CoAPLDPRDFSource(name, mng);    	
     	src.setRDFCreated();
@@ -85,6 +137,14 @@ public class CoAPLDPServer extends CoapServer {
     	return src;
     }
     
+    /**
+	 * Creates a new LDP RDF Source.
+	 *
+	 * @param  	name 	the name of the contained resource
+	 * @param	type	the type of the contained resource
+	 * 
+	 * @return CoAPLDPRDFSource		the created resource
+	 */
     public CoAPLDPRDFSource createRDFSource(String name, String type){
     	CoAPLDPRDFSource src = new CoAPLDPRDFSource(name, mng, type);    	
     	src.setRDFCreated();
@@ -92,12 +152,29 @@ public class CoAPLDPServer extends CoapServer {
     	return src;
     }
     
+    /**
+	 * Creates a new LDP Non-RDF Source as contained object.
+	 *
+	 * @param  	name 		the name of the contained resource
+	 * @param	mediaType	the content-type value of the contained resource as defined in MediaTypeRegistry
+	 * 
+	 * @return 	CoAPLDPNonRDFSource		the created resource
+	 * 
+	 * @see org.eclipse.californium.core.coap.MediaTypeRegistry
+	 */
     public CoAPLDPNonRDFSource createNonRDFSource(String name, int mediaType){
     	CoAPLDPNonRDFSource src = new CoAPLDPNonRDFSource(name, mng, mediaType);    	
     	add(src);    	
     	return src;
     }
     
+    /**
+	 * Creates a new LDP Basic Container as contained object.
+	 *
+	 * @param  	container 	the name of the contained resource
+	 * 
+	 * @return 	CoAPLDPBasicContainer		the created resource
+	 */
     public CoAPLDPBasicContainer createBasicContainer(String container){
     	CoAPLDPBasicContainer bc = new CoAPLDPBasicContainer(container, mng);     
         bc.setRDFCreated();
@@ -105,6 +182,17 @@ public class CoAPLDPServer extends CoapServer {
         return bc;
     }
     
+    /**
+	 * Creates a new LDP Direct Container as contained object.
+	 *
+	 * @param  	container			the name of the contained resource
+	 * @param  	member 				the name of the member resource of the created Direct Container
+	 * @param  	memberType 			the type of the member resource of the created Direct Container
+	 * @param  	memberRelation 		the memberRelation property of the created Direct Container (if present)
+	 * @param  	isMemberOfRelation 	the isMemberOfRelation property of the created Direct Container (if present)
+	 * 
+	 * @return 	CoAPLDPDirectContainer		the created resource
+	 */
     public CoAPLDPDirectContainer createDirectContainer(String container, String member, String memberType, String memberRelation, String isMemberOfRelation){
         CoAPLDPRDFSource memberRes = new CoAPLDPRDFSource(member, "/"+container, mng, memberType);        
         CoAPLDPDirectContainer dc = null;
@@ -119,6 +207,17 @@ public class CoAPLDPServer extends CoapServer {
 		return dc;
     }
     
+    /**
+	 * Creates a new LDP Indirect Container as contained object.
+	 *
+	 * @param  	container					the name of the contained resource
+	 * @param  	member 						the name of the member resource of the created Indirect Container
+	 * @param  	memberType 					the type of the member resource of the created Indirect Container
+	 * @param  	memberRelation 				the memberRelation property of the created Indirect Container
+	 * @param  	insertedContentRelation 	the insertedContentRelation property of the created Indirect Container
+	 * 
+	 * @return 	CoAPLDPDirectContainer		the created resource
+	 */
     public CoAPLDPIndirectContainer createIndirectContainer(String container, String member, String memberType, String memberRelation, String insertedContentRelation){
     	CoAPLDPRDFSource memberResIC = new CoAPLDPRDFSource(member, "/"+container, mng, memberType);       
         CoAPLDPIndirectContainer ic = new CoAPLDPIndirectContainer(container, mng, memberResIC, memberRelation, insertedContentRelation);  
@@ -127,6 +226,11 @@ public class CoAPLDPServer extends CoapServer {
         return ic;
     }
     
+    /**
+	 * Returns the resource manager.
+	 * 
+	 * @return 	CoAPLDPResourceManager		the default resource manager
+	 */
     public CoAPLDPResourceManager getCoAPLDPResourceManager(){
     	return this.mng;
     }

@@ -13,12 +13,28 @@ import org.json.JSONException;
 import it.poliba.sisinflab.coap.ldp.LDP;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPPreconditionFailedException;
 
+/**
+ * Represents an LDP Non-RDF Source
+ * <p> 
+ * @see <a href="https://www.w3.org/TR/ldp/#ldpnr">#LDP Non-RDF Source</a>
+ *
+ */
+
 public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 	
 	CoAPLDPResourceManager mng;
 	byte[] data = {};
 	int ct;
 
+	/**
+	 * Creates a new LDP Non-RDF Source.
+	 *
+	 * @param  	name 	the name of the resource
+	 * @param	mng		the reference resource manager
+	 * @param	type	the resource type
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPNonRDFSource(String name, CoAPLDPResourceManager mng, int type) {
 		super(name);
 		
@@ -40,11 +56,24 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		options.setAllowedMethod(LDP.Code.PUT, true);
 	}
 	
+	/**
+	 * Sets the raw data of the resource 
+	 *
+	 * @param  	data 	the resource data
+	 */
 	public void setData(byte[] data){
 		this.data = data;
 		//System.out.println(">>> CoAPLDPNonRDFSource [" + this.name + "] Size: " + data.length + " bytes");
 	}
 	
+	/**
+	 * Manages LDP-CoAP requests (GET, OPTIONS, HEAD) exploiting the basic CoAP GET method.
+	 *
+	 * @param  exchange 	the request object
+	 * 
+	 * @see CoapExchange
+	 * 
+	 */
 	public void handleGET(CoapExchange exchange) {
 		if (getLDPMethod(exchange).equals(LDP.Code.GET)) {
 			handleLDPGET(exchange);
@@ -55,7 +84,7 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		}
 	}
 	
-    public void handleLDPGET(CoapExchange exchange) {	
+    protected void handleLDPGET(CoapExchange exchange) {	
 		
 		try {
 			exchange.setETag(calculateEtag(data.toString()).getBytes());
@@ -71,6 +100,14 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		}
     }
 	
+    /**
+	 * Manages LDP-CoAP DELETE requests.
+	 *
+	 * @param  exchange 	the request object
+	 * 
+	 * @see CoapExchange
+	 * 
+	 */
     public void handleDELETE(CoapExchange exchange) {    
 		mng.deleteRDFSource(mng.getBaseURI() + this.getURI());
 		this.delete();
@@ -109,6 +146,14 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		}		
 	}
     
+    /**
+	 * Manages LDP-CoAP requests (PUT, PATCH) exploiting the basic CoAP PUT method.
+	 *
+	 * @param  exchange 	the request object
+	 * 
+	 * @see CoapExchange
+	 * 
+	 */
     public void handlePUT(CoapExchange exchange) {
 		if (getLDPMethod(exchange).equals(LDP.Code.PUT)) {
 			handleLDPPUT(exchange);
