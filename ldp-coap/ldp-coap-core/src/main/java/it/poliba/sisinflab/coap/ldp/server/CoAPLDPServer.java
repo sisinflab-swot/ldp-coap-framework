@@ -32,13 +32,15 @@ public class CoAPLDPServer extends CoapServer {
 	 * 
 	 */
     public CoAPLDPServer(String BASE_URI) {
-    	super();
+    	super();    	    	
     	
     	this.BASE_URI = BASE_URI;    	
     	mng = new CoAPLDPResourceManager(BASE_URI);
     	
     	CoAPLDPServerMessageDeliverer smd = new CoAPLDPServerMessageDeliverer(this.getRoot());    	
     	this.setMessageDeliverer(smd);
+    	
+    	printWelcome();
     }
     
     /**
@@ -57,6 +59,18 @@ public class CoAPLDPServer extends CoapServer {
     	
     	CoAPLDPServerMessageDeliverer smd = new CoAPLDPServerMessageDeliverer(this.getRoot());    	
     	this.setMessageDeliverer(smd);
+    	
+    	printWelcome();
+    }
+    
+    private void printWelcome(){
+    	System.out.println("----------------------------------------------------------");
+    	System.out.println("### LDP-CoAP Server ###");
+    	System.out.println("Version: 1.1.0");
+    	System.out.println("Endpoint: " + BASE_URI);
+    	System.out.println("Developed by: SisInfLab - Politecnico di Bari");
+    	System.out.println("Home Page: http://sisinflab.poliba.it/swottools/ldp-coap/");
+    	System.out.println("----------------------------------------------------------");
     }
     
     /**
