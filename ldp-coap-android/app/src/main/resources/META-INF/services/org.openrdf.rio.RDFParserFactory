@@ -1,3 +1,0 @@
-org.openrdf.rio.turtle.TurtleParserFactory
-org.openrdf.rio.rdfjson.RDFJSONParserFactory
-com.github.jsonldjava.sesame.SesameJSONLDParserFactory
