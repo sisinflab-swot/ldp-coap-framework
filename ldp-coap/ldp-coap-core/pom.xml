@@ -1,136 +1,134 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>it.poliba.sisinflab</groupId>
-    <artifactId>ldp-coap</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
-  </parent>
-  <artifactId>ldp-coap-core</artifactId>
-  <name>ldp-coap-core</name>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-  
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-	
-	<!-- RDF Data Management with Eclipse RDF4J (replaces OpenRDF Sesame) -->	
-	<dependency>
-	    <groupId>org.eclipse.rdf4j</groupId>
-	    <artifactId>rdf4j-repository-sail</artifactId>
-	    <version>2.0M2</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.eclipse.rdf4j</groupId>
-	    <artifactId>rdf4j-sail-memory</artifactId>
-	    <version>2.0M2</version>
-	</dependency>
-	
-	<!-- Support to JSON-LD format -->
-	<dependency>
-	    <groupId>org.eclipse.rdf4j</groupId>
-	    <artifactId>rdf4j-rio-jsonld</artifactId>
-	    <version>2.0M2</version>
-	</dependency>
-	
-	<!-- Logging -->
-	<dependency>
-	    <groupId>org.slf4j</groupId>
-	    <artifactId>slf4j-simple</artifactId>
-	    <version>1.7.20</version>
-	</dependency>
-	
-	<!-- JSON Library -->
-	<dependency>
-		<groupId>org.json</groupId>
-		<artifactId>json</artifactId>
-		<version>20160212</version>
-	</dependency>
-	
-	<!-- Support to RDF-PATCH (replaced with marmotta-util-rdfpatch-rdf4j) -->
-	<!-- 
-	<dependency>
-		<groupId>org.apache.marmotta</groupId>
-		<artifactId>marmotta-util-rdfpatch</artifactId>
-		<version>3.3.0</version>
-	</dependency> 
-	-->
-	
-	<!-- Support to RDF-PATCH format in Eclipse RDF4J -->
-	<dependency>
-	    <groupId>org.apache.marmotta</groupId>
-	    <artifactId>marmotta-util-rdfpatch</artifactId>
-	    <version>3.3.0</version>
-	    <scope>system</scope>
-	    <systemPath>${project.basedir}/src/main/resources/marmotta-util-rdfpatch-rdf4j-3.3.0.jar</systemPath>
-	</dependency>
-	
-	<!-- CoAP based communication -->
-	<dependency>
-		<groupId>org.eclipse.californium</groupId>
-		<artifactId>californium-core-ldp</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</dependency>
-  </dependencies>
-  
-  <build>
-	  <plugins>
-	  
-	  	<!-- Set a compiler level -->
-	    <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.3</version>
-            <configuration>
-                <source>1.7</source>
-                <target>1.7</target>
-            </configuration>
-        </plugin>
-        
-        <!-- Make this jar executable -->
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-jar-plugin</artifactId>
-			<configuration>
-			  <archive>
-			    <manifest>
-				<addClasspath>true</addClasspath>
-				<mainClass>it.poliba.sisinflab.coap.ldp.server.CoAPLDPTestServer</mainClass>
-				<classpathPrefix>libs/</classpathPrefix>
-			    </manifest>
-			  </archive>
-			</configuration>
-		</plugin>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>it.poliba.sisinflab</groupId>
+		<artifactId>ldp-coap</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>ldp-coap-core</artifactId>
+	<name>ldp-coap-core</name>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-		<!-- Copy project dependency -->
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-dependency-plugin</artifactId>
-			<version>2.5.1</version>
-			<executions>
-			  <execution>
-				<id>copy-dependencies</id>
-				<phase>package</phase>
-				<goals>
-					<goal>copy-dependencies</goal>
-				</goals>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- RDF Data Management with Eclipse RDF4J (replaces OpenRDF Sesame) -->
+		<dependency>
+			<groupId>org.eclipse.rdf4j</groupId>
+			<artifactId>rdf4j-repository-sail</artifactId>
+			<version>2.0M2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.rdf4j</groupId>
+			<artifactId>rdf4j-sail-memory</artifactId>
+			<version>2.0M2</version>
+		</dependency>
+
+		<!-- Support to JSON-LD format -->
+		<dependency>
+			<groupId>org.eclipse.rdf4j</groupId>
+			<artifactId>rdf4j-rio-jsonld</artifactId>
+			<version>2.0M2</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.20</version>
+		</dependency>
+
+		<!-- JSON Library -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160212</version>
+		</dependency>
+
+		<!-- Support to RDF-PATCH (replaced with marmotta-util-rdfpatch-rdf4j) -->
+		<!-- <dependency> <groupId>org.apache.marmotta</groupId> <artifactId>marmotta-util-rdfpatch</artifactId> 
+			<version>3.3.0</version> </dependency> -->
+
+		<!-- Support to RDF-PATCH format in Eclipse RDF4J -->
+		<dependency>
+			<groupId>org.apache.marmotta</groupId>
+			<artifactId>marmotta-util-rdfpatch-rdf4j</artifactId>
+			<version>3.3.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/marmotta-util-rdfpatch-rdf4j-3.3.0.jar</systemPath>
+		</dependency>
+
+		<!-- CoAP based communication -->
+		<dependency>
+			<groupId>org.eclipse.californium</groupId>
+			<artifactId>californium-core-ldp</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<!-- Set a compiler level -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
 				<configuration>
-				  <!-- exclude junit, we need runtime dependency only -->
-				  <includeScope>runtime</includeScope>
-				  <outputDirectory>${project.build.directory}/libs/</outputDirectory>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
-			  </execution>
-			</executions>
-		</plugin>
-        	    
-	  </plugins>
+			</plugin>
+
+			<!-- Copy project dependency -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.5.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<!-- exclude junit, we need runtime and system dependency only -->
+							<outputDirectory>${project.build.directory}/libs/</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Make this jar executable -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>it.poliba.sisinflab.coap.ldp.server.CoAPLDPTestServer</mainClass>
+							<classpathPrefix>libs/</classpathPrefix>
+						</manifest>
+						<manifestEntries>
+			                <Class-Path>libs/marmotta-util-rdfpatch-rdf4j-3.3.0.jar</Class-Path>
+			            </manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+
+		</plugins>
 	</build>
-  
+
 </project>
