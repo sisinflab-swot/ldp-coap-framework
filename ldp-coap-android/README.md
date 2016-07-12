@@ -12,8 +12,8 @@ Reference Platform
 
 _ldp-coap-android_ was tested using the following configuration:
 
-- Device: [Google LG Nexus 4](https://it.wikipedia.org/wiki/Nexus_4)
-- Operating System: Android Lollipop 5.1.1
+- Device: [Google HTC Nexus 9](https://en.wikipedia.org/wiki/Nexus_9)
+- Operating System: Android N Developer Preview
 
 Implementation
 -------------
@@ -47,7 +47,7 @@ Other libraries are directly imported as _jcenter_ dependencies through the _bui
 - [element-connector-1.0.3](http://mvnrepository.com/artifact/org.eclipse.californium/element-connector) (Java socket abstraction for datagram transports)
 
 #### In-memory RDF data management
-- several module of [openrdf-sesame-2.8.10](http://rdf4j.org/) (Java framework for processing and handling RDF data)
+- several module of [RDF4J-2.0M2](http://rdf4j.org/) (Java framework for processing and handling RDF data)
 - [slf4j-api-1.7.20](http://mvnrepository.com/artifact/org.slf4j/slf4j-api) (SLF4J API Module)
 - [slf4j-android-1.7.20](http://mvnrepository.com/artifact/org.slf4j/slf4j-android) (SLF4J Android Binding)
 - [commons-io-2.4](http://mvnrepository.com/artifact/commons-io/commons-io) (Commons IO library)
@@ -55,15 +55,10 @@ Other libraries are directly imported as _jcenter_ dependencies through the _bui
 - [httpclient-4.5.2](http://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient) (Apache HttpComponents Client)
 
 #### [RDF Patch](http://afs.github.io/rdf-patch/) format support
-- [marmotta-util-rdfpatch-3.3.0](http://mvnrepository.com/artifact/org.apache.marmotta/marmotta-util-rdfpatch) (Marmotta RDF Patch Util to update RDF statements of a Sesame repository)
+- modified Apache [marmotta-util-rdfpatch module](https://github.com/sisinflab-swot/marmotta-util-rdfpatch-rdf4j) for Eclipse RDF4J (Marmotta RDF Patch Util to update RDF statements of a Sesame repository)
 
 #### [JSON-LD](http://www.w3.org/TR/json-ld/) specification support
-- [jsonld-java-0.8.2](http://github.com/jsonld-java) (Json-LD core implementation);
-- [jsonld-java-tools-0.8.2](http://mvnrepository.com/artifact/com.github.jsonld-java/jsonld-java-tools) (JSON-LD Java tools)
-- [jsonld-java-sesame-0.5.1](http://mvnrepository.com/artifact/com.github.jsonld-java/jsonld-java-sesame) (JSON-LD Java integration module for Sesame)
-- [jackson-core-2.7.3](http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core) (Core Jackson abstractions, basic JSON streaming API implementation)
-- [jackson-databind-2.7.3](http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind) (General data-binding functionality for Jackson: works on core streaming API)
-- [jackson-annotations-2.7.3](http://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind) (Core annotations used for value types, used by Jackson data binding package)
+- RDF4J: Rio JSON-LD to format data according to JSON-LD specification;
 
 #### Android Patch: XML DataType
 - Java source code provided by _it-tidalwave-android-javax-xml-datatype.jar_ was directly added to the _ldp-coap-android_ source code folder because required classes must be placed 
