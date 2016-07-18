@@ -19,7 +19,6 @@ import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.RDFParseException;
 
 import it.poliba.sisinflab.coap.ldp.LDP;
-import it.poliba.sisinflab.coap.ldp.LDP.Code;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPContentFormatException;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPException;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPPreconditionFailedException;
@@ -138,47 +137,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		getAttributes().addContentType(MediaTypeRegistry.TEXT_TURTLE);
 	}
 
-	/**
-	 * Manages LDP-CoAP requests (GET, OPTIONS, HEAD) exploiting the basic CoAP GET method.
-	 *
-	 * @param  exchange 	the request object
-	 * 
-	 * @see CoapExchange
-	 * 
-	 */
-	public void handleGET(CoapExchange exchange) {
-		
-		Code m = getLDPMethod(exchange);
-		
-		if (m.equals(LDP.Code.GET)) {
-			handleLDPGET(exchange);
-		} else if (m.equals(LDP.Code.OPTIONS)) {
-			handleLDPOPTIONS(exchange);
-		} else if (m.equals(LDP.Code.HEAD)) {
-			handleLDPHEAD(exchange);
-		}
-	}
-	
-	/**
-	 * Manages LDP-CoAP requests (PUT, PATCH) exploiting the basic CoAP PUT method.
-	 *
-	 * @param  exchange 	the request object
-	 * 
-	 * @see CoapExchange
-	 * 
-	 */
-	public void handlePUT(CoapExchange exchange) {
-		
-		Code m = getLDPMethod(exchange);
-		
-		if (m.equals(LDP.Code.PUT)) {
-			handleLDPPUT(exchange);
-		} else if (m.equals(LDP.Code.PATCH)) {
-			handleLDPPATCH(exchange);
-		}
-	}
-
-	protected void handleLDPPATCH(CoapExchange exchange) {
+	public void handlePATCH(CoapExchange exchange) {
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch();
 		int ct = exchange.getRequestOptions().getContentFormat();
 		
@@ -210,12 +169,10 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 				exchange.respond(ResponseCode.BAD_REQUEST);
 			} 
 		} 
-		else exchange.respond(ResponseCode.BAD_OPTION);
-			
-		
+		else exchange.respond(ResponseCode.BAD_OPTION);		
 	}
 
-	protected void handleLDPGET(CoapExchange exchange) {
+	public void handleGET(CoapExchange exchange) {
 
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch(); 
 		
@@ -305,7 +262,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		return pref;
 	}
 
-	protected void handleLDPOPTIONS(CoapExchange exchange) {
+	public void handleOPTIONS(CoapExchange exchange) {
 		try {
 			String text = options.toJSONString();
 			exchange.respond(ResponseCode.CONTENT, text, MediaTypeRegistry.APPLICATION_JSON);
@@ -315,7 +272,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		}		
 	}
 	
-	protected void handleLDPHEAD(CoapExchange exchange) {
+	public void handleHEAD(CoapExchange exchange) {
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch(); 
 		String rdf = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI());
 		try {
@@ -354,7 +311,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		exchange.respond(ResponseCode.DELETED);
 	}
 
-	protected void handleLDPPUT(CoapExchange exchange) {
+	public void handlePUT(CoapExchange exchange) {
 		
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch();
 		if(im.isEmpty()){

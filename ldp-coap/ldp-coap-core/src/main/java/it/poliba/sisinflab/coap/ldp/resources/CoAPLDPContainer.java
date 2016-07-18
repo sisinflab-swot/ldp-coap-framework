@@ -55,20 +55,12 @@ public abstract class CoAPLDPContainer extends CoAPLDPRDFSource {
 		return "res" + this.anonymous;
 	}
 
-	@Override
 	public void handlePUT(CoapExchange exchange) {
-
-		Code m = getLDPMethod(exchange);
-
-		if (m.equals(LDP.Code.PUT)) {
-			String title = findTitle(exchange);
-			if (title == null)
-				handleLDPPUT(exchange);
-			else
-				handleLDPPutToCreate(exchange);
-		} else if (m.equals(LDP.Code.PATCH)) {
-			handleLDPPATCH(exchange);
-		}
+		String title = findTitle(exchange);
+		if (title == null)
+			super.handlePUT(exchange);
+		else
+			handleLDPPutToCreate(exchange);
 	}
 
 	protected void handleLDPPutToCreate(CoapExchange exchange) {

@@ -20,6 +20,7 @@ import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPResourceManager;
 public class CoAPLDPServer extends CoapServer {
 	
 	CoAPLDPResourceManager mng;
+	CoAPLDPServerMessageDeliverer smd;
 	String BASE_URI;
 	
 	@Deprecated 
@@ -37,7 +38,7 @@ public class CoAPLDPServer extends CoapServer {
     	this.BASE_URI = BASE_URI;    	
     	mng = new CoAPLDPResourceManager(BASE_URI);
     	
-    	CoAPLDPServerMessageDeliverer smd = new CoAPLDPServerMessageDeliverer(this.getRoot());    	
+    	smd = new CoAPLDPServerMessageDeliverer(this.getRoot());    	
     	this.setMessageDeliverer(smd);
     	
     	printWelcome();

@@ -26,7 +26,7 @@ public class CoAPLDPServerMessageDeliverer extends ServerMessageDeliverer {
 	}
 	
 	@Override
-	public void deliverRequest(final Exchange exchange) {
+	public void deliverRequest(final Exchange exchange) {		
 		Request request = exchange.getRequest();
 		List<String> path = request.getOptions().getUriPath();
 		final Resource resource = findResource(path);
@@ -78,6 +78,6 @@ public class CoAPLDPServerMessageDeliverer extends ServerMessageDeliverer {
 		} else {
 			resource.handleRequest(exchange);
 		}
-	}
+	}	
 
 }

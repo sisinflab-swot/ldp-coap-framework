@@ -780,7 +780,7 @@ public class CoAPLDPResourceManager {
 			con.remove(con.getStatements(null, null, node, true));
 			con.remove(con.getStatements(node, null, null, true));
 			
-			System.out.println("RDF Resource Deleted: " + uri);
+			//System.out.println("RDF Resource Deleted: " + uri);
 			deleted.add(uri);
 		} catch (RepositoryException e) {
 			// TODO Auto-generated catch block

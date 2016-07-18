@@ -26,7 +26,7 @@ public class CoAPLDPTestServer {
 	
     public static void main(String[] args) {        
         // create server
-		server = new CoAPLDPServer(BASE_URI);
+		server = new CoAPLDPServer(BASE_URI);		
 		
 		try {			
 			init();

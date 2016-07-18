@@ -66,25 +66,7 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		//System.out.println(">>> CoAPLDPNonRDFSource [" + this.name + "] Size: " + data.length + " bytes");
 	}
 	
-	/**
-	 * Manages LDP-CoAP requests (GET, OPTIONS, HEAD) exploiting the basic CoAP GET method.
-	 *
-	 * @param  exchange 	the request object
-	 * 
-	 * @see CoapExchange
-	 * 
-	 */
-	public void handleGET(CoapExchange exchange) {
-		if (getLDPMethod(exchange).equals(LDP.Code.GET)) {
-			handleLDPGET(exchange);
-		} else if (getLDPMethod(exchange).equals(LDP.Code.OPTIONS)) {
-			handleLDPOPTIONS(exchange);
-		} else if (getLDPMethod(exchange).equals(LDP.Code.HEAD)) {
-			handleLDPHEAD(exchange);
-		}
-	}
-	
-    protected void handleLDPGET(CoapExchange exchange) {	
+    public void handleGET(CoapExchange exchange) {	
 		
 		try {
 			exchange.setETag(calculateEtag(data.toString()).getBytes());
@@ -114,7 +96,7 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		exchange.respond(ResponseCode.DELETED);         
     }
     
-    protected void handleLDPOPTIONS(CoapExchange exchange) {
+    public void handleOPTIONS(CoapExchange exchange) {
     	try {
 			String text = options.toJSONString();
 			exchange.respond(ResponseCode.CONTENT, text, MediaTypeRegistry.APPLICATION_JSON);
@@ -124,7 +106,7 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		exchange.respond(ResponseCode.INTERNAL_SERVER_ERROR);
 	}
     
-    protected void handleLDPHEAD(CoapExchange exchange) {
+    public void handleHEAD(CoapExchange exchange) {
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch(); 
 
 		try {
@@ -145,24 +127,8 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 			exchange.respond(ResponseCode.PRECONDITION_FAILED);
 		}		
 	}
-    
-    /**
-	 * Manages LDP-CoAP requests (PUT, PATCH) exploiting the basic CoAP PUT method.
-	 *
-	 * @param  exchange 	the request object
-	 * 
-	 * @see CoapExchange
-	 * 
-	 */
-    public void handlePUT(CoapExchange exchange) {
-		if (getLDPMethod(exchange).equals(LDP.Code.PUT)) {
-			handleLDPPUT(exchange);
-		} else if (getLDPMethod(exchange).equals(LDP.Code.PATCH)) {
-			handleLDPOPTIONS(exchange);
-		} 
-	}
 
-	protected void handleLDPPUT(CoapExchange exchange) {
+	public void handlePUT(CoapExchange exchange) {
 		
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch();
 		if(im.isEmpty()){
