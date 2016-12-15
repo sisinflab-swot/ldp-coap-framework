@@ -156,7 +156,7 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 		exchange.respond(ResponseCode.DELETED);
 	}
 
-	private boolean existChild(String childName) {
+	protected boolean existChild(String childName) {
 		for (Resource r : this.getChildren()) {
 			if (r.getURI().equals(childName))
 				return true;
@@ -164,7 +164,7 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 		return false;
 	}
 
-	private void addNewResource(CoapExchange exchange, int ct, String rt, String childName, String title)
+	protected void addNewResource(CoapExchange exchange, int ct, String rt, String childName, String title)
 			throws RDFParseException, RepositoryException, IOException, CoAPLDPException {
 		if (ct == MediaTypeRegistry.TEXT_TURTLE || ct == MediaTypeRegistry.APPLICATION_LD_JSON) {
 

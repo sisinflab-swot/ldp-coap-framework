@@ -45,6 +45,24 @@ public class CoAPLDPServer extends CoapServer {
     }
     
     /**
+	 * Creates a new LDP-CoAP server with a customized resource manager
+	 * 
+	 * @param rm	the customized CoAPLDPResourceManager;
+	 * 
+	 */
+    public CoAPLDPServer(CoAPLDPResourceManager rm) {
+    	super();    	    	
+    	
+    	this.BASE_URI = rm.getBaseURI();    	
+    	mng = rm;
+    	
+    	smd = new CoAPLDPServerMessageDeliverer(this.getRoot());    	
+    	this.setMessageDeliverer(smd);
+    	
+    	printWelcome();
+    }
+    
+    /**
 	 * Creates a new LDP-CoAP server.
 	 * 
 	 * @param 	BASE_URI	the repository base URI

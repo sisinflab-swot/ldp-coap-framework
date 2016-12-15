@@ -50,8 +50,8 @@ import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPReadOnlyException;
 public class CoAPLDPResourceManager {
 	
 	// init RDF Repository
-	Repository repo;
-	RepositoryConnection con;
+	protected Repository repo;
+	protected RepositoryConnection con;
 	
 	// handle namespace
 	HashMap<String, String> ns;
@@ -743,6 +743,31 @@ public class CoAPLDPResourceManager {
 	}
 	
 	/**
+	 * Updates a single statement of the RDF repository (object is a literal) 
+	 *
+	 * @param  	subj	the statement subject
+	 * @param	pred	the statement predicate 
+	 * @param	obj		the statement object (a String value)
+	 * 
+	 */
+	public void updateRDFLiteralStatement(String subj, String pred, String obj) {
+		ValueFactory f = repo.getValueFactory();
+		IRI s = f.createIRI(subj);
+		IRI p = f.createIRI(pred);
+		Literal o = f.createLiteral(obj);
+		
+		try {
+			RepositoryConnection c_upd = repo.getConnection();
+			c_upd.remove(c_upd.getStatements(s, p, null, false));
+			c_upd.add(s, p, o);
+			c_upd.close();
+		} catch (RepositoryException | IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+	
+	/**
 	 * Adds the RDF created statement to the resource	 
 	 *
 	 * @param  	uri		the URI of the resource
@@ -907,6 +932,19 @@ public class CoAPLDPResourceManager {
 		ValueFactory f = repo.getValueFactory();		
 		DecimalFormat ft = new DecimalFormat("#0.00");		
 		addRDFStatement(f.createIRI(s), f.createIRI(p), f.createLiteral(ft.format(v), XMLSchema.DOUBLE));	
+	}
+	
+	/**
+	 * Updates a single statement of the RDF repository 
+	 *
+	 * @param  	subj	the statement subject
+	 * @param	pred	the statement predicate 
+	 * @param	obj		the statement object (a Long value)
+	 * 
+	 */
+	public void setRDFStatement(String s, String p, long v) {
+		ValueFactory f = repo.getValueFactory();			
+		addRDFStatement(f.createIRI(s), f.createIRI(p), f.createLiteral(String.valueOf(v), XMLSchema.LONG));	
 	}
 	
 	/**
