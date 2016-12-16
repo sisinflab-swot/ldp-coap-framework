@@ -31,6 +31,13 @@ Each module can be imported as Maven project in Eclipse. Make sure to have the f
 - [Eclipse EGit](http://www.eclipse.org/egit/)
 - [M2Eclipse - Maven Integration for Eclipse](http://www.eclipse.org/m2e/)
 
+Documentation
+-------------
+
+Hands-on introduction to LDP-CoAP using [basic code samples](http://sisinflab.poliba.it/swottools/ldp-coap/usage.html) available on the project webpage.
+
+More details about packages and methods can be found on the official [Javadoc](http://sisinflab.poliba.it/swottools/ldp-coap/docs/javadoc/v1_0/).
+
 License
 -------------
 
@@ -43,5 +50,11 @@ Contact
 -------------
 
 For more information, please visit the [LDP-CoAP webpage](http://sisinflab.poliba.it/swottools/ldp-coap/).
+
+
+Contribute
+-------------
+The main purpose of this repository is to share and continue to improve the LDP-CoAP framework, making it easier to use. If you're interested in helping us any feedback you have about using LDP-CoAP would be greatly appreciated. There are only a few guidelines that we need contributors to follow reported in the CONTRIBUTING.md file.
+
 
 ---------
