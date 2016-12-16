@@ -38,6 +38,43 @@ Hands-on introduction to LDP-CoAP using [basic code samples](http://sisinflab.po
 
 More details about packages and methods can be found on the official [Javadoc](http://sisinflab.poliba.it/swottools/ldp-coap/docs/javadoc/v1_0/).
 
+
+References
+-------------
+
+If you want to refer to LDP-CoAP in a publication, please cite one of the following papers:
+
+```
+@InProceedings{ldp-coap-framework,
+  author       = {Giuseppe Loseto and Saverio Ieva and Filippo Gramegna and Michele Ruta and Floriano Scioscia and Eugenio {Di Sciascio}},
+  title        = {Linked Data (in low-resource) Platforms: a mapping for Constrained Application Protocol},
+  booktitle    = {The Semantic Web - ISWC 2016: 15th International Semantic Web Conference, Proceedings, Part II},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {9982},
+  pages        = {131--139},
+  month        = {oct},
+  year         = {2016},
+  editor       = {Paul Groth, Elena Simperl, Alasdair Gray, Marta Sabou, Markus Krotzsch, Freddy Lecue, Fabian Flock, Yolanda Gil},
+  publisher    = {Springer International Publishing},
+  address      = {Cham},
+}
+```
+
+```
+@InProceedings{ldp-coap-proposal,
+  author = {Giuseppe Loseto and Saverio Ieva and Filippo Gramegna and Michele Ruta and Floriano Scioscia and Eugenio {Di Sciascio}},
+  title = {Linking the Web of Things: LDP-CoAP mapping},
+  booktitle = {The 7th International Conference on Ambient Systems, Networks and Technologies (ANT 2016) / Affiliated Workshops},
+  series = {Procedia Computer Science},
+  volume = {83},
+  pages = {1182--1187},
+  month = {may},
+  year = {2016},
+  editor = {Elhadi Shakshuki},
+  publisher = {Elsevier}
+}
+```
+
 License
 -------------
 
