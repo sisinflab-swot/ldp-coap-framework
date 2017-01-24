@@ -148,7 +148,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 			try {
 				String data = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI());
 				String etag = calculateEtag(data);
-				String ifm = new String(im.get(0), StandardCharsets.UTF_8);
+				String ifm = new String(im.get(im.size()-1), StandardCharsets.UTF_8);
 				if (!etag.equals(ifm))
 					throw new CoAPLDPPreconditionFailedException("Precondition Failed: If-Match");
 
