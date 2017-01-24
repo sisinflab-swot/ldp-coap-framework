@@ -19,53 +19,54 @@ import it.poliba.sisinflab.rdf.vocabulary.SSN_XG;
  *
  */
 
-public class CoAPLDPTestServer {
+public class CoAPLDPTestServer extends CoAPLDPServer {
+
+	final static String BASE_URI = "coap://192.168.2.16:5683";	
 	
-	final static String BASE_URI = "coap://192.168.2.16:5683";
-    static CoAPLDPServer server;    	
-	
-    public static void main(String[] args) {        
+    public static void main(String[] args) throws SocketException {        
         // create server
-		server = new CoAPLDPServer(BASE_URI);		
-		
-		try {			
+    	CoAPLDPTestServer server = new CoAPLDPTestServer(BASE_URI);		
+		server.start();
+    }
+    
+    public CoAPLDPTestServer(String BASE_URI) {
+		super(BASE_URI);
+		try {
 			init();
-			server.start();
 		} catch (SocketException | CoAPLDPException e) {
 			e.printStackTrace();
-			server.shutdown();
-			
 			System.out.println("Error during server initialization!");
+			System.exit(0);
 		}
-    }
+	}
     
     /**
 	 * Initializes all the resources of the server.
 	 * 
 	 */
-    public static void init() throws SocketException, CoAPLDPException {
+    public void init() throws SocketException, CoAPLDPException {
     	
-    	server.addHandledNamespace(SSN_XG.PREFIX, SSN_XG.NAMESPACE + "#");
+    	addHandledNamespace(SSN_XG.PREFIX, SSN_XG.NAMESPACE + "#");
     	
     	/*** Handle read-only properties ***/
-    	server.setReadOnlyProperty("http://purl.org/dc/terms/created");
-    	server.setConstrainedByURI("http://sisinflab.poliba.it/swottools/ldp-coap/ldp-report.html");
+    	setReadOnlyProperty("http://purl.org/dc/terms/created");
+    	setConstrainedByURI("http://sisinflab.poliba.it/swottools/ldp-coap/ldp-report.html");
     	
     	/*** Handle not persisted properties ***/
-    	server.setNotPersistedProperty("http://example.com/ns#comment");
+    	setNotPersistedProperty("http://example.com/ns#comment");
 
     	/*** Add LDP-RDFSource ***/  	
-    	CoAPLDPRDFSource src = server.createRDFSource("alice");
+    	CoAPLDPRDFSource src = createRDFSource("alice");
     	src.setRDFTitle("My first CoAP RDFSource");
     	
     	
     	/*** Add LDP-NonRDFSource ***/
-    	CoAPLDPNonRDFSource nr = server.createNonRDFSource("hello", MediaTypeRegistry.TEXT_PLAIN);
+    	CoAPLDPNonRDFSource nr = createNonRDFSource("hello", MediaTypeRegistry.TEXT_PLAIN);
     	nr.setData(("Hello World!").getBytes());
     	
     	
     	/*** Add LDP-BasicContainer ***/
-        CoAPLDPBasicContainer bc = server.createBasicContainer("sensors");
+        CoAPLDPBasicContainer bc = createBasicContainer("sensors");
         bc.setRDFTitle("LDP Basic sensors container");
         bc.setRDFDescription("This container will contain data of sensors."); 
         
@@ -84,7 +85,7 @@ public class CoAPLDPTestServer {
         bc.createIndirectContainer("ic-in-bc", "system", SSN_XG.System.toString(), SSN_XG.hasSubSystem.toString(), SSN_XG.attachedSystem.toString());*/
         
         /*** Add LDP-DirectContainer ***/
-        CoAPLDPDirectContainer dc = server.createDirectContainer("obs-dc", "tempSensor", SSN_XG.SensingDevice.toString(), SSN_XG.observes.toString(), null);
+        CoAPLDPDirectContainer dc = createDirectContainer("obs-dc", "tempSensor", SSN_XG.SensingDevice.toString(), SSN_XG.observes.toString(), null);
         if(dc != null){
         	dc.setRDFTitle("Product description of LDP Demo product which is also an LDP-DC"); 
         	dc.addAcceptPostType(MediaTypeRegistry.TEXT_PLAIN);
@@ -110,7 +111,7 @@ public class CoAPLDPTestServer {
         
         
         /*** Add LDP-IndirectContainer ***/
-        CoAPLDPIndirectContainer ic = server.createIndirectContainer("obs-ic", "system", SSN_XG.System.toString(), SSN_XG.hasSubSystem.toString(), 
+        CoAPLDPIndirectContainer ic = createIndirectContainer("obs-ic", "system", SSN_XG.System.toString(), SSN_XG.hasSubSystem.toString(), 
         		SSN_XG.attachedSystem.toString());
         ic.setRDFTitle("LDP-CoAP Indirect Container"); 
         ic.getMemberResource().setRDFTitle("LDP-IC Member Resource");
