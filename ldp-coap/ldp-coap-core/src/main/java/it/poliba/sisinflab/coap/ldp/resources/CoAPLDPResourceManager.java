@@ -140,7 +140,7 @@ public class CoAPLDPResourceManager {
 		if(!this.verifyRelation(rdf, LDP.PROP_CONTAINS, format)){		
 			InputStream stream = new ByteArrayInputStream(rdf.trim().getBytes(StandardCharsets.UTF_8));
 			con.add(stream, uri, format);
-			stream.close();		
+			stream.close();
 		} else 
 			throw new CoAPLDPException(LDP.PROP_CONTAINS + " not allowed in POST/PUT requests.");		
 	}
@@ -660,12 +660,24 @@ public class CoAPLDPResourceManager {
 	 * @param	title 	the resource title
 	 * 
 	 */
-	public void setRDFTitle(String uri, String title){
+	public void setRDFTitle(String uri, String title) {
 		ValueFactory f = repo.getValueFactory();
 		IRI node = f.createIRI(uri);		
 		addRDFStatement(node, DCTERMS.TITLE, f.createLiteral(title));		
-	}	
+	}
 	
+	/**
+	 * Adds the RDF modified statement to the resource	 
+	 *
+	 * @param  	uri		the URI of the resource
+	 * 
+	 */
+	public void setRDFModified(String uri) {
+		ValueFactory f = repo.getValueFactory();
+		IRI node = f.createIRI(uri);
+    	addRDFStatement(node, DCTERMS.MODIFIED, f.createLiteral(new Date()));		
+	}
+		
 	/**
 	 * Updates a single statement of the RDF repository 
 	 *
