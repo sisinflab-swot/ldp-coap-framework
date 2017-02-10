@@ -22,6 +22,11 @@ import it.poliba.sisinflab.coap.ldp.LDP;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPContentFormatException;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPException;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPPreconditionFailedException;
+import it.poliba.sisinflab.codec.BSON;
+import it.poliba.sisinflab.codec.BZIP2;
+import it.poliba.sisinflab.codec.GZIP;
+import it.poliba.sisinflab.codec.MsgPack;
+import it.poliba.sisinflab.codec.UBJSON;
 
 /**
  * Represents an LDP RDF Source
@@ -189,10 +194,34 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 				accept = MediaTypeRegistry.TEXT_TURTLE;
 				rdf = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI(), prefIncl, prefOmit);
 				
-			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_LD_JSON) {
+			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_LD_JSON) {				
+				accept = exchange.getRequestOptions().getAccept();
+				rdf = mng.getJSONLDResourceGraph(mng.getBaseURI() + this.getURI());		
 				
-				accept = MediaTypeRegistry.APPLICATION_LD_JSON;
-				rdf = mng.getJSONLDResourceGraph(mng.getBaseURI() + this.getURI());				
+			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_GZIP) {				
+				accept = exchange.getRequestOptions().getAccept();
+				String tmp = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI(), prefIncl, prefOmit);	
+				rdf = (new GZIP()).encodeAsString(tmp);		
+				
+			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_BZIP2) {				
+				accept = exchange.getRequestOptions().getAccept();
+				String tmp = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI(), prefIncl, prefOmit);	
+				rdf = (new BZIP2()).encodeAsString(tmp);
+				
+			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_BSON) {				
+				accept = exchange.getRequestOptions().getAccept();
+				String tmp = mng.getJSONLDResourceGraph(mng.getBaseURI() + this.getURI());
+				rdf = (new BSON()).encodeAsString(tmp);
+				
+			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_UBJSON) {				
+				accept = exchange.getRequestOptions().getAccept();
+				String tmp = mng.getJSONLDResourceGraph(mng.getBaseURI() + this.getURI());
+				rdf = (new UBJSON()).encodeAsString(tmp);
+				
+			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_MSGPACK) {				
+				accept = exchange.getRequestOptions().getAccept();
+				String tmp = mng.getJSONLDResourceGraph(mng.getBaseURI() + this.getURI());
+				rdf = (new MsgPack()).encodeAsString(tmp);
 				
 			} else 
 				throw new CoAPLDPContentFormatException("Unsupported Type!");
@@ -203,7 +232,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 				if (!etag.equals(ifm))
 					throw new CoAPLDPPreconditionFailedException("Precondition Failed: If-Match");
 			}
-
+			
 			exchange.setETag(etag.getBytes());
 			
 			String prefApplied = "";
@@ -229,6 +258,9 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		} catch (CoAPLDPContentFormatException e) {
 			e.printStackTrace();
 			exchange.respond(ResponseCode.BAD_OPTION);
+		} catch (Exception e) {
+			e.printStackTrace();
+			exchange.respond(ResponseCode.INTERNAL_SERVER_ERROR);
 		}
 	}
 

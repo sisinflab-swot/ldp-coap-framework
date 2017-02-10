@@ -35,4 +35,46 @@ public class BasicTest {
 		CoapResponse resp = client.get(MediaTypeRegistry.TEXT_TURTLE);
 		assertEquals(CoAP.ResponseCode.CONTENT, resp.getCode());
 	}
+	
+	@Test
+	public void getLDPRDFSourceAsLDJSON() {
+		CoapClient client = new CoapClient(BASE_URI + "/alice");
+		CoapResponse resp = client.get(MediaTypeRegistry.APPLICATION_LD_JSON);
+		assertEquals(CoAP.ResponseCode.CONTENT, resp.getCode());
+	}
+	
+	@Test
+	public void getLDPRDFSourceAsGZIP() {
+		CoapClient client = new CoapClient(BASE_URI + "/alice");
+		CoapResponse resp = client.get(MediaTypeRegistry.APPLICATION_GZIP);
+		assertEquals(CoAP.ResponseCode.CONTENT, resp.getCode());
+	}
+	
+	@Test
+	public void getLDPRDFSourceAsBZIP2() {
+		CoapClient client = new CoapClient(BASE_URI + "/alice");
+		CoapResponse resp = client.get(MediaTypeRegistry.APPLICATION_BZIP2);
+		assertEquals(CoAP.ResponseCode.CONTENT, resp.getCode());
+	}
+	
+	@Test
+	public void getLDPRDFSourceAsBSON() {
+		CoapClient client = new CoapClient(BASE_URI + "/alice");
+		CoapResponse resp = client.get(MediaTypeRegistry.APPLICATION_BSON);
+		assertEquals(CoAP.ResponseCode.CONTENT, resp.getCode());
+	}
+	
+	@Test
+	public void getLDPRDFSourceAsUBJSON() {
+		CoapClient client = new CoapClient(BASE_URI + "/alice");
+		CoapResponse resp = client.get(MediaTypeRegistry.APPLICATION_UBJSON);
+		assertEquals(CoAP.ResponseCode.CONTENT, resp.getCode());
+	}
+	
+	@Test
+	public void getLDPRDFSourceAsMsgPack() {
+		CoapClient client = new CoapClient(BASE_URI + "/alice");
+		CoapResponse resp = client.get(MediaTypeRegistry.APPLICATION_MSGPACK);
+		assertEquals(CoAP.ResponseCode.CONTENT, resp.getCode());
+	}
 }
