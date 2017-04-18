@@ -159,4 +159,9 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 			exchange.respond(ResponseCode.BAD_OPTION);
 	}
 
+	@Override
+	public String getEtag() throws NoSuchAlgorithmException {
+		return calculateEtag(new String(data));
+	}
+
 }

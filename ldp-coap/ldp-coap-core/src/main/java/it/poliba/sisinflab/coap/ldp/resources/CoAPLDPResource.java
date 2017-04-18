@@ -1,5 +1,6 @@
 package it.poliba.sisinflab.coap.ldp.resources;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -47,6 +48,8 @@ public abstract class CoAPLDPResource extends CoapResource {
 		
 		options = new LDPOptions();
 	}
+	
+	public abstract String getEtag() throws NoSuchAlgorithmException;
 	
 	protected static String calculateEtag(final String s) throws java.security.NoSuchAlgorithmException {		
 		return  String.format("W/\"%s\"", Integer.toHexString(s.hashCode()).substring(0, 4));

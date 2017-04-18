@@ -151,8 +151,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		}		
 		else if (options.isAcceptedPatch(ct)) {
 			try {
-				String data = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI());
-				String etag = calculateEtag(data);
+				String etag = getEtag();
 				String ifm = new String(im.get(im.size()-1), StandardCharsets.UTF_8);
 				if (!etag.equals(ifm))
 					throw new CoAPLDPPreconditionFailedException("Precondition Failed: If-Match");
@@ -226,7 +225,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 			} else 
 				throw new CoAPLDPContentFormatException("Unsupported Type!");
 			
-			String etag = calculateEtag(rdf);
+			String etag = getEtag(rdf);
 			if (!im.isEmpty()) {
 				String ifm = new String(im.get(0), StandardCharsets.UTF_8);
 				if (!etag.equals(ifm))
@@ -306,9 +305,8 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 	
 	public void handleHEAD(CoapExchange exchange) {
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch(); 
-		String rdf = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI());
 		try {
-			String etag = calculateEtag(rdf);
+			String etag = getEtag();
 			if (!im.isEmpty()) {
 				String ifm = new String(im.get(0), StandardCharsets.UTF_8);
 				if (!etag.equals(ifm))
@@ -352,8 +350,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		else if (exchange.getRequestOptions().getContentFormat() == MediaTypeRegistry.TEXT_TURTLE) {
 			
 			try {
-				String data = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI());
-				String etag = calculateEtag(data);
+				String etag = getEtag();
 				String ifm = new String(im.get(0), StandardCharsets.UTF_8);
 				if (!etag.equals(ifm))
 					throw new CoAPLDPPreconditionFailedException("Precondition Failed: If-Match");
@@ -458,5 +455,15 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 	public void stopPublishData(){
 		if(dh != null)
 			dh.stop();
+	}
+
+	@Override
+	public String getEtag() throws NoSuchAlgorithmException {
+		String data = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI());
+		return calculateEtag(data); 
+	}
+	
+	public String getEtag(String data) throws NoSuchAlgorithmException {
+		return calculateEtag(data); 
 	}
 }
