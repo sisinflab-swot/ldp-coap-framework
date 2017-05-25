@@ -45,12 +45,17 @@ If you want to refer to LDP-CoAP in a publication, please cite one of the follow
 
 ```
 @InProceedings{ldp-coap-framework,
-  author = {Giuseppe Loseto and Saverio Ieva and Filippo Gramegna and Michele Ruta and Floriano Scioscia and Eugenio {Di Sciascio}},
-  title = {Linked Data (in low-resource) Platforms: a mapping for Constrained Application Protocol},
-  booktitle = {15th International Semantic Web Conference (ISWC 2016)},
-  month = {oct},
-  year  = {2016},
-  note = {to appear}
+  author       = {Giuseppe Loseto and Saverio Ieva and Filippo Gramegna and Michele Ruta and Floriano Scioscia and Eugenio {Di Sciascio}},
+  title        = {Linked Data (in low-resource) Platforms: a mapping for Constrained Application Protocol},
+  booktitle    = {The Semantic Web - ISWC 2016: 15th International Semantic Web Conference, Proceedings, Part II},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {9982},
+  pages        = {131--139},
+  month        = {oct},
+  year         = {2016},
+  editor       = {Paul Groth, Elena Simperl, Alasdair Gray, Marta Sabou, Markus Krotzsch, Freddy Lecue, Fabian Flock, Yolanda Gil},
+  publisher    = {Springer International Publishing},
+  address      = {Cham},
 }
 ```
 
