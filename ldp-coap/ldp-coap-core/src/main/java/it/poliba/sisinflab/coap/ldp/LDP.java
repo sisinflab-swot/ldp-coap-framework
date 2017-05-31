@@ -45,7 +45,13 @@ public class LDP {
 	// LDP-CoAP Link relations
 	public static final String LINK_LDP = "ldp";
 	public static final String LINK_LDP_PREF_INCLUDE = "ldp-incl";
-	public static final String LINK_LDP_PREF_OMIT = "ldp-omit";
+	public static final String LINK_LDP_PREF_OMIT = "ldp-omit";	
+	public static final String LINK_CONSTRAINEDBY = LINK_LDP + ":" + "constrainedBy";
+	
+	// LDN properties
+	public static final String PROP_LNAME_INBOX = "inbox";
+	public static final String PROP_INBOX = nsName(PROP_LNAME_INBOX);
+	public static final String LINK_INBOX = LINK_LDP + ":" + PROP_LNAME_INBOX;	
 
 	// RDF Property names both namespace and local
 	public static final String PROP_LNAME_MEMBERSHIP_RESOURCE = "membershipResource";
