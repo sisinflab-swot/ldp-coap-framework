@@ -70,13 +70,54 @@ public abstract class CoAPLDPResource extends CoapResource {
 			System.out.println("REQ;" + System.currentTimeMillis() + ";" + e.advanced().getCurrentRequest().getMID() + ";" + code);
 		
 		switch (code) {
-			case GET:		handleGET(new CoapExchange(exchange, this)); break;
-			case POST:		handlePOST(new CoapExchange(exchange, this)); break;
-			case PUT:		handlePUT(new CoapExchange(exchange, this)); break;
-			case DELETE: 	handleDELETE(new CoapExchange(exchange, this)); break;
-			case OPTIONS: 	handleOPTIONS(new CoapExchange(exchange, this)); break;
-			case PATCH: 	handlePATCH(new CoapExchange(exchange, this)); break;
-			case HEAD:		handleHEAD(new CoapExchange(exchange, this)); break;
+			case GET:		
+				if (options.isAllowed(code))
+					handleGET(new CoapExchange(exchange, this));
+				else
+					super.handleGET(new CoapExchange(exchange, this));
+				break;
+						
+			case POST:
+				if (options.isAllowed(code))
+					handlePOST(new CoapExchange(exchange, this));
+				else
+					super.handlePOST(new CoapExchange(exchange, this));
+				break;
+				
+			case PUT:		
+				if (options.isAllowed(code))
+					handlePUT(new CoapExchange(exchange, this));
+				else
+					super.handlePUT(new CoapExchange(exchange, this));
+				break;
+				
+			case DELETE: 	
+				if (options.isAllowed(code))
+					handleDELETE(new CoapExchange(exchange, this));
+				else
+					super.handleDELETE(new CoapExchange(exchange, this));
+				break;
+				
+			case OPTIONS: 	
+				if (options.isAllowed(code))
+					handleOPTIONS(new CoapExchange(exchange, this));
+				else
+					this.handleOPTIONS(new CoapExchange(exchange, this));
+				break;
+				
+			case PATCH: 	
+				if (options.isAllowed(code))
+					handlePATCH(new CoapExchange(exchange, this));
+				else
+					this.handlePATCH(new CoapExchange(exchange, this));
+				break;
+				
+			case HEAD:		
+				if (options.isAllowed(code))
+					handleHEAD(new CoapExchange(exchange, this));
+				else
+					this.handleHEAD(new CoapExchange(exchange, this));
+				break;
 		}
 		
 		if (DEBUG) 
@@ -134,5 +175,9 @@ public abstract class CoAPLDPResource extends CoapResource {
 	 */
 	public String getFullName(){
 		return this.name;
+	}
+	
+	public void setAllowedMethod(LDP.Code method, boolean allowed) {
+		this.options.setAllowedMethod(method, allowed);
 	}
 }

@@ -37,7 +37,7 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 	public CoAPLDPBasicContainer(String name, CoAPLDPResourceManager mng) {
 		super(name, "", mng);
 		this.name = "/" + name;
-		initBasicContainer();
+		init();
 	}
 
 	/**
@@ -50,25 +50,16 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 	 * @see CoAPLDPResourceManager
 	 */
 	public CoAPLDPBasicContainer(String name, String path, CoAPLDPResourceManager mng) {
-		super(name, "", mng);
+		super(name, path, mng);
 		this.name = path + "/" + name;
-		initBasicContainer();
+		init();
 	}
 
-	private void initBasicContainer() {
+	private void init() {
 		this.fRDFType = LDP.CLASS_BASIC_CONTAINER;
-
 		getAttributes().addResourceType(LDP.CLASS_BASIC_CONTAINER);
-
-		mng.addRDFBasicContainer(mng.getBaseURI() + this.getFullName());
-
-		options.setAllowedMethod(LDP.Code.POST, true);
-
-		options.addAcceptPostType(MediaTypeRegistry.TEXT_TURTLE);
-		options.addAcceptPostType(MediaTypeRegistry.APPLICATION_LD_JSON);
-		options.addAcceptPostType(MediaTypeRegistry.TEXT_PLAIN);
-		options.addAcceptPostType(MediaTypeRegistry.IMAGE_PNG);
-	}
+		mng.addRDFBasicContainer(mng.getBaseURI() + this.getFullName());		
+	}		
 
 	/**
 	 * Manages LDP-CoAP POST requests.
@@ -115,13 +106,10 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 				}
 
 				if (!existChild(childName)) {
-
 					this.addNewResource(exchange, ct, rt, childName, title);
 					mng.setLDPContainsRelationship(mng.getBaseURI() + childName, mng.getBaseURI() + getURI());
 
-					exchange.setLocationPath(childName);
-					exchange.setLocationQuery(
-							LinkFormat.RESOURCE_TYPE + "=" + LDP.LINK_LDP + ":" + LDP.CLASS_LNAME_RESOURCE);
+					exchange.setLocationPath(mng.getBaseURI() + childName);
 					exchange.respond(ResponseCode.CREATED);
 				} else
 					exchange.respond(ResponseCode.FORBIDDEN);
@@ -182,7 +170,7 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 				add(new CoAPLDPRDFSource(title, getFullName(), mng));
 			} else if (rt.equals(LDP.LINK_LDP + ":" + LDP.CLASS_LNAME_BASIC_CONTAINER)) {
 				/*** Add LDP-BasicContainer ***/
-				CoAPLDPBasicContainer bc = new CoAPLDPBasicContainer(title, mng);
+				CoAPLDPBasicContainer bc = new CoAPLDPBasicContainer(title, getFullName(), mng);
 				bc.setRDFCreated();
 				add(bc);
 			} else if (rt.equals(LDP.LINK_LDP + ":" + LDP.CLASS_LNAME_DIRECT_CONTAINER)) {
@@ -197,17 +185,24 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 
 				/*** Add LDP-DirectContainer ***/
 				CoAPLDPRDFSource memberRes = new CoAPLDPRDFSource(resName, childName, mng);
-				CoAPLDPDirectContainer dc = new CoAPLDPDirectContainer(title, this.getURI(), mng, memberRes, memberRel,
+				CoAPLDPDirectContainer dc = new CoAPLDPDirectContainer(title, getFullName(), mng, memberRes, memberRel,
 						isMemberOfRel);
 				dc.setRDFCreated();
 				add(dc);
 			} else
 				throw new CoAPLDPException("Invalid RT query parameter.");
+			
+			exchange.setLocationQuery(LinkFormat.RESOURCE_TYPE + "=" + LDP.LINK_LDP + ":" + LDP.CLASS_LNAME_RESOURCE);
+			
 		} else if (options.getAcceptedPostTypes().contains(ct)) {
 			/*** Add LDP-NonRDFSource ***/
-			CoAPLDPNonRDFSource nRDF = new CoAPLDPNonRDFSource(title, mng, ct);
+			CoAPLDPNonRDFSource nRDF = new CoAPLDPNonRDFSource(title, getFullName(), mng, ct);
 			nRDF.setData(exchange.getRequestPayload());
 			add(nRDF);
+			
+			String type = LinkFormat.RESOURCE_TYPE + "=" + LDP.LINK_LDP + ":" + LDP.CLASS_LNAME_RESOURCE;
+			String meta = LDP.LINK_REL_DESCRIBEDBY + "=" + mng.getBaseURI() + nRDF.getFullName() + "/meta";
+			exchange.setLocationQuery(type + "&" + meta);
 		} else
 			throw new CoAPLDPContentFormatException("Content-Format (CT) Not Accepted.");
 	}
@@ -234,7 +229,7 @@ public class CoAPLDPBasicContainer extends CoAPLDPContainer {
 	}
 
 	public CoAPLDPNonRDFSource createNonRDFSource(String name, int mediaType) {
-		CoAPLDPNonRDFSource nr = new CoAPLDPNonRDFSource(name, mng, mediaType);
+		CoAPLDPNonRDFSource nr = new CoAPLDPNonRDFSource(name, getFullName(), mng, mediaType);
 		mng.setLDPContainsRelationship(mng.getBaseURI() + "/" + nr.getURI(), mng.getBaseURI() + getFullName());
 		add(nr);
 		return nr;

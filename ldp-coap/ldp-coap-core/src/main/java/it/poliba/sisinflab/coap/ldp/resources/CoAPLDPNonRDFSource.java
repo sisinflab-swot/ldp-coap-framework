@@ -1,5 +1,6 @@
 package it.poliba.sisinflab.coap.ldp.resources;
 
+import org.eclipse.californium.core.coap.LinkFormat;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 
 import java.nio.charset.StandardCharsets;
@@ -25,6 +26,7 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 	CoAPLDPResourceManager mng;
 	byte[] data = {};
 	int ct;
+	String path = "";
 
 	/**
 	 * Creates a new LDP Non-RDF Source.
@@ -36,8 +38,13 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 	 * @see CoAPLDPResourceManager
 	 */
 	public CoAPLDPNonRDFSource(String name, CoAPLDPResourceManager mng, int type) {
+		this(name, "", mng, type);
+	}
+	
+	public CoAPLDPNonRDFSource(String name, String path, CoAPLDPResourceManager mng, int type) {
 		super(name);
 		
+		this.path = path;
 		this.mng = mng;
 		this.fRDFType = LDP.CLASS_NONRDFSOURCE;
 		this.ct = type;
@@ -46,6 +53,10 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		getAttributes().addContentType(type);  
 		
 		initNonRDFSource();
+		
+		CoAPLDPRDFSource meta = new CoAPLDPRDFSource("meta", this.getFullName(), mng);
+		meta.setRDFCreated();
+		this.add(meta);
 	}
 	
 	private void initNonRDFSource(){
@@ -70,11 +81,12 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		
 		try {
 			exchange.setETag(calculateEtag(data.toString()).getBytes());
+			exchange.setLocationQuery(LDP.LINK_REL_DESCRIBEDBY + "=" + mng.getBaseURI() + getFullName() + "/meta");
 			
 			if (ct == MediaTypeRegistry.TEXT_PLAIN)			
 				exchange.respond(ResponseCode.CONTENT, new String(data, StandardCharsets.UTF_8), ct);    
 			else
-				exchange.respond(ResponseCode.CONTENT, data, ct); 	
+				exchange.respond(ResponseCode.CONTENT, data, ct); 
 			
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
@@ -91,7 +103,15 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 	 * 
 	 */
     public void handleDELETE(CoapExchange exchange) {    
+    	
+    	/** 
+    	 * When a contained LDPR is deleted, and the LDPC server created an associated LDP-RS, 
+    	 * the LDPC server must also delete the associated LDP-RS it created.
+    	 */
+    	
 		mng.deleteRDFSource(mng.getBaseURI() + this.getURI());
+		mng.deleteRDFSource(mng.getBaseURI() + this.getURI() + "/meta");	
+		this.getChild("meta");
 		this.delete();
 		exchange.respond(ResponseCode.DELETED);         
     }
@@ -99,6 +119,7 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
     public void handleOPTIONS(CoapExchange exchange) {
     	try {
 			String text = options.toJSONString();
+			exchange.setLocationQuery(LDP.LINK_REL_DESCRIBEDBY + "=" + mng.getBaseURI() + getFullName() + "/meta");
 			exchange.respond(ResponseCode.CONTENT, text, MediaTypeRegistry.APPLICATION_JSON);
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -162,6 +183,11 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 	@Override
 	public String getEtag() throws NoSuchAlgorithmException {
 		return calculateEtag(new String(data));
+	}
+	
+	@Override
+	public String getFullName(){
+		return this.path + "/" + this.name;
 	}
 
 }

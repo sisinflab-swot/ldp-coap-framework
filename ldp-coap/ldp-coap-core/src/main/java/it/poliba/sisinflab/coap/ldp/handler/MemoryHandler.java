@@ -32,8 +32,10 @@ public class MemoryHandler extends LDPDataHandler {
 	@Override
 	protected void handleData() {
 		double load = (double)bean.getFreePhysicalMemorySize()/bean.getTotalPhysicalMemorySize();
-		mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, SSN_XG.hasValue.stringValue(), load);
-		mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, DCTERMS.CREATED.toString(), new Date());
+		if (mng != null && mng.connected()) {
+			mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, SSN_XG.hasValue.stringValue(), load);
+			mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, DCTERMS.CREATED.toString(), new Date());
+		}
 	}
 
 }

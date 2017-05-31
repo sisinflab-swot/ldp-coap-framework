@@ -25,8 +25,10 @@ public class CPUHandler extends LDPDataHandler {
 	@Override
 	protected void handleData() {
 		double load = bean.getSystemCpuLoad();
-    	mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, SSN_XG.hasValue.stringValue(), load);
-		mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, DCTERMS.CREATED.toString(), new Date());
+		if (mng != null && mng.connected()) {
+			mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, SSN_XG.hasValue.stringValue(), load);
+			mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, DCTERMS.CREATED.toString(), new Date());
+		}
 	}
 
 }

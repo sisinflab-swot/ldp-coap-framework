@@ -85,7 +85,7 @@ public class CoAPLDPServer extends CoapServer {
     private void printWelcome(){
     	System.out.println("----------------------------------------------------------");
     	System.out.println("### LDP-CoAP Server ###");
-    	System.out.println("Version: 1.1.0");
+    	System.out.println("Version: 1.2.0");
     	System.out.println("Endpoint: " + BASE_URI);
     	System.out.println("Developed by: SisInfLab - Politecnico di Bari");
     	System.out.println("Home Page: http://sisinflab.poliba.it/swottools/ldp-coap/");

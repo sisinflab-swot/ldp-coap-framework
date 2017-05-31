@@ -6,10 +6,9 @@ import org.eclipse.californium.core.CoapClient;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.CoAP;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import it.poliba.sisinflab.coap.ldp.server.CoAPLDPTestServer;
 
 public class BasicTest {
 	
@@ -27,6 +26,11 @@ public class BasicTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+    
+    @AfterClass
+    public static void runOnceAfterClass() {
+    	server.shutdown();
 	}
 
 	@Test

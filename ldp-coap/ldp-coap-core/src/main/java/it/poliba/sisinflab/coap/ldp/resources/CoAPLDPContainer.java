@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.californium.core.coap.LinkFormat;
+import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.CoAP.ResponseCode;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 
 import it.poliba.sisinflab.coap.ldp.LDP;
-import it.poliba.sisinflab.coap.ldp.LDP.Code;
 
 /**
  * Represents an LDP Container
@@ -36,7 +36,7 @@ public abstract class CoAPLDPContainer extends CoAPLDPRDFSource {
 		this.fRDFType = LDP.CLASS_CONTAINER;
 		getAttributes().addResourceType(LDP.CLASS_CONTAINER);
 
-		mng.addRDFContainer(mng.getBaseURI() + this.name);
+		mng.addRDFContainer(mng.getBaseURI() + this.getFullName());
 	}
 
 	/**
@@ -48,6 +48,22 @@ public abstract class CoAPLDPContainer extends CoAPLDPRDFSource {
 	 */	
 	public void addAcceptPostType(int ct) {
 		options.addAcceptPostType(ct);
+	}
+	
+	@Override
+	protected void initAllowedMethods() {
+		super.initAllowedMethods();
+		
+		options.setAllowedMethod(LDP.Code.POST, true);		
+		options.addAcceptPostType(MediaTypeRegistry.TEXT_TURTLE);
+		options.addAcceptPostType(MediaTypeRegistry.APPLICATION_LD_JSON);
+		
+		initAdditionalAcceptPostType();
+	}
+	
+	protected void initAdditionalAcceptPostType() {		
+		options.addAcceptPostType(MediaTypeRegistry.TEXT_PLAIN);
+		options.addAcceptPostType(MediaTypeRegistry.IMAGE_PNG);
 	}
 
 	protected String getAnonymousResource() {

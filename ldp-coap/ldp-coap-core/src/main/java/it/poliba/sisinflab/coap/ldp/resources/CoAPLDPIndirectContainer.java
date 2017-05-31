@@ -87,11 +87,6 @@ public class CoAPLDPIndirectContainer extends CoAPLDPContainer {
 		getAttributes().addResourceType(LDP.CLASS_INDIRECT_CONTAINER);
 
 		mng.addRDFIndirectContainer(mng.getBaseURI() + name);
-
-		options.setAllowedMethod(LDP.Code.POST, true);
-
-		options.addAcceptPostType(MediaTypeRegistry.TEXT_TURTLE);
-		options.addAcceptPostType(MediaTypeRegistry.APPLICATION_LD_JSON);
 	}
 
 	/**
@@ -238,7 +233,7 @@ public class CoAPLDPIndirectContainer extends CoAPLDPContainer {
 						throw new CoAPLDPContentFormatException("Content-Format (CT) Not Accepted.");
 					}
 
-					exchange.setLocationPath(childName);
+					exchange.setLocationPath(mng.getBaseURI() + childName);
 					exchange.setLocationQuery(
 							LinkFormat.RESOURCE_TYPE + "=" + LDP.LINK_LDP + ":" + LDP.CLASS_LNAME_RESOURCE);
 					exchange.respond(ResponseCode.CREATED);
@@ -309,7 +304,7 @@ public class CoAPLDPIndirectContainer extends CoAPLDPContainer {
 	}
 
 	public CoAPLDPNonRDFSource createNonRDFSource(String name, int mediaType) {
-		CoAPLDPNonRDFSource nr = new CoAPLDPNonRDFSource(name, mng, mediaType);
+		CoAPLDPNonRDFSource nr = new CoAPLDPNonRDFSource(name, getFullName(), mng, mediaType);
 		this.addRDFResource(nr);
 		return nr;
 	}

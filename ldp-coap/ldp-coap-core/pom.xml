@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>it.poliba.sisinflab</groupId>
 		<artifactId>ldp-coap</artifactId>
-		<version>1.1.0-SNAPSHOT</version>
+		<version>1.2.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>ldp-coap-core</artifactId>
 	<name>ldp-coap-core</name>
@@ -55,10 +55,6 @@
 			<version>20160212</version>
 		</dependency>
 
-		<!-- Support to RDF-PATCH (replaced with marmotta-util-rdfpatch-rdf4j) -->
-		<!-- <dependency> <groupId>org.apache.marmotta</groupId> <artifactId>marmotta-util-rdfpatch</artifactId> 
-			<version>3.3.0</version> </dependency> -->
-
 		<!-- Support to RDF-PATCH format in Eclipse RDF4J -->
 		<dependency>
 			<groupId>org.apache.marmotta</groupId>
@@ -72,35 +68,50 @@
 		<dependency>
 			<groupId>org.eclipse.californium</groupId>
 			<artifactId>californium-core-ldp</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.1.0-SNAPSHOT</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>org.eclipse.californium</groupId>
+			<artifactId>element-connector</artifactId>
+			<version>1.1.0-SNAPSHOT</version>
+		</dependency>	
+
 		<!-- Apache Commons Compress -->
 		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-compress</artifactId>
-		    <version>1.13</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+			<version>1.13</version>
 		</dependency>
-		
-		<!-- Bson4jackson - A pluggable BSON generator and parser for Jackson JSON processor. -->
+
+		<!-- Bson4jackson - A pluggable BSON generator and parser for Jackson JSON 
+			processor. -->
 		<dependency>
-		    <groupId>de.undercouch</groupId>
-		    <artifactId>bson4jackson</artifactId>
-		    <version>2.7.0</version>
+			<groupId>de.undercouch</groupId>
+			<artifactId>bson4jackson</artifactId>
+			<version>2.7.0</version>
 		</dependency>
-		
+
 		<!-- UBJSON lib for Java -->
 		<dependency>
-		    <groupId>com.dev-smart</groupId>
-		    <artifactId>ubjson</artifactId>
-		    <version>0.1.5</version>
+			<groupId>com.dev-smart</groupId>
+			<artifactId>ubjson</artifactId>
+			<version>0.1.5</version>
 		</dependency>
-		
+
 		<!-- Jackson extension adding support for MessagePack -->
 		<dependency>
-		    <groupId>org.msgpack</groupId>
-		    <artifactId>jackson-dataformat-msgpack</artifactId>
-		    <version>0.8.11</version>
+			<groupId>org.msgpack</groupId>
+			<artifactId>jackson-dataformat-msgpack</artifactId>
+			<version>0.8.11</version>
+		</dependency>
+
+		<!-- Apache Commons IO library -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+			<scope>test</scope>
 		</dependency>
 		
 	</dependencies>
@@ -151,9 +162,20 @@
 							<classpathPrefix>libs/</classpathPrefix>
 						</manifest>
 						<manifestEntries>
-			                <Class-Path>libs/marmotta-util-rdfpatch-rdf4j-3.3.0.jar</Class-Path>
-			            </manifestEntries>
+							<Class-Path>libs/marmotta-util-rdfpatch-rdf4j-3.3.0.jar</Class-Path>
+						</manifestEntries>
 					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.20</version>
+				<configuration>
+					<includes>
+						<include>**/BasicTestLDN.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 

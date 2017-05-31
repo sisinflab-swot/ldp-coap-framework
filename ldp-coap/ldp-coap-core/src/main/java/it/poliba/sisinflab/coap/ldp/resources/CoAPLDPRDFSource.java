@@ -130,6 +130,12 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 			getAttributes().addResourceType(fRDFType);	
 		}			
 		
+		initAllowedMethods();
+		
+		getAttributes().addContentType(MediaTypeRegistry.TEXT_TURTLE);
+	}
+	
+	protected void initAllowedMethods() {
 		options.setAllowedMethod(LDP.Code.GET, true);
 		options.setAllowedMethod(LDP.Code.PUT, true);
 		options.setAllowedMethod(LDP.Code.DELETE, true);
@@ -138,8 +144,6 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		
 		options.setAllowedMethod(LDP.Code.PATCH, true);
 		options.addAcceptPatchType(MediaTypeRegistry.APPLICATION_RDF_PATCH);
-		
-		getAttributes().addContentType(MediaTypeRegistry.TEXT_TURTLE);
 	}
 
 	public void handlePATCH(CoapExchange exchange) {
@@ -195,7 +199,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 				
 			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_LD_JSON) {				
 				accept = exchange.getRequestOptions().getAccept();
-				rdf = mng.getJSONLDResourceGraph(mng.getBaseURI() + this.getURI());		
+				rdf = mng.getJSONLDResource(mng.getBaseURI() + this.getURI());		
 				
 			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_GZIP) {				
 				accept = exchange.getRequestOptions().getAccept();
@@ -236,11 +240,11 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 			
 			String prefApplied = "";
 			for(String p : prefIncl){
-				prefApplied = prefApplied + "ldp-incl:" + p + " ";
+				prefApplied = prefApplied + "ldp-incl=" + p + " ";
 			}
 			
 			for(String p : prefOmit){
-				prefApplied = prefApplied + "ldp-omit:" + p + " ";
+				prefApplied = prefApplied + "ldp-omit=" + p + " ";
 			}
 			
 			if (prefApplied.length() > 0)
@@ -269,7 +273,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		List<String> q = exchange.getRequestOptions().getUriQuery();
 		HashMap<String, String> atts = serializeAttributes(q);
 		if(atts.containsKey(LDP.LINK_LDP_PREF_INCLUDE)){;
-			String[] prefs = atts.get(LDP.LINK_LDP_PREF_INCLUDE).replace("\"", "").split(" ");
+			String[] prefs = atts.get(LDP.LINK_LDP_PREF_INCLUDE).replace("\"", "").split(";");
 			for(String p : prefs){
 				pref.add(p.trim());
 			}
@@ -284,7 +288,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		List<String> q = exchange.getRequestOptions().getUriQuery();
 		HashMap<String, String> atts = serializeAttributes(q);
 		if(atts.containsKey(LDP.LINK_LDP_PREF_OMIT)){;
-			String[] prefs = atts.get(LDP.LINK_LDP_PREF_OMIT).replace("\"", "").split(" ");
+			String[] prefs = atts.get(LDP.LINK_LDP_PREF_OMIT).replace("\"", "").split(";");
 			for(String p : prefs){
 				pref.add(p.trim());
 			}
@@ -377,15 +381,13 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 
 				exchange.respond(ResponseCode.CHANGED);
 			} catch (CoAPLDPException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				getErrorHeader(exchange);				
 				exchange.respond(ResponseCode.FORBIDDEN, this.getBodyError());
 			} catch (RDFParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				exchange.respond(ResponseCode.BAD_REQUEST);
 			} catch (RepositoryException | IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				exchange.respond(ResponseCode.INTERNAL_SERVER_ERROR);
 			}
@@ -423,6 +425,11 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 	
 	private String getBodyError(){
 		return "Link: <" + mng.getconstrainedByURI() + ">; rel=\"" + LDP.LINK_REL_CONSTRAINEDBY + "\"";
+	}
+	
+	private void getErrorHeader(CoapExchange exchange){
+		exchange.setLocationQuery(LDP.LINK_CONSTRAINEDBY);
+		exchange.setLocationPath(mng.getconstrainedByURI());
 	}
 		
 	/**

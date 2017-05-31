@@ -36,6 +36,9 @@ import org.eclipse.rdf4j.rio.RDFParseException;
 import org.eclipse.rdf4j.rio.RDFWriter;
 import org.eclipse.rdf4j.rio.Rio;
 import org.eclipse.rdf4j.rio.UnsupportedRDFormatException;
+import org.eclipse.rdf4j.rio.helpers.JSONLDMode;
+import org.eclipse.rdf4j.rio.helpers.JSONLDSettings;
+import org.eclipse.rdf4j.rio.jsonld.JSONLDWriter;
 import org.eclipse.rdf4j.sail.memory.MemoryStore;
 
 import it.poliba.sisinflab.coap.ldp.LDP;
@@ -183,7 +186,7 @@ public class CoAPLDPResourceManager {
 		return name;
 	}
 	
-	private boolean verifyRelation(String rdf, String rel, RDFFormat format) throws RDFParseException, UnsupportedRDFormatException, IOException {
+	public boolean verifyRelation(String rdf, String rel, RDFFormat format) throws RDFParseException, UnsupportedRDFormatException, IOException {
 		ValueFactory f = repo.getValueFactory();		
 		InputStream stream = new ByteArrayInputStream(rdf.trim().getBytes(StandardCharsets.UTF_8));
 		Model m = Rio.parse(stream, BASE_URI, format);
@@ -336,6 +339,7 @@ public class CoAPLDPResourceManager {
 	 * 
 	 * @return the RDF resource graph
 	 */
+	@Deprecated
 	public String getJSONLDResourceGraph(String uri){
 		return this.getFullResourceTuple(uri, RDFFormat.JSONLD);
 	}
@@ -498,6 +502,33 @@ public class CoAPLDPResourceManager {
     		}    		
     		
     		writeStatement(writer, res);    		
+    		writer.endRDF();
+    		
+    		return out.toString();
+
+		} catch (RepositoryException e) {
+			e.printStackTrace();
+		} catch (RDFHandlerException e) {
+			e.printStackTrace();
+		}	
+    	
+    	return null;
+	}
+	
+	public String getJSONLDResource(String uri) {
+    	try {    		
+    		ByteArrayOutputStream out = new ByteArrayOutputStream();
+    		JSONLDWriter writer = new JSONLDWriter(out);  
+    		writer.set(JSONLDSettings.COMPACT_ARRAYS, true);
+    		writer.set(JSONLDSettings.JSONLD_MODE, JSONLDMode.COMPACT);
+    		
+    		writer.startRDF();
+    		
+    		for(String prefix : ns.keySet()){
+    			writer.handleNamespace(prefix, ns.get(prefix));
+    		}    		
+    		
+    		writeStatement(writer, uri);    		
     		writer.endRDF();
     		
     		return out.toString();
@@ -800,6 +831,7 @@ public class CoAPLDPResourceManager {
 	 */
 	public void setLDPContainsRelationship(String resource, String container) {
 		ValueFactory f = repo.getValueFactory();		
+		//addRDFStatement(f.createIRI(container), f.createIRI(LDP.PROP_CONTAINS), f.createLiteral(resource));
 		addRDFStatement(f.createIRI(container), f.createIRI(LDP.PROP_CONTAINS), f.createIRI(resource));
 	}
 
@@ -1117,6 +1149,10 @@ public class CoAPLDPResourceManager {
 	public void patchResource(String patch) throws RepositoryException, ParseException, InvalidPatchDocumentException{
 		// Apply a patch to the repository
 		RdfPatchUtil.applyPatch(con, patch);
+	}
+	
+	public boolean connected() {
+		return repo.isInitialized();
 	}
 	
 }
