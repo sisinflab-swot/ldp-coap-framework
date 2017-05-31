@@ -38,7 +38,6 @@ Hands-on introduction to LDP-CoAP using [basic code samples](http://sisinflab.po
 
 More details about packages and methods can be found on the official [Javadoc](http://sisinflab.poliba.it/swottools/ldp-coap/docs/javadoc/v1_0/).
 
-
 References
 -------------
 
@@ -92,6 +91,5 @@ For more information, please visit the [LDP-CoAP webpage](http://sisinflab.polib
 Contribute
 -------------
 The main purpose of this repository is to share and continue to improve the LDP-CoAP framework, making it easier to use. If you're interested in helping us any feedback you have about using LDP-CoAP would be greatly appreciated. There are only a few guidelines that we need contributors to follow reported in the CONTRIBUTING.md file.
-
 
 ---------
