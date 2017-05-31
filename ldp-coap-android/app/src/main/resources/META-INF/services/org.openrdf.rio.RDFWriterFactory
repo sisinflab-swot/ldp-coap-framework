@@ -1,3 +1,0 @@
-org.openrdf.rio.rdfjson.RDFJSONWriterFactory
-org.openrdf.rio.turtle.TurtleWriterFactory
-com.github.jsonldjava.sesame.SesameJSONLDWriterFactory

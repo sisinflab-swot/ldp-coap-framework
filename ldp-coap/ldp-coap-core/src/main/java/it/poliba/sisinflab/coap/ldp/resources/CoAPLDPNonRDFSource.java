@@ -1,5 +1,6 @@
 package it.poliba.sisinflab.coap.ldp.resources;
 
+import org.eclipse.californium.core.coap.LinkFormat;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 
 import java.nio.charset.StandardCharsets;
@@ -13,15 +14,37 @@ import org.json.JSONException;
 import it.poliba.sisinflab.coap.ldp.LDP;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPPreconditionFailedException;
 
+/**
+ * Represents an LDP Non-RDF Source
+ * <p> 
+ * @see <a href="https://www.w3.org/TR/ldp/#ldpnr">#LDP Non-RDF Source</a>
+ *
+ */
+
 public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 	
 	CoAPLDPResourceManager mng;
 	byte[] data = {};
 	int ct;
+	String path = "";
 
+	/**
+	 * Creates a new LDP Non-RDF Source.
+	 *
+	 * @param  	name 	the name of the resource
+	 * @param	mng		the reference resource manager
+	 * @param	type	the resource type
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPNonRDFSource(String name, CoAPLDPResourceManager mng, int type) {
+		this(name, "", mng, type);
+	}
+	
+	public CoAPLDPNonRDFSource(String name, String path, CoAPLDPResourceManager mng, int type) {
 		super(name);
 		
+		this.path = path;
 		this.mng = mng;
 		this.fRDFType = LDP.CLASS_NONRDFSOURCE;
 		this.ct = type;
@@ -30,6 +53,10 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		getAttributes().addContentType(type);  
 		
 		initNonRDFSource();
+		
+		CoAPLDPRDFSource meta = new CoAPLDPRDFSource("meta", this.getFullName(), mng);
+		meta.setRDFCreated();
+		this.add(meta);
 	}
 	
 	private void initNonRDFSource(){
@@ -40,30 +67,26 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		options.setAllowedMethod(LDP.Code.PUT, true);
 	}
 	
+	/**
+	 * Sets the raw data of the resource 
+	 *
+	 * @param  	data 	the resource data
+	 */
 	public void setData(byte[] data){
 		this.data = data;
 		//System.out.println(">>> CoAPLDPNonRDFSource [" + this.name + "] Size: " + data.length + " bytes");
 	}
 	
-	public void handleGET(CoapExchange exchange) {
-		if (getLDPMethod(exchange).equals(LDP.Code.GET)) {
-			handleLDPGET(exchange);
-		} else if (getLDPMethod(exchange).equals(LDP.Code.OPTIONS)) {
-			handleLDPOPTIONS(exchange);
-		} else if (getLDPMethod(exchange).equals(LDP.Code.HEAD)) {
-			handleLDPHEAD(exchange);
-		}
-	}
-	
-    public void handleLDPGET(CoapExchange exchange) {	
+    public void handleGET(CoapExchange exchange) {	
 		
 		try {
 			exchange.setETag(calculateEtag(data.toString()).getBytes());
+			exchange.setLocationQuery(LDP.LINK_REL_DESCRIBEDBY + "=" + mng.getBaseURI() + getFullName() + "/meta");
 			
 			if (ct == MediaTypeRegistry.TEXT_PLAIN)			
 				exchange.respond(ResponseCode.CONTENT, new String(data, StandardCharsets.UTF_8), ct);    
 			else
-				exchange.respond(ResponseCode.CONTENT, data, ct); 	
+				exchange.respond(ResponseCode.CONTENT, data, ct); 
 			
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
@@ -71,15 +94,32 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		}
     }
 	
+    /**
+	 * Manages LDP-CoAP DELETE requests.
+	 *
+	 * @param  exchange 	the request object
+	 * 
+	 * @see CoapExchange
+	 * 
+	 */
     public void handleDELETE(CoapExchange exchange) {    
+    	
+    	/** 
+    	 * When a contained LDPR is deleted, and the LDPC server created an associated LDP-RS, 
+    	 * the LDPC server must also delete the associated LDP-RS it created.
+    	 */
+    	
 		mng.deleteRDFSource(mng.getBaseURI() + this.getURI());
+		mng.deleteRDFSource(mng.getBaseURI() + this.getURI() + "/meta");	
+		this.getChild("meta");
 		this.delete();
 		exchange.respond(ResponseCode.DELETED);         
     }
     
-    protected void handleLDPOPTIONS(CoapExchange exchange) {
+    public void handleOPTIONS(CoapExchange exchange) {
     	try {
 			String text = options.toJSONString();
+			exchange.setLocationQuery(LDP.LINK_REL_DESCRIBEDBY + "=" + mng.getBaseURI() + getFullName() + "/meta");
 			exchange.respond(ResponseCode.CONTENT, text, MediaTypeRegistry.APPLICATION_JSON);
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -87,7 +127,7 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 		exchange.respond(ResponseCode.INTERNAL_SERVER_ERROR);
 	}
     
-    protected void handleLDPHEAD(CoapExchange exchange) {
+    public void handleHEAD(CoapExchange exchange) {
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch(); 
 
 		try {
@@ -108,16 +148,8 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 			exchange.respond(ResponseCode.PRECONDITION_FAILED);
 		}		
 	}
-    
-    public void handlePUT(CoapExchange exchange) {
-		if (getLDPMethod(exchange).equals(LDP.Code.PUT)) {
-			handleLDPPUT(exchange);
-		} else if (getLDPMethod(exchange).equals(LDP.Code.PATCH)) {
-			handleLDPOPTIONS(exchange);
-		} 
-	}
 
-	protected void handleLDPPUT(CoapExchange exchange) {
+	public void handlePUT(CoapExchange exchange) {
 		
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch();
 		if(im.isEmpty()){
@@ -146,6 +178,16 @@ public class CoAPLDPNonRDFSource extends CoAPLDPResource {
 
 		} else
 			exchange.respond(ResponseCode.BAD_OPTION);
+	}
+
+	@Override
+	public String getEtag() throws NoSuchAlgorithmException {
+		return calculateEtag(new String(data));
+	}
+	
+	@Override
+	public String getFullName(){
+		return this.path + "/" + this.name;
 	}
 
 }

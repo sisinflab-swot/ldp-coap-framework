@@ -1,8 +1,8 @@
 package it.poliba.sisinflab.rdf.vocabulary;
 
-import org.openrdf.model.URI;
-import org.openrdf.model.ValueFactory;
-import org.openrdf.model.impl.ValueFactoryImpl;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 
 /**
  * Semantic Sensor Network Ontology.
@@ -32,7 +32,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Accuracy">#Accuracy</a>
 	 */
-	public static final URI Accuracy;
+	public static final IRI Accuracy;
 
 	/**
 	 * attached system
@@ -44,7 +44,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#attachedSystem">#attachedSystem</a>
 	 */
-	public static final URI attachedSystem;
+	public static final IRI attachedSystem;
 
 	/**
 	 * Battery Lifetime
@@ -55,7 +55,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#BatteryLifetime">#BatteryLifetime</a>
 	 */
-	public static final URI BatteryLifetime;
+	public static final IRI BatteryLifetime;
 
 	/**
 	 * Condition
@@ -71,7 +71,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Condition">#Condition</a>
 	 */
-	public static final URI Condition;
+	public static final IRI Condition;
 
 	/**
 	 * deployed on platform
@@ -83,7 +83,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#deployedOnPlatform">#deployedOnPlatform</a>
 	 */
-	public static final URI deployedOnPlatform;
+	public static final IRI deployedOnPlatform;
 
 	/**
 	 * deployed system
@@ -94,7 +94,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#deployedSystem">#deployedSystem</a>
 	 */
-	public static final URI deployedSystem;
+	public static final IRI deployedSystem;
 
 	/**
 	 * Deployment
@@ -110,7 +110,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Deployment">#Deployment</a>
 	 */
-	public static final URI Deployment;
+	public static final IRI Deployment;
 
 	/**
 	 * deployment process part
@@ -122,7 +122,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#deploymentProcessPart">#deploymentProcessPart</a>
 	 */
-	public static final URI deploymentProcessPart;
+	public static final IRI deploymentProcessPart;
 
 	/**
 	 * Deployment-related Process
@@ -136,7 +136,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#DeploymentRelatedProcess">#DeploymentRelatedProcess</a>
 	 */
-	public static final URI DeploymentRelatedProcess;
+	public static final IRI DeploymentRelatedProcess;
 
 	/**
 	 * detection limit
@@ -149,7 +149,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#DetectionLimit">#DetectionLimit</a>
 	 */
-	public static final URI DetectionLimit;
+	public static final IRI DetectionLimit;
 
 	/**
 	 * detects
@@ -162,7 +162,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#detects">#detects</a>
 	 */
-	public static final URI detects;
+	public static final IRI detects;
 
 	/**
 	 * Device
@@ -175,7 +175,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Device">#Device</a>
 	 */
-	public static final URI Device;
+	public static final IRI Device;
 
 	/**
 	 * Drift
@@ -187,7 +187,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Drift">#Drift</a>
 	 */
-	public static final URI Drift;
+	public static final IRI Drift;
 
 	/**
 	 * end time
@@ -196,7 +196,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#endTime">#endTime</a>
 	 */
-	public static final URI endTime;
+	public static final IRI endTime;
 
 	/**
 	 * feature of interest
@@ -209,7 +209,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest">#featureOfInterest</a>
 	 */
-	public static final URI featureOfInterest;
+	public static final IRI featureOfInterest;
 
 	/**
 	 * Feature of Interest
@@ -221,7 +221,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#FeatureOfInterest">#FeatureOfInterest</a>
 	 */
-	public static final URI FeatureOfInterest;
+	public static final IRI FeatureOfInterest;
 
 	/**
 	 * for property
@@ -236,7 +236,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#forProperty">#forProperty</a>
 	 */
-	public static final URI forProperty;
+	public static final IRI forProperty;
 
 	/**
 	 * Frequency
@@ -247,7 +247,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Frequency">#Frequency</a>
 	 */
-	public static final URI Frequency;
+	public static final IRI Frequency;
 
 	/**
 	 * has deployment
@@ -259,7 +259,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#hasDeployment">#hasDeployment</a>
 	 */
-	public static final URI hasDeployment;
+	public static final IRI hasDeployment;
 
 	/**
 	 * has input
@@ -268,7 +268,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#hasInput">#hasInput</a>
 	 */
-	public static final URI hasInput;
+	public static final IRI hasInput;
 
 	/**
 	 * has measurement  capability
@@ -280,7 +280,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#hasMeasurementCapability">#hasMeasurementCapability</a>
 	 */
-	public static final URI hasMeasurementCapability;
+	public static final IRI hasMeasurementCapability;
 
 	/**
 	 * has measurement property
@@ -292,7 +292,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#hasMeasurementProperty">#hasMeasurementProperty</a>
 	 */
-	public static final URI hasMeasurementProperty;
+	public static final IRI hasMeasurementProperty;
 
 	/**
 	 * has operating property
@@ -304,7 +304,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#hasOperatingProperty">#hasOperatingProperty</a>
 	 */
-	public static final URI hasOperatingProperty;
+	public static final IRI hasOperatingProperty;
 
 	/**
 	 * has operating range
@@ -316,7 +316,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#hasOperatingRange">#hasOperatingRange</a>
 	 */
-	public static final URI hasOperatingRange;
+	public static final IRI hasOperatingRange;
 
 	/**
 	 * has output
@@ -325,7 +325,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#hasOutput">#hasOutput</a>
 	 */
-	public static final URI hasOutput;
+	public static final IRI hasOutput;
 
 	/**
 	 * has property
@@ -336,7 +336,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#hasProperty">#hasProperty</a>
 	 */
-	public static final URI hasProperty;
+	public static final IRI hasProperty;
 
 	/**
 	 * has subsystem
@@ -347,7 +347,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#hasSubSystem">#hasSubSystem</a>
 	 */
-	public static final URI hasSubSystem;
+	public static final IRI hasSubSystem;
 
 	/**
 	 * has survival property
@@ -360,7 +360,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#hasSurvivalProperty">#hasSurvivalProperty</a>
 	 */
-	public static final URI hasSurvivalProperty;
+	public static final IRI hasSurvivalProperty;
 
 	/**
 	 * has survival range
@@ -371,7 +371,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#hasSurvivalRange">#hasSurvivalRange</a>
 	 */
-	public static final URI hasSurvivalRange;
+	public static final IRI hasSurvivalRange;
 
 	/**
 	 * has value
@@ -380,7 +380,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#hasValue">#hasValue</a>
 	 */
-	public static final URI hasValue;
+	public static final IRI hasValue;
 
 	/**
 	 * implemented by
@@ -394,7 +394,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#implementedBy">#implementedBy</a>
 	 */
-	public static final URI implementedBy;
+	public static final IRI implementedBy;
 
 	/**
 	 * implements
@@ -408,7 +408,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#implements">#implements</a>
 	 */
-	public static final URI _implements;
+	public static final IRI _implements;
 
 	/**
 	 * in condition
@@ -422,7 +422,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#inCondition">#inCondition</a>
 	 */
-	public static final URI inCondition;
+	public static final IRI inCondition;
 
 	/**
 	 * in deployment
@@ -436,7 +436,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#inDeployment">#inDeployment</a>
 	 */
-	public static final URI inDeployment;
+	public static final IRI inDeployment;
 
 	/**
 	 * Input
@@ -447,7 +447,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Input">#Input</a>
 	 */
-	public static final URI Input;
+	public static final IRI Input;
 
 	/**
 	 * is produced by
@@ -459,7 +459,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#isProducedBy">#isProducedBy</a>
 	 */
-	public static final URI isProducedBy;
+	public static final IRI isProducedBy;
 
 	/**
 	 * is property of
@@ -471,7 +471,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#isPropertyOf">#isPropertyOf</a>
 	 */
-	public static final URI isPropertyOf;
+	public static final IRI isPropertyOf;
 
 	/**
 	 * isProxyFor
@@ -486,7 +486,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#isProxyFor">#isProxyFor</a>
 	 */
-	public static final URI isProxyFor;
+	public static final IRI isProxyFor;
 
 	/**
 	 * Latency
@@ -498,7 +498,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Latency">#Latency</a>
 	 */
-	public static final URI Latency;
+	public static final IRI Latency;
 
 	/**
 	 * made observation
@@ -509,7 +509,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#madeObservation">#madeObservation</a>
 	 */
-	public static final URI madeObservation;
+	public static final IRI madeObservation;
 
 	/**
 	 * Maintenance Schedule
@@ -521,7 +521,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#MaintenanceSchedule">#MaintenanceSchedule</a>
 	 */
-	public static final URI MaintenanceSchedule;
+	public static final IRI MaintenanceSchedule;
 
 	/**
 	 * Measurement Capability
@@ -538,7 +538,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#MeasurementCapability">#MeasurementCapability</a>
 	 */
-	public static final URI MeasurementCapability;
+	public static final IRI MeasurementCapability;
 
 	/**
 	 * Measurement  Property
@@ -550,7 +550,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#MeasurementProperty">#MeasurementProperty</a>
 	 */
-	public static final URI MeasurementProperty;
+	public static final IRI MeasurementProperty;
 
 	/**
 	 * Measurement  Range
@@ -565,7 +565,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#MeasurementRange">#MeasurementRange</a>
 	 */
-	public static final URI MeasurementRange;
+	public static final IRI MeasurementRange;
 
 	/**
 	 * Observation
@@ -580,7 +580,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Observation">#Observation</a>
 	 */
-	public static final URI Observation;
+	public static final IRI Observation;
 
 	/**
 	 * observation result
@@ -594,7 +594,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#observationResult">#observationResult</a>
 	 */
-	public static final URI observationResult;
+	public static final IRI observationResult;
 
 	/**
 	 * observation result time
@@ -606,7 +606,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#observationResultTime">#observationResultTime</a>
 	 */
-	public static final URI observationResultTime;
+	public static final IRI observationResultTime;
 
 	/**
 	 * observation sampling time
@@ -620,7 +620,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#observationSamplingTime">#observationSamplingTime</a>
 	 */
-	public static final URI observationSamplingTime;
+	public static final IRI observationSamplingTime;
 
 	/**
 	 * Observation Value
@@ -633,14 +633,14 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#ObservationValue">#ObservationValue</a>
 	 */
-	public static final URI ObservationValue;
+	public static final IRI ObservationValue;
 
 	/**
 	 * {@code http://purl.oclc.org/NET/ssnx/ssn#observedBy}.
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#observedBy">#observedBy</a>
 	 */
-	public static final URI observedBy;
+	public static final IRI observedBy;
 
 	/**
 	 * observed property
@@ -653,7 +653,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#observedProperty">#observedProperty</a>
 	 */
-	public static final URI observedProperty;
+	public static final IRI observedProperty;
 
 	/**
 	 * observes
@@ -670,7 +670,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#observes">#observes</a>
 	 */
-	public static final URI observes;
+	public static final IRI observes;
 
 	/**
 	 * of feature
@@ -685,7 +685,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#ofFeature">#ofFeature</a>
 	 */
-	public static final URI ofFeature;
+	public static final IRI ofFeature;
 
 	/**
 	 * on platform
@@ -701,7 +701,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#onPlatform">#onPlatform</a>
 	 */
-	public static final URI onPlatform;
+	public static final IRI onPlatform;
 
 	/**
 	 * Operating Power Range
@@ -712,7 +712,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#OperatingPowerRange">#OperatingPowerRange</a>
 	 */
-	public static final URI OperatingPowerRange;
+	public static final IRI OperatingPowerRange;
 
 	/**
 	 * Operating Property
@@ -726,7 +726,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#OperatingProperty">#OperatingProperty</a>
 	 */
-	public static final URI OperatingProperty;
+	public static final IRI OperatingProperty;
 
 	/**
 	 * Operating Range
@@ -743,7 +743,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#OperatingRange">#OperatingRange</a>
 	 */
-	public static final URI OperatingRange;
+	public static final IRI OperatingRange;
 
 	/**
 	 * Output
@@ -754,7 +754,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Output">#Output</a>
 	 */
-	public static final URI Output;
+	public static final IRI Output;
 
 	/**
 	 * Platform
@@ -768,7 +768,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Platform">#Platform</a>
 	 */
-	public static final URI Platform;
+	public static final IRI Platform;
 
 	/**
 	 * Precision
@@ -781,7 +781,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Precision">#Precision</a>
 	 */
-	public static final URI Precision;
+	public static final IRI Precision;
 
 	/**
 	 * Process
@@ -794,7 +794,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Process">#Process</a>
 	 */
-	public static final URI Process;
+	public static final IRI Process;
 
 	/**
 	 * Property
@@ -808,7 +808,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Property">#Property</a>
 	 */
-	public static final URI Property;
+	public static final IRI Property;
 
 	/**
 	 * quality of observation
@@ -821,7 +821,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#qualityOfObservation">#qualityOfObservation</a>
 	 */
-	public static final URI qualityOfObservation;
+	public static final IRI qualityOfObservation;
 
 	/**
 	 * Resolution
@@ -833,7 +833,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Resolution">#Resolution</a>
 	 */
-	public static final URI Resolution;
+	public static final IRI Resolution;
 
 	/**
 	 * Response time
@@ -846,7 +846,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#ResponseTime">#ResponseTime</a>
 	 */
-	public static final URI ResponseTime;
+	public static final IRI ResponseTime;
 
 	/**
 	 * Selectivity
@@ -860,7 +860,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Selectivity">#Selectivity</a>
 	 */
-	public static final URI Selectivity;
+	public static final IRI Selectivity;
 
 	/**
 	 * Sensing
@@ -872,7 +872,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Sensing">#Sensing</a>
 	 */
-	public static final URI Sensing;
+	public static final IRI Sensing;
 
 	/**
 	 * Sensing Device
@@ -883,7 +883,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#SensingDevice">#SensingDevice</a>
 	 */
-	public static final URI SensingDevice;
+	public static final IRI SensingDevice;
 
 	/**
 	 * sensing method used
@@ -897,7 +897,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#sensingMethodUsed">#sensingMethodUsed</a>
 	 */
-	public static final URI sensingMethodUsed;
+	public static final IRI sensingMethodUsed;
 
 	/**
 	 * Sensitivity
@@ -909,7 +909,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Sensitivity">#Sensitivity</a>
 	 */
-	public static final URI Sensitivity;
+	public static final IRI Sensitivity;
 
 	/**
 	 * Sensor
@@ -924,7 +924,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Sensor">#Sensor</a>
 	 */
-	public static final URI Sensor;
+	public static final IRI Sensor;
 
 	/**
 	 * Sensor Data Sheet
@@ -943,7 +943,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#SensorDataSheet">#SensorDataSheet</a>
 	 */
-	public static final URI SensorDataSheet;
+	public static final IRI SensorDataSheet;
 
 	/**
 	 * Sensor Input
@@ -956,7 +956,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#SensorInput">#SensorInput</a>
 	 */
-	public static final URI SensorInput;
+	public static final IRI SensorInput;
 
 	/**
 	 * Sensor Output
@@ -968,7 +968,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#SensorOutput">#SensorOutput</a>
 	 */
-	public static final URI SensorOutput;
+	public static final IRI SensorOutput;
 
 	/**
 	 * start time
@@ -977,7 +977,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#startTime">#startTime</a>
 	 */
-	public static final URI startTime;
+	public static final IRI startTime;
 
 	/**
 	 * Stimulus
@@ -990,7 +990,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#Stimulus">#Stimulus</a>
 	 */
-	public static final URI Stimulus;
+	public static final IRI Stimulus;
 
 	/**
 	 * Survival Property
@@ -1005,7 +1005,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#SurvivalProperty">#SurvivalProperty</a>
 	 */
-	public static final URI SurvivalProperty;
+	public static final IRI SurvivalProperty;
 
 	/**
 	 * Survival Range
@@ -1019,7 +1019,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#SurvivalRange">#SurvivalRange</a>
 	 */
-	public static final URI SurvivalRange;
+	public static final IRI SurvivalRange;
 
 	/**
 	 * System
@@ -1032,7 +1032,7 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#System">#System</a>
 	 */
-	public static final URI System;
+	public static final IRI System;
 
 	/**
 	 * System Lifetime
@@ -1044,91 +1044,91 @@ public class SSN_XG {
 	 *
 	 * @see <a href="http://purl.oclc.org/NET/ssnx/ssn#SystemLifetime">#SystemLifetime</a>
 	 */
-	public static final URI SystemLifetime;
+	public static final IRI SystemLifetime;
 
 	static {
-		ValueFactory factory = ValueFactoryImpl.getInstance();
+		ValueFactory factory = SimpleValueFactory.getInstance();
 
-		Accuracy = factory.createURI(SSN_XG.NAMESPACE, "#Accuracy");
-		attachedSystem = factory.createURI(SSN_XG.NAMESPACE, "#attachedSystem");
-		BatteryLifetime = factory.createURI(SSN_XG.NAMESPACE, "#BatteryLifetime");
-		Condition = factory.createURI(SSN_XG.NAMESPACE, "#Condition");
-		deployedOnPlatform = factory.createURI(SSN_XG.NAMESPACE, "#deployedOnPlatform");
-		deployedSystem = factory.createURI(SSN_XG.NAMESPACE, "#deployedSystem");
-		Deployment = factory.createURI(SSN_XG.NAMESPACE, "#Deployment");
-		deploymentProcessPart = factory.createURI(SSN_XG.NAMESPACE, "#deploymentProcessPart");
-		DeploymentRelatedProcess = factory.createURI(SSN_XG.NAMESPACE, "#DeploymentRelatedProcess");
-		DetectionLimit = factory.createURI(SSN_XG.NAMESPACE, "#DetectionLimit");
-		detects = factory.createURI(SSN_XG.NAMESPACE, "#detects");
-		Device = factory.createURI(SSN_XG.NAMESPACE, "#Device");
-		Drift = factory.createURI(SSN_XG.NAMESPACE, "#Drift");
-		endTime = factory.createURI(SSN_XG.NAMESPACE, "#endTime");
-		featureOfInterest = factory.createURI(SSN_XG.NAMESPACE, "#featureOfInterest");
-		FeatureOfInterest = factory.createURI(SSN_XG.NAMESPACE, "#FeatureOfInterest");
-		forProperty = factory.createURI(SSN_XG.NAMESPACE, "#forProperty");
-		Frequency = factory.createURI(SSN_XG.NAMESPACE, "#Frequency");
-		hasDeployment = factory.createURI(SSN_XG.NAMESPACE, "#hasDeployment");
-		hasInput = factory.createURI(SSN_XG.NAMESPACE, "#hasInput");
-		hasMeasurementCapability = factory.createURI(SSN_XG.NAMESPACE, "#hasMeasurementCapability");
-		hasMeasurementProperty = factory.createURI(SSN_XG.NAMESPACE, "#hasMeasurementProperty");
-		hasOperatingProperty = factory.createURI(SSN_XG.NAMESPACE, "#hasOperatingProperty");
-		hasOperatingRange = factory.createURI(SSN_XG.NAMESPACE, "#hasOperatingRange");
-		hasOutput = factory.createURI(SSN_XG.NAMESPACE, "#hasOutput");
-		hasProperty = factory.createURI(SSN_XG.NAMESPACE, "#hasProperty");
-		hasSubSystem = factory.createURI(SSN_XG.NAMESPACE, "#hasSubSystem");
-		hasSurvivalProperty = factory.createURI(SSN_XG.NAMESPACE, "#hasSurvivalProperty");
-		hasSurvivalRange = factory.createURI(SSN_XG.NAMESPACE, "#hasSurvivalRange");
-		hasValue = factory.createURI(SSN_XG.NAMESPACE, "#hasValue");
-		implementedBy = factory.createURI(SSN_XG.NAMESPACE, "#implementedBy");
-		_implements = factory.createURI(SSN_XG.NAMESPACE, "#implements");
-		inCondition = factory.createURI(SSN_XG.NAMESPACE, "#inCondition");
-		inDeployment = factory.createURI(SSN_XG.NAMESPACE, "#inDeployment");
-		Input = factory.createURI(SSN_XG.NAMESPACE, "#Input");
-		isProducedBy = factory.createURI(SSN_XG.NAMESPACE, "#isProducedBy");
-		isPropertyOf = factory.createURI(SSN_XG.NAMESPACE, "#isPropertyOf");
-		isProxyFor = factory.createURI(SSN_XG.NAMESPACE, "#isProxyFor");
-		Latency = factory.createURI(SSN_XG.NAMESPACE, "#Latency");
-		madeObservation = factory.createURI(SSN_XG.NAMESPACE, "#madeObservation");
-		MaintenanceSchedule = factory.createURI(SSN_XG.NAMESPACE, "#MaintenanceSchedule");
-		MeasurementCapability = factory.createURI(SSN_XG.NAMESPACE, "#MeasurementCapability");
-		MeasurementProperty = factory.createURI(SSN_XG.NAMESPACE, "#MeasurementProperty");
-		MeasurementRange = factory.createURI(SSN_XG.NAMESPACE, "#MeasurementRange");
-		Observation = factory.createURI(SSN_XG.NAMESPACE, "#Observation");
-		observationResult = factory.createURI(SSN_XG.NAMESPACE, "#observationResult");
-		observationResultTime = factory.createURI(SSN_XG.NAMESPACE, "#observationResultTime");
-		observationSamplingTime = factory.createURI(SSN_XG.NAMESPACE, "#observationSamplingTime");
-		ObservationValue = factory.createURI(SSN_XG.NAMESPACE, "#ObservationValue");
-		observedBy = factory.createURI(SSN_XG.NAMESPACE, "#observedBy");
-		observedProperty = factory.createURI(SSN_XG.NAMESPACE, "#observedProperty");
-		observes = factory.createURI(SSN_XG.NAMESPACE, "#observes");
-		ofFeature = factory.createURI(SSN_XG.NAMESPACE, "#ofFeature");
-		onPlatform = factory.createURI(SSN_XG.NAMESPACE, "#onPlatform");
-		OperatingPowerRange = factory.createURI(SSN_XG.NAMESPACE, "#OperatingPowerRange");
-		OperatingProperty = factory.createURI(SSN_XG.NAMESPACE, "#OperatingProperty");
-		OperatingRange = factory.createURI(SSN_XG.NAMESPACE, "#OperatingRange");
-		Output = factory.createURI(SSN_XG.NAMESPACE, "#Output");
-		Platform = factory.createURI(SSN_XG.NAMESPACE, "#Platform");
-		Precision = factory.createURI(SSN_XG.NAMESPACE, "#Precision");
-		Process = factory.createURI(SSN_XG.NAMESPACE, "#Process");
-		Property = factory.createURI(SSN_XG.NAMESPACE, "#Property");
-		qualityOfObservation = factory.createURI(SSN_XG.NAMESPACE, "#qualityOfObservation");
-		Resolution = factory.createURI(SSN_XG.NAMESPACE, "#Resolution");
-		ResponseTime = factory.createURI(SSN_XG.NAMESPACE, "#ResponseTime");
-		Selectivity = factory.createURI(SSN_XG.NAMESPACE, "#Selectivity");
-		Sensing = factory.createURI(SSN_XG.NAMESPACE, "#Sensing");
-		SensingDevice = factory.createURI(SSN_XG.NAMESPACE, "#SensingDevice");
-		sensingMethodUsed = factory.createURI(SSN_XG.NAMESPACE, "#sensingMethodUsed");
-		Sensitivity = factory.createURI(SSN_XG.NAMESPACE, "#Sensitivity");
-		Sensor = factory.createURI(SSN_XG.NAMESPACE, "#Sensor");
-		SensorDataSheet = factory.createURI(SSN_XG.NAMESPACE, "#SensorDataSheet");
-		SensorInput = factory.createURI(SSN_XG.NAMESPACE, "#SensorInput");
-		SensorOutput = factory.createURI(SSN_XG.NAMESPACE, "#SensorOutput");
-		startTime = factory.createURI(SSN_XG.NAMESPACE, "#startTime");
-		Stimulus = factory.createURI(SSN_XG.NAMESPACE, "#Stimulus");
-		SurvivalProperty = factory.createURI(SSN_XG.NAMESPACE, "#SurvivalProperty");
-		SurvivalRange = factory.createURI(SSN_XG.NAMESPACE, "#SurvivalRange");
-		System = factory.createURI(SSN_XG.NAMESPACE, "#System");
-		SystemLifetime = factory.createURI(SSN_XG.NAMESPACE, "#SystemLifetime");
+		Accuracy = factory.createIRI(SSN_XG.NAMESPACE, "#Accuracy");
+		attachedSystem = factory.createIRI(SSN_XG.NAMESPACE, "#attachedSystem");
+		BatteryLifetime = factory.createIRI(SSN_XG.NAMESPACE, "#BatteryLifetime");
+		Condition = factory.createIRI(SSN_XG.NAMESPACE, "#Condition");
+		deployedOnPlatform = factory.createIRI(SSN_XG.NAMESPACE, "#deployedOnPlatform");
+		deployedSystem = factory.createIRI(SSN_XG.NAMESPACE, "#deployedSystem");
+		Deployment = factory.createIRI(SSN_XG.NAMESPACE, "#Deployment");
+		deploymentProcessPart = factory.createIRI(SSN_XG.NAMESPACE, "#deploymentProcessPart");
+		DeploymentRelatedProcess = factory.createIRI(SSN_XG.NAMESPACE, "#DeploymentRelatedProcess");
+		DetectionLimit = factory.createIRI(SSN_XG.NAMESPACE, "#DetectionLimit");
+		detects = factory.createIRI(SSN_XG.NAMESPACE, "#detects");
+		Device = factory.createIRI(SSN_XG.NAMESPACE, "#Device");
+		Drift = factory.createIRI(SSN_XG.NAMESPACE, "#Drift");
+		endTime = factory.createIRI(SSN_XG.NAMESPACE, "#endTime");
+		featureOfInterest = factory.createIRI(SSN_XG.NAMESPACE, "#featureOfInterest");
+		FeatureOfInterest = factory.createIRI(SSN_XG.NAMESPACE, "#FeatureOfInterest");
+		forProperty = factory.createIRI(SSN_XG.NAMESPACE, "#forProperty");
+		Frequency = factory.createIRI(SSN_XG.NAMESPACE, "#Frequency");
+		hasDeployment = factory.createIRI(SSN_XG.NAMESPACE, "#hasDeployment");
+		hasInput = factory.createIRI(SSN_XG.NAMESPACE, "#hasInput");
+		hasMeasurementCapability = factory.createIRI(SSN_XG.NAMESPACE, "#hasMeasurementCapability");
+		hasMeasurementProperty = factory.createIRI(SSN_XG.NAMESPACE, "#hasMeasurementProperty");
+		hasOperatingProperty = factory.createIRI(SSN_XG.NAMESPACE, "#hasOperatingProperty");
+		hasOperatingRange = factory.createIRI(SSN_XG.NAMESPACE, "#hasOperatingRange");
+		hasOutput = factory.createIRI(SSN_XG.NAMESPACE, "#hasOutput");
+		hasProperty = factory.createIRI(SSN_XG.NAMESPACE, "#hasProperty");
+		hasSubSystem = factory.createIRI(SSN_XG.NAMESPACE, "#hasSubSystem");
+		hasSurvivalProperty = factory.createIRI(SSN_XG.NAMESPACE, "#hasSurvivalProperty");
+		hasSurvivalRange = factory.createIRI(SSN_XG.NAMESPACE, "#hasSurvivalRange");
+		hasValue = factory.createIRI(SSN_XG.NAMESPACE, "#hasValue");
+		implementedBy = factory.createIRI(SSN_XG.NAMESPACE, "#implementedBy");
+		_implements = factory.createIRI(SSN_XG.NAMESPACE, "#implements");
+		inCondition = factory.createIRI(SSN_XG.NAMESPACE, "#inCondition");
+		inDeployment = factory.createIRI(SSN_XG.NAMESPACE, "#inDeployment");
+		Input = factory.createIRI(SSN_XG.NAMESPACE, "#Input");
+		isProducedBy = factory.createIRI(SSN_XG.NAMESPACE, "#isProducedBy");
+		isPropertyOf = factory.createIRI(SSN_XG.NAMESPACE, "#isPropertyOf");
+		isProxyFor = factory.createIRI(SSN_XG.NAMESPACE, "#isProxyFor");
+		Latency = factory.createIRI(SSN_XG.NAMESPACE, "#Latency");
+		madeObservation = factory.createIRI(SSN_XG.NAMESPACE, "#madeObservation");
+		MaintenanceSchedule = factory.createIRI(SSN_XG.NAMESPACE, "#MaintenanceSchedule");
+		MeasurementCapability = factory.createIRI(SSN_XG.NAMESPACE, "#MeasurementCapability");
+		MeasurementProperty = factory.createIRI(SSN_XG.NAMESPACE, "#MeasurementProperty");
+		MeasurementRange = factory.createIRI(SSN_XG.NAMESPACE, "#MeasurementRange");
+		Observation = factory.createIRI(SSN_XG.NAMESPACE, "#Observation");
+		observationResult = factory.createIRI(SSN_XG.NAMESPACE, "#observationResult");
+		observationResultTime = factory.createIRI(SSN_XG.NAMESPACE, "#observationResultTime");
+		observationSamplingTime = factory.createIRI(SSN_XG.NAMESPACE, "#observationSamplingTime");
+		ObservationValue = factory.createIRI(SSN_XG.NAMESPACE, "#ObservationValue");
+		observedBy = factory.createIRI(SSN_XG.NAMESPACE, "#observedBy");
+		observedProperty = factory.createIRI(SSN_XG.NAMESPACE, "#observedProperty");
+		observes = factory.createIRI(SSN_XG.NAMESPACE, "#observes");
+		ofFeature = factory.createIRI(SSN_XG.NAMESPACE, "#ofFeature");
+		onPlatform = factory.createIRI(SSN_XG.NAMESPACE, "#onPlatform");
+		OperatingPowerRange = factory.createIRI(SSN_XG.NAMESPACE, "#OperatingPowerRange");
+		OperatingProperty = factory.createIRI(SSN_XG.NAMESPACE, "#OperatingProperty");
+		OperatingRange = factory.createIRI(SSN_XG.NAMESPACE, "#OperatingRange");
+		Output = factory.createIRI(SSN_XG.NAMESPACE, "#Output");
+		Platform = factory.createIRI(SSN_XG.NAMESPACE, "#Platform");
+		Precision = factory.createIRI(SSN_XG.NAMESPACE, "#Precision");
+		Process = factory.createIRI(SSN_XG.NAMESPACE, "#Process");
+		Property = factory.createIRI(SSN_XG.NAMESPACE, "#Property");
+		qualityOfObservation = factory.createIRI(SSN_XG.NAMESPACE, "#qualityOfObservation");
+		Resolution = factory.createIRI(SSN_XG.NAMESPACE, "#Resolution");
+		ResponseTime = factory.createIRI(SSN_XG.NAMESPACE, "#ResponseTime");
+		Selectivity = factory.createIRI(SSN_XG.NAMESPACE, "#Selectivity");
+		Sensing = factory.createIRI(SSN_XG.NAMESPACE, "#Sensing");
+		SensingDevice = factory.createIRI(SSN_XG.NAMESPACE, "#SensingDevice");
+		sensingMethodUsed = factory.createIRI(SSN_XG.NAMESPACE, "#sensingMethodUsed");
+		Sensitivity = factory.createIRI(SSN_XG.NAMESPACE, "#Sensitivity");
+		Sensor = factory.createIRI(SSN_XG.NAMESPACE, "#Sensor");
+		SensorDataSheet = factory.createIRI(SSN_XG.NAMESPACE, "#SensorDataSheet");
+		SensorInput = factory.createIRI(SSN_XG.NAMESPACE, "#SensorInput");
+		SensorOutput = factory.createIRI(SSN_XG.NAMESPACE, "#SensorOutput");
+		startTime = factory.createIRI(SSN_XG.NAMESPACE, "#startTime");
+		Stimulus = factory.createIRI(SSN_XG.NAMESPACE, "#Stimulus");
+		SurvivalProperty = factory.createIRI(SSN_XG.NAMESPACE, "#SurvivalProperty");
+		SurvivalRange = factory.createIRI(SSN_XG.NAMESPACE, "#SurvivalRange");
+		System = factory.createIRI(SSN_XG.NAMESPACE, "#System");
+		SystemLifetime = factory.createIRI(SSN_XG.NAMESPACE, "#SystemLifetime");
 	}
 
 	private SSN_XG() {

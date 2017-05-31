@@ -14,21 +14,40 @@ import org.eclipse.californium.core.coap.CoAP.ResponseCode;
 import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.eclipse.californium.core.server.resources.Resource;
 import org.json.JSONException;
-import org.openrdf.repository.RepositoryException;
-import org.openrdf.rio.RDFFormat;
-import org.openrdf.rio.RDFParseException;
+import org.eclipse.rdf4j.repository.RepositoryException;
+import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFParseException;
 
 import it.poliba.sisinflab.coap.ldp.LDP;
-import it.poliba.sisinflab.coap.ldp.LDP.Code;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPContentFormatException;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPException;
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPPreconditionFailedException;
+import it.poliba.sisinflab.codec.BSON;
+import it.poliba.sisinflab.codec.BZIP2;
+import it.poliba.sisinflab.codec.GZIP;
+import it.poliba.sisinflab.codec.MsgPack;
+import it.poliba.sisinflab.codec.UBJSON;
+
+/**
+ * Represents an LDP RDF Source
+ * <p> 
+ * @see <a href="https://www.w3.org/TR/ldp/#ldprs">#LDP RDF Source</a>
+ *
+ */
 
 public class CoAPLDPRDFSource extends CoAPLDPResource {
 
 	protected CoAPLDPResourceManager mng = null;	
 	protected LDPDataHandler dh = null;
-
+	
+	/**
+	 * Creates a new LDP RDF Source.
+	 *
+	 * @param  	name 	the name of the resource
+	 * @param	mng		the reference resource manager
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPRDFSource(String name, CoAPLDPResourceManager mng) {
 		super(name);
 
@@ -40,6 +59,15 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		initRDFSource();
 	}
 
+	/**
+	 * Creates a new LDP RDF Source (as subresource).
+	 *
+	 * @param  	name 	the name of the resource
+	 * @param	path	the path of the root resource
+	 * @param	mng		the reference resource manager
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPRDFSource(String name, String path, CoAPLDPResourceManager mng) {
 		super(name);
 
@@ -51,6 +79,15 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		initRDFSource();
 	}
 
+	/**
+	 * Creates a new LDP RDF Source with a specific type (in addition to the basic RDFSource type).
+	 *
+	 * @param  	name 	the name of the resource
+	 * @param	mng		the reference resource manager
+	 * @param	type	the additional type for the resource
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPRDFSource(String name, CoAPLDPResourceManager mng, String type) {
 		super(name);
 
@@ -62,6 +99,16 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		initRDFSource();
 	}
 
+	/**
+	 * Creates a new LDP RDF Source (as subresource) with a specific type (in addition to the basic RDFSource type).
+	 *
+	 * @param  	name 	the name of the resource
+	 * @param	path	the path of the root resource
+	 * @param	mng		the reference resource manager
+	 * @param	type	the additional type for the resource
+	 * 
+	 * @see CoAPLDPResourceManager
+	 */
 	public CoAPLDPRDFSource(String name, String path, CoAPLDPResourceManager mng, String type) {
 		super(name);
 
@@ -83,6 +130,12 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 			getAttributes().addResourceType(fRDFType);	
 		}			
 		
+		initAllowedMethods();
+		
+		getAttributes().addContentType(MediaTypeRegistry.TEXT_TURTLE);
+	}
+	
+	protected void initAllowedMethods() {
 		options.setAllowedMethod(LDP.Code.GET, true);
 		options.setAllowedMethod(LDP.Code.PUT, true);
 		options.setAllowedMethod(LDP.Code.DELETE, true);
@@ -91,35 +144,9 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		
 		options.setAllowedMethod(LDP.Code.PATCH, true);
 		options.addAcceptPatchType(MediaTypeRegistry.APPLICATION_RDF_PATCH);
-		
-		getAttributes().addContentType(MediaTypeRegistry.TEXT_TURTLE);
 	}
 
-	public void handleGET(CoapExchange exchange) {
-		
-		Code m = getLDPMethod(exchange);
-		
-		if (m.equals(LDP.Code.GET)) {
-			handleLDPGET(exchange);
-		} else if (m.equals(LDP.Code.OPTIONS)) {
-			handleLDPOPTIONS(exchange);
-		} else if (m.equals(LDP.Code.HEAD)) {
-			handleLDPHEAD(exchange);
-		}
-	}
-	
-	public void handlePUT(CoapExchange exchange) {
-		
-		Code m = getLDPMethod(exchange);
-		
-		if (m.equals(LDP.Code.PUT)) {
-			handleLDPPUT(exchange);
-		} else if (m.equals(LDP.Code.PATCH)) {
-			handleLDPPATCH(exchange);
-		}
-	}
-
-	protected void handleLDPPATCH(CoapExchange exchange) {
+	public void handlePATCH(CoapExchange exchange) {
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch();
 		int ct = exchange.getRequestOptions().getContentFormat();
 		
@@ -128,9 +155,8 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		}		
 		else if (options.isAcceptedPatch(ct)) {
 			try {
-				String data = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI());
-				String etag = calculateEtag(data);
-				String ifm = new String(im.get(0), StandardCharsets.UTF_8);
+				String etag = getEtag();
+				String ifm = new String(im.get(im.size()-1), StandardCharsets.UTF_8);
 				if (!etag.equals(ifm))
 					throw new CoAPLDPPreconditionFailedException("Precondition Failed: If-Match");
 
@@ -151,12 +177,10 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 				exchange.respond(ResponseCode.BAD_REQUEST);
 			} 
 		} 
-		else exchange.respond(ResponseCode.BAD_OPTION);
-			
-		
+		else exchange.respond(ResponseCode.BAD_OPTION);		
 	}
 
-	protected void handleLDPGET(CoapExchange exchange) {
+	public void handleGET(CoapExchange exchange) {
 
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch(); 
 		
@@ -173,30 +197,54 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 				accept = MediaTypeRegistry.TEXT_TURTLE;
 				rdf = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI(), prefIncl, prefOmit);
 				
-			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_LD_JSON) {
+			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_LD_JSON) {				
+				accept = exchange.getRequestOptions().getAccept();
+				rdf = mng.getJSONLDResource(mng.getBaseURI() + this.getURI());		
 				
-				accept = MediaTypeRegistry.APPLICATION_LD_JSON;
-				rdf = mng.getJSONLDResourceGraph(mng.getBaseURI() + this.getURI());				
+			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_GZIP) {				
+				accept = exchange.getRequestOptions().getAccept();
+				String tmp = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI(), prefIncl, prefOmit);	
+				rdf = (new GZIP()).encodeAsString(tmp);		
+				
+			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_BZIP2) {				
+				accept = exchange.getRequestOptions().getAccept();
+				String tmp = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI(), prefIncl, prefOmit);	
+				rdf = (new BZIP2()).encodeAsString(tmp);
+				
+			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_BSON) {				
+				accept = exchange.getRequestOptions().getAccept();
+				String tmp = mng.getJSONLDResourceGraph(mng.getBaseURI() + this.getURI());
+				rdf = (new BSON()).encodeAsString(tmp);
+				
+			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_UBJSON) {				
+				accept = exchange.getRequestOptions().getAccept();
+				String tmp = mng.getJSONLDResourceGraph(mng.getBaseURI() + this.getURI());
+				rdf = (new UBJSON()).encodeAsString(tmp);
+				
+			} else if (exchange.getRequestOptions().getAccept() == MediaTypeRegistry.APPLICATION_MSGPACK) {				
+				accept = exchange.getRequestOptions().getAccept();
+				String tmp = mng.getJSONLDResourceGraph(mng.getBaseURI() + this.getURI());
+				rdf = (new MsgPack()).encodeAsString(tmp);
 				
 			} else 
 				throw new CoAPLDPContentFormatException("Unsupported Type!");
 			
-			String etag = calculateEtag(rdf);
+			String etag = getEtag(rdf);
 			if (!im.isEmpty()) {
 				String ifm = new String(im.get(0), StandardCharsets.UTF_8);
 				if (!etag.equals(ifm))
 					throw new CoAPLDPPreconditionFailedException("Precondition Failed: If-Match");
 			}
-
+			
 			exchange.setETag(etag.getBytes());
 			
 			String prefApplied = "";
 			for(String p : prefIncl){
-				prefApplied = prefApplied + "ldp-incl:" + p + " ";
+				prefApplied = prefApplied + "ldp-incl=" + p + " ";
 			}
 			
 			for(String p : prefOmit){
-				prefApplied = prefApplied + "ldp-omit:" + p + " ";
+				prefApplied = prefApplied + "ldp-omit=" + p + " ";
 			}
 			
 			if (prefApplied.length() > 0)
@@ -213,6 +261,9 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		} catch (CoAPLDPContentFormatException e) {
 			e.printStackTrace();
 			exchange.respond(ResponseCode.BAD_OPTION);
+		} catch (Exception e) {
+			e.printStackTrace();
+			exchange.respond(ResponseCode.INTERNAL_SERVER_ERROR);
 		}
 	}
 
@@ -222,7 +273,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		List<String> q = exchange.getRequestOptions().getUriQuery();
 		HashMap<String, String> atts = serializeAttributes(q);
 		if(atts.containsKey(LDP.LINK_LDP_PREF_INCLUDE)){;
-			String[] prefs = atts.get(LDP.LINK_LDP_PREF_INCLUDE).replace("\"", "").split(" ");
+			String[] prefs = atts.get(LDP.LINK_LDP_PREF_INCLUDE).replace("\"", "").split(";");
 			for(String p : prefs){
 				pref.add(p.trim());
 			}
@@ -237,7 +288,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		List<String> q = exchange.getRequestOptions().getUriQuery();
 		HashMap<String, String> atts = serializeAttributes(q);
 		if(atts.containsKey(LDP.LINK_LDP_PREF_OMIT)){;
-			String[] prefs = atts.get(LDP.LINK_LDP_PREF_OMIT).replace("\"", "").split(" ");
+			String[] prefs = atts.get(LDP.LINK_LDP_PREF_OMIT).replace("\"", "").split(";");
 			for(String p : prefs){
 				pref.add(p.trim());
 			}
@@ -246,7 +297,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		return pref;
 	}
 
-	protected void handleLDPOPTIONS(CoapExchange exchange) {
+	public void handleOPTIONS(CoapExchange exchange) {
 		try {
 			String text = options.toJSONString();
 			exchange.respond(ResponseCode.CONTENT, text, MediaTypeRegistry.APPLICATION_JSON);
@@ -255,12 +306,11 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 			exchange.respond(ResponseCode.INTERNAL_SERVER_ERROR);
 		}		
 	}
-
-	protected void handleLDPHEAD(CoapExchange exchange) {
+	
+	public void handleHEAD(CoapExchange exchange) {
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch(); 
-		String rdf = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI());
 		try {
-			String etag = calculateEtag(rdf);
+			String etag = getEtag();
 			if (!im.isEmpty()) {
 				String ifm = new String(im.get(0), StandardCharsets.UTF_8);
 				if (!etag.equals(ifm))
@@ -280,13 +330,22 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		}		
 	}
 
+	
+	/**
+	 * Manages LDP-CoAP DELETE requests.
+	 *
+	 * @param  exchange 	the request object
+	 * 
+	 * @see CoapExchange
+	 * 
+	 */
 	public void handleDELETE(CoapExchange exchange) {
 		mng.deleteRDFSource(mng.getBaseURI() + this.getURI());
 		this.delete();
 		exchange.respond(ResponseCode.DELETED);
 	}
 
-	public void handleLDPPUT(CoapExchange exchange) {
+	public void handlePUT(CoapExchange exchange) {
 		
 		List<byte[]> im = exchange.getRequestOptions().getIfMatch();
 		if(im.isEmpty()){
@@ -295,8 +354,7 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 		else if (exchange.getRequestOptions().getContentFormat() == MediaTypeRegistry.TEXT_TURTLE) {
 			
 			try {
-				String data = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI());
-				String etag = calculateEtag(data);
+				String etag = getEtag();
 				String ifm = new String(im.get(0), StandardCharsets.UTF_8);
 				if (!etag.equals(ifm))
 					throw new CoAPLDPPreconditionFailedException("Precondition Failed: If-Match");
@@ -323,15 +381,13 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 
 				exchange.respond(ResponseCode.CHANGED);
 			} catch (CoAPLDPException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				getErrorHeader(exchange);				
 				exchange.respond(ResponseCode.FORBIDDEN, this.getBodyError());
 			} catch (RDFParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				exchange.respond(ResponseCode.BAD_REQUEST);
 			} catch (RepositoryException | IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				exchange.respond(ResponseCode.INTERNAL_SERVER_ERROR);
 			}
@@ -339,14 +395,30 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 			exchange.respond(ResponseCode.BAD_OPTION);
 	}	
 
+	/**
+	 * Sets the description RDF property for the resource.
+	 *
+	 * @param  description	the text to be used as description 
+	 * 
+	 */
 	public void setRDFDescription(String description) {
 		mng.setRDFDescription(mng.getBaseURI() + name, description);
 	}
 
+	/**
+	 * Sets the title RDF property for the resource.
+	 *
+	 * @param  title	the text to be used as title
+	 * 
+	 */
 	public void setRDFTitle(String title) {
 		mng.setRDFTitle(mng.getBaseURI() + name, title);
 	}
 
+	/**
+	 * Sets the created RDF property for the resource using current timestamp.
+	 * 
+	 */
 	public void setRDFCreated() {
 		mng.setRDFCreated(mng.getBaseURI() + name);
 	}	
@@ -354,20 +426,51 @@ public class CoAPLDPRDFSource extends CoAPLDPResource {
 	private String getBodyError(){
 		return "Link: <" + mng.getconstrainedByURI() + ">; rel=\"" + LDP.LINK_REL_CONSTRAINEDBY + "\"";
 	}
+	
+	private void getErrorHeader(CoapExchange exchange){
+		exchange.setLocationQuery(LDP.LINK_CONSTRAINEDBY);
+		exchange.setLocationPath(mng.getconstrainedByURI());
+	}
 		
+	/**
+	 * Sets a data handler to manage the RDF data
+	 * 
+	 * @param  dh	the data handler to be used
+	 * 
+	 * @see LDPDataHandler
+	 * 
+	 */
 	public void setDataHandler(LDPDataHandler dh){
 		this.dh = dh;
 		dh.init(this.getFullName(), this.mng);
 		dh.start();
 	}
 	
+	/**
+	 * Starts the publication of RDF data retrieved by the resource data handler
+	 * 
+	 */
 	public void startPublishData(){
 		if(dh != null)
 			dh.start();
 	}
 	
+	/**
+	 * Stops the publication of RDF data retrieved by the resource data handler
+	 * 
+	 */
 	public void stopPublishData(){
 		if(dh != null)
 			dh.stop();
+	}
+
+	@Override
+	public String getEtag() throws NoSuchAlgorithmException {
+		String data = mng.getTurtleResourceGraph(mng.getBaseURI() + this.getURI());
+		return calculateEtag(data); 
+	}
+	
+	public String getEtag(String data) throws NoSuchAlgorithmException {
+		return calculateEtag(data); 
 	}
 }

@@ -36,8 +36,7 @@ public class MediaTypeRegistry {
 	public static final int TEXT_PLAIN = 0;
 	public static final int TEXT_XML = 1;
 	public static final int TEXT_CSV = 2;
-	public static final int TEXT_HTML = 3;
-	public static final int TEXT_TURTLE = 4;
+	public static final int TEXT_HTML = 3;	
 	public static final int IMAGE_GIF = 21; // 03
 	public static final int IMAGE_JPEG = 22; // 03
 	public static final int IMAGE_PNG = 23; // 03
@@ -56,8 +55,16 @@ public class MediaTypeRegistry {
 	public static final int APPLICATION_SOAP_FASTINFOSET = 49; // 04
 	public static final int APPLICATION_JSON = 50; // 04
 	public static final int APPLICATION_X_OBIX_BINARY = 51; // 04
-	public static final int APPLICATION_LD_JSON = 52; // 04
-	public static final int APPLICATION_RDF_PATCH = 53; // 04
+	
+	/*** LDP-CoAP Media Type ***/
+	public static final int TEXT_TURTLE = 4;
+	public static final int APPLICATION_LD_JSON = 52; 
+	public static final int APPLICATION_RDF_PATCH = 53; 
+	public static final int APPLICATION_GZIP = 54;
+	public static final int APPLICATION_BZIP2 = 55;
+	public static final int APPLICATION_BSON = 56;
+	public static final int APPLICATION_UBJSON = 57;
+	public static final int APPLICATION_MSGPACK = 58;
 
 	// implementation specific
 	public static final int UNDEFINED = -1;
@@ -70,8 +77,7 @@ public class MediaTypeRegistry {
 		add(TEXT_PLAIN, "text/plain", "txt");
 		// add(TEXT_XML, "text/xml", "xml"); // obsolete, use application/xml
 		add(TEXT_CSV, "text/csv", "csv");
-		add(TEXT_HTML, "text/html", "html");
-		add(TEXT_TURTLE, "text/turtle", "turtle");
+		add(TEXT_HTML, "text/html", "html");		
 
 		add(IMAGE_GIF, "image/gif", "gif");
 		add(IMAGE_JPEG, "image/jpeg", "jpg");
@@ -90,8 +96,16 @@ public class MediaTypeRegistry {
 		add(APPLICATION_SOAP_FASTINFOSET, "application/soap+fastinfoset", "soap.finf");
 		add(APPLICATION_JSON, "application/json", "json");
 		add(APPLICATION_X_OBIX_BINARY, "application/x-obix-binary", "obix");
+		
+		/*** LDP-CoAP Media Type ***/
+		add(TEXT_TURTLE, "text/turtle", "turtle");
 		add(APPLICATION_LD_JSON, "application/ld+json", "json-ld");
 		add(APPLICATION_RDF_PATCH, "application/rdf-patch", "rdf-patch");
+		add(APPLICATION_GZIP, "application/gzip", "gzip");
+		add(APPLICATION_BZIP2, "application/bz2", "bz2");
+		add(APPLICATION_BSON, "application/bson", "bson");
+		add(APPLICATION_UBJSON, "application/ubjson", "ubjson");
+		add(APPLICATION_MSGPACK, "application/msgpack", "msgpack");
 	}
 
 	// Static Functions ////////////////////////////////////////////////////////
@@ -106,7 +120,6 @@ public class MediaTypeRegistry {
 		case TEXT_XML:
 		case TEXT_CSV:
 		case TEXT_HTML:
-		case TEXT_TURTLE:
 		case APPLICATION_LINK_FORMAT:
 		case APPLICATION_XML:
 		case APPLICATION_RDF_XML:
@@ -114,6 +127,7 @@ public class MediaTypeRegistry {
 		case APPLICATION_ATOM_XML:
 		case APPLICATION_XMPP_XML:
 		case APPLICATION_JSON:
+		case TEXT_TURTLE:
 		case APPLICATION_LD_JSON:
 		case APPLICATION_RDF_PATCH:
 
@@ -131,6 +145,11 @@ public class MediaTypeRegistry {
 		case APPLICATION_FASTINFOSET:
 		case APPLICATION_SOAP_FASTINFOSET:
 		case APPLICATION_X_OBIX_BINARY:
+		case APPLICATION_GZIP:
+		case APPLICATION_BZIP2:
+		case APPLICATION_BSON:
+		case APPLICATION_UBJSON:
+		case APPLICATION_MSGPACK:
 		default:
 			return false;
 		}

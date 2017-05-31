@@ -1,20 +1,24 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
         applicationId "it.poliba.sisinflab.coap.ldp"
-        minSdkVersion 22
-        targetSdkVersion 22
+        minSdkVersion 24
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
+
+        jackOptions {
+            enabled true
+        }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildTypes {
         release {
@@ -37,16 +41,20 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:multidex:1.0.1'
-    compile 'com.android.support:support-v4:22.2.1'
-    compile 'com.android.support:design:22.2.1'
+    compile 'com.android.support:support-v4:24.0.0'
+    compile 'com.android.support:design:24.0.0'
+    compile 'com.android.support:recyclerview-v7:24.0.0'
+    compile 'com.android.support:support-vector-drawable:24.0.0'
+    compile 'com.android.support:animated-vector-drawable:24.0.0'
+
 
     //*************************************
     //   LDP-CoAP core library
     //*************************************
 
-    compile files('libs/ldp-coap-core-0.0.1-SNAPSHOT.jar')
+    compile files('libs/ldp-coap-core-0.0.1-rdf4j.jar')
 
     //*************************************
     //   CoAP-based communication
@@ -58,35 +66,36 @@ dependencies {
     //   In-memory RDF data management
     //*************************************
 
-    compile 'org.openrdf.sesame:sesame-repository-sail:2.8.10'
-    compile 'org.openrdf.sesame:sesame-repository-api:2.8.10'
-    compile 'org.openrdf.sesame:sesame-repository-sparql:2.8.10'
+    compile 'org.eclipse.rdf4j:rdf4j-repository-sail:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-repository-api:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-repository-sparql:2.0M2'
 
-    compile 'org.openrdf.sesame:sesame-sail-memory:2.8.10'
-    compile 'org.openrdf.sesame:sesame-sail-api:2.8.10'
-    compile 'org.openrdf.sesame:sesame-sail-base:2.8.10'
-    compile 'org.openrdf.sesame:sesame-sail-model:2.8.10'
-    compile 'org.openrdf.sesame:sesame-sail-inferencer:2.8.10'
+    compile 'org.eclipse.rdf4j:rdf4j-sail-memory:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-sail-api:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-sail-base:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-sail-model:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-sail-inferencer:2.0M2'
 
-    compile 'org.openrdf.sesame:sesame-http-client:2.8.10'
-    compile 'org.openrdf.sesame:sesame-http-protocol:2.8.10'
+    compile 'org.eclipse.rdf4j:rdf4j-http-client:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-http-protocol:2.0M2'
 
-    compile 'org.openrdf.sesame:sesame-queryparser-api:2.8.10'
-    compile 'org.openrdf.sesame:sesame-queryparser-sparql:2.8.10'
-    compile 'org.openrdf.sesame:sesame-queryalgebra-model:2.8.10'
-    compile 'org.openrdf.sesame:sesame-queryalgebra-evaluation:2.8.10'
-    compile 'org.openrdf.sesame:sesame-queryresultio-api:2.8.10'
-    compile 'org.openrdf.sesame:sesame-queryresultio-sparqlxml:2.8.10'
+    compile 'org.eclipse.rdf4j:rdf4j-queryparser-api:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-queryparser-sparql:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-queryalgebra-model:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-queryalgebra-evaluation:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-queryresultio-api:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-queryresultio-sparqlxml:2.0M2'
 
-    compile 'org.openrdf.sesame:sesame-rio-api:2.8.10'
-    compile 'org.openrdf.sesame:sesame-rio-turtle:2.8.10'
-    compile 'org.openrdf.sesame:sesame-rio-rdfjson:2.8.10'
-    compile 'org.openrdf.sesame:sesame-rio-datatypes:2.8.10'
-    compile 'org.openrdf.sesame:sesame-rio-languages:2.8.10'
+    compile 'org.eclipse.rdf4j:rdf4j-rio-api:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-rio-turtle:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-rio-rdfjson:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-rio-jsonld:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-rio-datatypes:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-rio-languages:2.0M2'
 
-    compile 'org.openrdf.sesame:sesame-query:2.8.10'
-    compile 'org.openrdf.sesame:sesame-model:2.8.10'
-    compile 'org.openrdf.sesame:sesame-util:2.8.10'
+    compile 'org.eclipse.rdf4j:rdf4j-query:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-model:2.0M2'
+    compile 'org.eclipse.rdf4j:rdf4j-util:2.0M2'
 
     compile 'org.slf4j:slf4j-android:1.7.20'
     compile 'org.slf4j:slf4j-api:1.7.20'
@@ -100,19 +109,7 @@ dependencies {
     //   RDF Patch format support
     //*************************************
 
-    compile 'org.apache.marmotta:marmotta-util-rdfpatch:3.3.0'
-
-    //*************************************
-    //   JSON-LD specification support
-    //*************************************
-
-    compile 'com.github.jsonld-java:jsonld-java:0.8.2'
-    compile 'com.github.jsonld-java:jsonld-java-tools:0.8.2'
-    compile 'com.github.jsonld-java:jsonld-java-sesame:0.5.1'
-
-    compile 'com.fasterxml.jackson.core:jackson-core:2.7.3'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.3'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.3'
+    // marmotta-util-rdfpatch-rdf4j-3.4.0.jar included in ldp-coap-core-0.0.1-rdf4j.jar
 }
 
 //************************************************

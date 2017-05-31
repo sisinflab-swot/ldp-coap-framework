@@ -6,7 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-import org.openrdf.model.vocabulary.DCTERMS;
+import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 
 import java.util.Date;
 
