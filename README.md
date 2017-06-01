@@ -9,19 +9,23 @@ and a complete Java-based framework to publish Linked Data on the WoT.
 
 A general translation of LDP-HTTP requests and responses is provided, as well as a fully comprehensive framework for HTTP-to-CoAP proxying. 
 
-LDP-CoAP framework can be also tested using the [W3C Test Suite for LDP](http://w3c.github.io/ldp-testsuite/).
+LDP-CoAP framework can be also tested using the [W3C Test Suite for LDP](http://w3c.github.io/ldp-testsuite/) and the [LDN Test Suite](http://github.com/csarven/ldn-tests).
 
 Modules
 -------------
 
-LDP-CoAP consists of the following sub-projects:
+LDP-CoAP (version 1.2.x) consists of the following sub-projects:
 
 - _ldp-coap-core_: basic framework implementation including the proposed LDP-CoAP mapping;
-- _californium-core-ldp_: a modified version of the [Californium CoAP framework](https://github.com/eclipse/californium). Californium-core library was extended to support LDP features;
-- _ldp-coap-proxy_: a modified version of the [californium-proxy](http://github.com/eclipse/californium/tree/master/californium-proxy) used to translate LDP-HTTP request methods and headers 
-into the corresponding LDP-CoAP ones and then map back LDP-CoAP responses to LDP-HTTP;
-- _ldp-coap-android_: simple project using _ldp-coap-core_ on Android platform;
+- _ldp-coap-test_: includes reference client/server implementation used to test the framework according to the test suites cited above;
 - _ldp-coap-raspberry_: usage examples exploiting _ldp-coap-core_ on a [Raspberry Pi board](http://www.raspberrypi.org/);
+- _ldp-coap-android_: simple project using _ldp-coap-core_ on Android platform;
+
+LDP-CoAP also requires the LDP-enhanced [Eclipse Californium]() framework. In particular, the following modules were defined as local Maven dependencies:
+
+- _californium-core-ldp_: a modified version of the [californium-core](https://github.com/eclipse/californium) library extended to support LDP-CoAP features;
+- _californium-proxy-ldp_: a modified version of the [californium-proxy](http://github.com/eclipse/californium) used to translate LDP-HTTP request methods and headers 
+into the corresponding LDP-CoAP ones and then map back LDP-CoAP responses to LDP-HTTP;
 
 Usage with Eclipse and Maven
 -------------
@@ -36,7 +40,7 @@ Documentation
 
 Hands-on introduction to LDP-CoAP using [basic code samples](http://sisinflab.poliba.it/swottools/ldp-coap/usage.html) available on the project webpage.
 
-More details about packages and methods can be found on the official [Javadoc](http://sisinflab.poliba.it/swottools/ldp-coap/docs/javadoc/v1_0/).
+More details about packages and methods can be found on the official [Javadoc](http://sisinflab.poliba.it/swottools/ldp-coap/docs/javadoc/v1_1/).
 
 References
 -------------
