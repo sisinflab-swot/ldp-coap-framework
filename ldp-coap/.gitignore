@@ -50,3 +50,13 @@ local.properties
 # Code Recommenders
 .recommenders/
 
+# macOS
+.DS_Store
+
+# Intellij
+.idea
+*.iml
+
+# Californium files
+Californium.properties
+
