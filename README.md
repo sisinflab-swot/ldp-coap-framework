@@ -9,7 +9,9 @@ and a complete Java-based framework to publish Linked Data on the WoT.
 
 A general translation of LDP-HTTP requests and responses is provided, as well as a fully comprehensive framework for HTTP-to-CoAP proxying. 
 
-LDP-CoAP framework can be also tested using the [W3C Test Suite for LDP](http://w3c.github.io/ldp-testsuite/) and the [LDN Test Suite](http://github.com/csarven/ldn-tests).
+LDP-CoAP framework also supports the [W3C Linked Data Notifications](https://www.w3.org/TR/ldn/) (LDN) protocol aiming to generate, share and reuse notifications across different applications.
+
+LDP-CoAP functionalities can be tested using the [W3C Test Suite for LDP](http://w3c.github.io/ldp-testsuite/) and the [LDN Test Suite](http://github.com/csarven/ldn-tests).
 
 Modules
 -------------
@@ -18,10 +20,10 @@ LDP-CoAP (version 1.2.x) consists of the following sub-projects:
 
 - _ldp-coap-core_: basic framework implementation including the proposed LDP-CoAP mapping;
 - _ldp-coap-test_: includes reference client/server implementation used to test the framework according to the test suites cited above;
-- _ldp-coap-raspberry_: usage examples exploiting _ldp-coap-core_ on a [Raspberry Pi board](http://www.raspberrypi.org/);
+- _ldp-coap-raspberry_: usage examples exploiting _ldp-coap-core_ on a [Raspberry Pi 1 Model B+](https://www.raspberrypi.com/products/raspberry-pi-1-model-b-plus/) board;
 - _ldp-coap-android_: simple project using _ldp-coap-core_ on Android platform;
 
-LDP-CoAP also requires the LDP-enhanced [Eclipse Californium]() framework. In particular, the following modules were defined as local Maven dependencies:
+LDP-CoAP also requires [Californium-LDP](https://github.com/sisinflab-swot/californium-ldp), a fork of the _Eclipse Californium_ framework supporting LDP specification. In particular, the following modules were defined as local Maven dependencies:
 
 - _californium-core-ldp_: a modified version of the [californium-core](https://github.com/eclipse/californium) library extended to support LDP-CoAP features;
 - _californium-proxy-ldp_: a modified version of the [californium-proxy](http://github.com/eclipse/californium) used to translate LDP-HTTP request methods and headers 
@@ -38,9 +40,9 @@ Each module can be imported as Maven project in Eclipse. Make sure to have the f
 Documentation
 -------------
 
-Hands-on introduction to LDP-CoAP using [basic code samples](http://sisinflab.poliba.it/swottools/ldp-coap/usage.html) available on the project webpage.
+Hands-on introduction to LDP-CoAP using [basic code samples](http://swot.sisinflab.poliba.it/ldp-coap/usage.html) available on the project webpage.
 
-More details about packages and methods can be found on the official [Javadoc](http://sisinflab.poliba.it/swottools/ldp-coap/docs/javadoc/v1_1/).
+More details about packages and methods can be found on the official [Javadoc](http://swot.sisinflab.poliba.it/ldp-coap/docs/javadoc/v1_1/).
 
 References
 -------------
@@ -89,7 +91,7 @@ _californium-core-ldp_ and _ldp-coap-proxy_ are distributed under the [Eclipse P
 Contact
 -------------
 
-For more information, please visit the [LDP-CoAP webpage](http://sisinflab.poliba.it/swottools/ldp-coap/).
+For more information, please visit the [LDP-CoAP webpage](http://swot.sisinflab.poliba.it/ldp-coap/).
 
 
 Contribute
