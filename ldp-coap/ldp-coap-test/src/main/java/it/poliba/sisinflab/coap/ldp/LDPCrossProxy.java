@@ -18,14 +18,23 @@ package it.poliba.sisinflab.coap.ldp;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.californium.core.CoapServer;
-import org.eclipse.californium.core.network.config.NetworkConfig;
-import org.eclipse.californium.proxy.DirectProxyCoapResolver;
-import org.eclipse.californium.proxy.ProxyHttpServer;
-import org.eclipse.californium.proxy.resources.ForwardingResource;
-import org.eclipse.californium.proxy.resources.ProxyCoapClientResource;
-import org.eclipse.californium.proxy.resources.ProxyHttpClientResource;
+import org.eclipse.californium.core.config.CoapConfig;
+import org.eclipse.californium.core.network.CoapEndpoint;
+import org.eclipse.californium.elements.config.Configuration;
+import org.eclipse.californium.elements.config.SystemConfig;
+import org.eclipse.californium.elements.config.TcpConfig;
+import org.eclipse.californium.elements.config.UdpConfig;
+import org.eclipse.californium.proxy2.ClientSingleEndpoint;
+import org.eclipse.californium.proxy2.config.Proxy2Config;
+import org.eclipse.californium.proxy2.http.HttpClientFactory;
+import org.eclipse.californium.proxy2.http.server.ProxyHttpServer;
+import org.eclipse.californium.proxy2.resources.ForwardProxyMessageDeliverer;
+import org.eclipse.californium.proxy2.resources.ProxyCoapClientResource;
+import org.eclipse.californium.proxy2.resources.ProxyCoapResource;
+import org.eclipse.californium.proxy2.resources.ProxyHttpClientResource;
 
 /**
  * Http2CoAP: Insert in browser:
@@ -41,26 +50,85 @@ import org.eclipse.californium.proxy.resources.ProxyHttpClientResource;
  */
 public class LDPCrossProxy {
 	
-	private static final int PORT = NetworkConfig.getStandard().getInt(NetworkConfig.Keys.COAP_PORT);
+	private static final String COAP2HTTP = "coap2http";
+	private static final String COAP2COAP = "coap2coap";
+	private static final int DEFAULT_BLOCK_SIZE = 1024;
+	
+	private ProxyHttpServer httpProxyServer = null;
+	private CoapServer coapProxyServer = null;
+	
+	static {
+		CoapConfig.register();
+		UdpConfig.register();
+		TcpConfig.register();
+		Proxy2Config.register();
+	}
+	
+	private Configuration getProxyConfig() {
+		Configuration config = Configuration.getStandard();
+		config.set(CoapConfig.MAX_ACTIVE_PEERS, 20000);
+		config.set(CoapConfig.MAX_RESOURCE_BODY_SIZE, 20000);
+		config.set(CoapConfig.MAX_MESSAGE_SIZE, DEFAULT_BLOCK_SIZE);
+		config.set(CoapConfig.PREFERRED_BLOCK_SIZE, DEFAULT_BLOCK_SIZE);
+		config.set(CoapConfig.DEDUPLICATOR, CoapConfig.DEDUPLICATOR_PEERS_MARK_AND_SWEEP);
+		config.set(CoapConfig.MAX_PEER_INACTIVITY_PERIOD, 24, TimeUnit.HOURS);
+		config.set(Proxy2Config.HTTP_PORT, 8080);
+		config.set(Proxy2Config.HTTP_CONNECTION_IDLE_TIMEOUT, 10, TimeUnit.SECONDS);
+		config.set(Proxy2Config.HTTP_CONNECT_TIMEOUT, 15, TimeUnit.SECONDS);
+		config.set(Proxy2Config.HTTPS_HANDSHAKE_TIMEOUT, 30, TimeUnit.SECONDS);
+		config.set(UdpConfig.UDP_RECEIVE_BUFFER_SIZE, 8192);
+		config.set(UdpConfig.UDP_SEND_BUFFER_SIZE, 8192);
+		config.set(SystemConfig.HEALTH_STATUS_INTERVAL, 60, TimeUnit.SECONDS);
+		return config;
+	}
+	
+	private void startBasicForwardingProxy2(Configuration config) throws IOException {
+		// initialize http clients
+		HttpClientFactory.setNetworkConfig(config);
+		// initialize coap-server
+		int port = config.get(CoapConfig.COAP_PORT);
+		coapProxyServer = new CoapServer(config, port);
+		// initialize proxy resource
+		ProxyCoapResource coap2http = new ProxyHttpClientResource(COAP2HTTP, false, false, null);
+		// initialize proxy message deliverer
+		ForwardProxyMessageDeliverer proxyMessageDeliverer = new ForwardProxyMessageDeliverer(coap2http);
+		// set proxy message deliverer
+		coapProxyServer.setMessageDeliverer(proxyMessageDeliverer);
+		coapProxyServer.start();
+		System.out.println("** CoAP Proxy started at: coap://localhost:" + port);
+	}
+	
+	private void startBasicHttpForwardingProxy2(Configuration config) throws IOException {
 
-	private static CoapServer proxyServer;
+		// initialize coap outgoing endpoint
+		CoapEndpoint.Builder builder = new CoapEndpoint.Builder();
+		builder.setConfiguration(config);
+		CoapEndpoint endpoint = builder.build();		
+		ClientSingleEndpoint outgoingEndpoint = new ClientSingleEndpoint(endpoint);
+		endpoint.start();
+
+		ProxyCoapResource coap2coap = new ProxyCoapClientResource(COAP2COAP, false, false, null, outgoingEndpoint);
+		ForwardProxyMessageDeliverer proxyMessageDeliverer = new ForwardProxyMessageDeliverer(coap2coap);
+
+		httpProxyServer = ProxyHttpServer.buider()
+				.setConfiguration(config)
+				.setExecutor(endpoint)
+				.setProxyCoapDeliverer(proxyMessageDeliverer)
+				.build();
+
+		httpProxyServer.start();
+
+		System.out.println("** HTTP Proxy started at: http://" + httpProxyServer.getInterface().getHostName() + ":" + httpProxyServer.getInterface().getPort());
+	}
 	
 	public LDPCrossProxy() throws IOException {
-		ForwardingResource coap2coap = new ProxyCoapClientResource("coap2coap");
-		ForwardingResource coap2http = new ProxyHttpClientResource("coap2http");
+		Configuration proxyConfig = getProxyConfig();
+		proxyConfig.set(Proxy2Config.HTTP_CONNECTION_IDLE_TIMEOUT, 60, TimeUnit.SECONDS);
+		proxyConfig.set(Proxy2Config.HTTP_CONNECT_TIMEOUT, 120, TimeUnit.SECONDS);
+		proxyConfig.set(Proxy2Config.HTTPS_HANDSHAKE_TIMEOUT, 60, TimeUnit.SECONDS);
 		
-		// Create CoAP Server on PORT with proxy resources form CoAP to CoAP and HTTP
-		NetworkConfig config = NetworkConfig.createStandardWithoutFile();
-		config.set(NetworkConfig.Keys.MAX_RESOURCE_BODY_SIZE, 20000);
-		proxyServer = new CoapServer(config, PORT);
-		proxyServer.add(coap2coap);
-		proxyServer.add(coap2http);
-		proxyServer.start();
-		
-		ProxyHttpServer httpServer = new ProxyHttpServer(8080);
-		httpServer.setProxyCoapResolver(new DirectProxyCoapResolver(coap2coap));
-		
-		System.out.println("CoAP resource \"target\" available over HTTP at: http://localhost:8080/proxy/coap://localhost:PORT/target");
+		// startBasicForwardingProxy2(proxyConfig);
+		startBasicHttpForwardingProxy2(proxyConfig);
 	}
 	
 	public String getProxyAddress() {
@@ -73,7 +141,7 @@ public class LDPCrossProxy {
 	}
 	
 	public int getProxyPort() {
-		return proxyServer.getEndpoint(5683).getAddress().getPort();
+		return Configuration.getStandard().get(CoapConfig.COAP_PORT);
 	}
 
 }

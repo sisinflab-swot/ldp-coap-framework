@@ -11,6 +11,7 @@ buildNumber.properties
 
 # Californium files
 Californium.properties
+Californium3.properties
 
 # Eclipse Project
 .metadata

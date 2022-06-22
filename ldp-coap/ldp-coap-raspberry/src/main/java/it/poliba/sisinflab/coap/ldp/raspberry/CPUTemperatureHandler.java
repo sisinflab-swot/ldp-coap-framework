@@ -24,8 +24,8 @@ public class CPUTemperatureHandler extends LDPDataHandler {
 		double temp;
 		try {
 			temp = SystemInfo.getCpuTemperature();
-			mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, SSN_XG.hasValue.toString(), temp);
-	    	mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, DCTERMS.CREATED.toString(), new Date());
+			mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, SSN_XG.hasValue.stringValue(), temp);
+	    	mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, DCTERMS.CREATED.stringValue(), new Date());
 		} catch (NumberFormatException | IOException | InterruptedException e) {
 			e.printStackTrace();
 		}    	

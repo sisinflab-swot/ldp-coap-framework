@@ -139,7 +139,9 @@ public abstract class CoAPLDPResource extends CoapResource {
 	protected LDP.Code getLDPMethod(CoapExchange exchange) {
 		List<String> q = exchange.getRequestOptions().getUriQuery();
 		HashMap<String, String> atts = serializeAttributes(q);
-		String method = atts.get(LDP.LINK_LDP);
+		String method = null;
+		if (atts.containsKey(LDP.LINK_LDP))
+			method = atts.get(LDP.LINK_LDP).toLowerCase();
 
 		if (method == null)
 			return LDP.Code.valueOf(exchange.getRequestCode().value);

@@ -1,6 +1,6 @@
 package it.poliba.sisinflab.coap.ldn;
 
-import org.eclipse.californium.core.network.config.NetworkConfig;
+import org.eclipse.californium.elements.config.Configuration;
 
 import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPResourceManager;
 import it.poliba.sisinflab.coap.ldp.server.CoAPLDPServer;
@@ -20,7 +20,7 @@ public class CoAPLDNReceiver extends CoAPLDPServer {
 		init();
 	}
 	
-	public CoAPLDNReceiver(String BASE_URI, NetworkConfig config, int port) {
+	public CoAPLDNReceiver(String BASE_URI, Configuration config, int port) {
     	super(BASE_URI, config, port);
     	init();
     }

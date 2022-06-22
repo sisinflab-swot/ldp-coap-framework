@@ -2,9 +2,8 @@ package it.poliba.sisinflab.coap.ldn;
 
 import java.io.IOException;
 
-import org.eclipse.californium.core.network.config.NetworkConfig;
+import org.eclipse.californium.elements.config.Configuration;
 
-import it.poliba.sisinflab.coap.ldn.CoAPLDNReceiver;
 import it.poliba.sisinflab.coap.ldp.LDPCrossProxy;
 
 public class LDNReceiverTests {
@@ -17,7 +16,7 @@ public class LDNReceiverTests {
 		new LDPCrossProxy(); 
 
 		/*** Init LDN Receiver ***/
-		CoAPLDNReceiver receiver = new CoAPLDNReceiver(BASE_URI, NetworkConfig.createStandardWithoutFile(), 5688);
+		CoAPLDNReceiver receiver = new CoAPLDNReceiver(BASE_URI, Configuration.getStandard(), 5688);
 		receiver.setConstrainedByURI("http://sisinflab.poliba.it/swottools/ldp-coap/ldp-report.html");
 		receiver.getInbox().createRDFSource("simple-notification");
 		receiver.start();		

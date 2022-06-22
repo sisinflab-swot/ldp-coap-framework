@@ -24,7 +24,7 @@ import org.eclipse.rdf4j.model.Value;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.vocabulary.DCTERMS;
 import org.eclipse.rdf4j.model.vocabulary.RDF;
-import org.eclipse.rdf4j.model.vocabulary.XMLSchema;
+import org.eclipse.rdf4j.model.vocabulary.XSD;
 import org.eclipse.rdf4j.repository.Repository;
 import org.eclipse.rdf4j.repository.RepositoryConnection;
 import org.eclipse.rdf4j.repository.RepositoryException;
@@ -81,7 +81,7 @@ public class CoAPLDPResourceManager {
 		BASE_URI = baseUri;
 		repo = new SailRepository(new MemoryStore());
 		try {
-			repo.initialize();
+			repo.init();
 			con = repo.getConnection();				
 		} catch (RepositoryException e) {
 			// TODO Auto-generated catch block
@@ -200,7 +200,7 @@ public class CoAPLDPResourceManager {
 		InputStream stream = new ByteArrayInputStream(rdf.getBytes(StandardCharsets.UTF_8));
 		Model m = Rio.parse(stream, BASE_URI, format);
 		if(m.contains(null, f.createIRI(rel), null)){
-			name = m.match(null, f.createIRI(rel), null).next().getObject().toString();
+			name = m.filter(null, f.createIRI(rel), null).iterator().next().getObject().toString();
 		}
 		
 		return name;
@@ -221,7 +221,7 @@ public class CoAPLDPResourceManager {
 		InputStream stream = new ByteArrayInputStream(rdf.getBytes(StandardCharsets.UTF_8));
 		Model m = Rio.parse(stream, BASE_URI, format);
 		if(m.contains(null, f.createIRI(LDP.PROP_HAS_MEMBER_RELATION), null)){
-			name = m.match(null, f.createIRI(LDP.PROP_HAS_MEMBER_RELATION), null).next().getObject().toString();
+			name = m.filter(null, f.createIRI(LDP.PROP_HAS_MEMBER_RELATION), null).iterator().next().getObject().toString();
 		}
 		
 		return name;
@@ -242,7 +242,7 @@ public class CoAPLDPResourceManager {
 		InputStream stream = new ByteArrayInputStream(rdf.getBytes(StandardCharsets.UTF_8));
 		Model m = Rio.parse(stream, BASE_URI, format);
 		if(m.contains(null, f.createIRI(LDP.PROP_IS_MEMBER_OF_RELATION), null)){
-			name = m.match(null, f.createIRI(LDP.PROP_IS_MEMBER_OF_RELATION), null).next().getObject().toString();
+			name = m.filter(null, f.createIRI(LDP.PROP_IS_MEMBER_OF_RELATION), null).iterator().next().getObject().toString();
 		}
 		
 		return name;
@@ -263,7 +263,7 @@ public class CoAPLDPResourceManager {
 		InputStream stream = new ByteArrayInputStream(rdf.getBytes(StandardCharsets.UTF_8));
 		Model m = Rio.parse(stream, BASE_URI, format);
 		if(m.contains(null, f.createIRI(LDP.PROP_MEMBERSHIP_RESOURCE), null)){
-			name = m.match(null, f.createIRI(LDP.PROP_MEMBERSHIP_RESOURCE), null).next().getObject().toString();
+			name = m.filter(null, f.createIRI(LDP.PROP_MEMBERSHIP_RESOURCE), null).iterator().next().getObject().toString();
 		}
 		
 		return name;
@@ -747,7 +747,7 @@ public class CoAPLDPResourceManager {
 		IRI s = f.createIRI(subj);
 		IRI p = f.createIRI(pred);
 		DecimalFormat ft = new DecimalFormat("#0.00");		
-		Literal o = f.createLiteral(ft.format(obj), XMLSchema.DOUBLE);
+		Literal o = f.createLiteral(ft.format(obj), XSD.DOUBLE);
 		
 		try {
 			RepositoryConnection c_upd = repo.getConnection();
@@ -975,7 +975,7 @@ public class CoAPLDPResourceManager {
 	public void setRDFStatement(String s, String p, double v) {
 		ValueFactory f = repo.getValueFactory();		
 		DecimalFormat ft = new DecimalFormat("#0.00");		
-		addRDFStatement(f.createIRI(s), f.createIRI(p), f.createLiteral(ft.format(v), XMLSchema.DOUBLE));	
+		addRDFStatement(f.createIRI(s), f.createIRI(p), f.createLiteral(ft.format(v), XSD.DOUBLE));	
 	}
 	
 	/**
@@ -988,7 +988,7 @@ public class CoAPLDPResourceManager {
 	 */
 	public void setRDFStatement(String s, String p, long v) {
 		ValueFactory f = repo.getValueFactory();			
-		addRDFStatement(f.createIRI(s), f.createIRI(p), f.createLiteral(String.valueOf(v), XMLSchema.LONG));	
+		addRDFStatement(f.createIRI(s), f.createIRI(p), f.createLiteral(String.valueOf(v), XSD.LONG));	
 	}
 	
 	/**
@@ -1094,7 +1094,7 @@ public class CoAPLDPResourceManager {
 			}
 			
 			ArrayList<String> newList = new ArrayList<String>();
-			Iterator<Statement> newStat = m.match(null, prop, null);
+			Iterator<Statement> newStat = m.filter(null, prop, null).iterator();
 			while(newStat.hasNext()){
 				newList.add(newStat.next().getObject().stringValue());
 			}				

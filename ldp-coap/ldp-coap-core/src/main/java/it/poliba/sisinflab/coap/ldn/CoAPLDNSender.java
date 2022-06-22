@@ -1,8 +1,11 @@
 package it.poliba.sisinflab.coap.ldn;
 
+import java.io.IOException;
+
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.CoAP.Code;
 import org.eclipse.californium.core.coap.Request;
+import org.eclipse.californium.elements.exception.ConnectorException;
 
 /**
  * Represents an LDN Sender
@@ -12,7 +15,7 @@ import org.eclipse.californium.core.coap.Request;
  */
 
 public class CoAPLDNSender extends CoAPLDNConsumer {		
-	
+
 	/**
 	 * Sends a notification to a specified Inbox.
 	 *
@@ -26,7 +29,13 @@ public class CoAPLDNSender extends CoAPLDNConsumer {
 	 */	
 	public CoapResponse sendNotification(String inbox, String payload, int ct) {
 		this.setURI(inbox);
-		return super.post(payload, ct);		
+		try {
+			return super.post(payload, ct);
+		} catch (ConnectorException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}		
 	}
 	
 	public CoapResponse sendNotification(String coap2http, String inbox, String payload, int ct) {		
@@ -36,7 +45,13 @@ public class CoAPLDNSender extends CoAPLDNConsumer {
 			.setProxyUri(inbox)
 			.setContentFormat(ct);
 		req.setPayload(payload);
-		return this.advanced(req);	
+		try {
+			return this.advanced(req);
+		} catch (ConnectorException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}	
 	}	
 
 }
