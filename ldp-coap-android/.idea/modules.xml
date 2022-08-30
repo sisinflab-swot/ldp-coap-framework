@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ldp-coap-android.iml" filepath="$PROJECT_DIR$/ldp-coap-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LDP-CoAP.iml" filepath="$PROJECT_DIR$/.idea/modules/LDP-CoAP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LDP-CoAP.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LDP-CoAP.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LDP-CoAP.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LDP-CoAP.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LDP-CoAP.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LDP-CoAP.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/LDP-CoAP.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/LDP-CoAP.app.unitTest.iml" />
     </modules>
   </component>
 </project>
