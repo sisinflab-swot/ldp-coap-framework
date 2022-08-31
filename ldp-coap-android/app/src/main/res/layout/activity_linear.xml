@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/main_linear">
+
+    <Button
+        android:id="@+id/btn_start_test_server"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Start LDP-CoAP Test Server">
+    </Button>
+
+    <Button
+        android:id="@+id/btn_start_sensor_server"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Start LDP-CoAP Sensor Server">
+    </Button>
+
+    <Button
+        android:id="@+id/btn_stop_server"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Stop LDP-CoAP Server">
+    </Button>
+
+    <ListView
+        android:id="@+id/resourceListView"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        />
+</LinearLayout>

@@ -1,8 +1,8 @@
 package it.poliba.sisinflab.coap.ldp.server;
 
 import org.eclipse.californium.core.CoapServer;
-import org.eclipse.californium.core.network.config.NetworkConfig;
 import org.eclipse.californium.core.server.resources.Resource;
+import org.eclipse.californium.elements.config.Configuration;
 
 import it.poliba.sisinflab.coap.ldp.exception.CoAPLDPException;
 import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPBasicContainer;
@@ -70,7 +70,7 @@ public class CoAPLDPServer extends CoapServer {
 	 * @param	port		the reference port for the server (default 5683)
 	 * 
 	 */
-    public CoAPLDPServer(String BASE_URI, NetworkConfig config, int port) {
+    public CoAPLDPServer(String BASE_URI, Configuration config, int port) {
     	super(config, port);
     	
     	this.BASE_URI = BASE_URI;    	
@@ -85,10 +85,10 @@ public class CoAPLDPServer extends CoapServer {
     private void printWelcome(){
     	System.out.println("----------------------------------------------------------");
     	System.out.println("### LDP-CoAP Server ###");
-    	System.out.println("Version: 1.2.0");
+    	System.out.println("Version: 1.3.0");
     	System.out.println("Endpoint: " + BASE_URI);
-    	System.out.println("Developed by: SisInfLab - Politecnico di Bari");
-    	System.out.println("Home Page: http://sisinflab.poliba.it/swottools/ldp-coap/");
+    	System.out.println("Developed by: SisInfLab - Polytechnic University of Bari");
+    	System.out.println("Home Page: http://swot.sisinflab.poliba.it/ldp-coap/");
     	System.out.println("----------------------------------------------------------");
     }
     

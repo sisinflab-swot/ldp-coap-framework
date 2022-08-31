@@ -1,13 +1,13 @@
 package it.poliba.sisinflab.coap.ldp.server;
 
-import org.eclipse.californium.core.network.config.NetworkConfig;
+import org.eclipse.californium.core.server.resources.Resource;
+import org.eclipse.californium.elements.config.Configuration;
 
 import it.poliba.sisinflab.coap.ldp.LDP;
 import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPBasicContainer;
 import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPDirectContainer;
 import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPIndirectContainer;
 import it.poliba.sisinflab.coap.ldp.resources.CoAPLDPRDFSource;
-import it.poliba.sisinflab.coap.ldp.server.CoAPLDPServer;
 import it.poliba.sisinflab.rdf.vocabulary.SSN_XG;
 
 /**
@@ -80,9 +80,10 @@ public class CoAPLDPTestSuiteServer extends CoAPLDPServer {
 	 * @see org.eclipse.californium.core.network.config.NetworkConfig
 	 * 
 	 */
-    public CoAPLDPTestSuiteServer(String URI, NetworkConfig config, int port){
+    public CoAPLDPTestSuiteServer(String URI, Configuration config, int port){
     	super(URI, config, port);		
 		init();		
+		showResourceTree();
     }
     
     /*
@@ -92,7 +93,7 @@ public class CoAPLDPTestSuiteServer extends CoAPLDPServer {
     private void init() {    	
     	/*** Handle read-only properties ***/
     	setReadOnlyProperty("http://purl.org/dc/terms/contributor");
-    	setConstrainedByURI("http://sisinflab.poliba.it/swottools/ldp-coap/ldp-report.html");
+    	setConstrainedByURI("http://swot.sisinflab.poliba.it/ldp-coap/ldp-report.html");
     	
     	/*** Handle not persisted properties ***/
     	setNotPersistedProperty("http://example.com/ns#comment");  
@@ -113,5 +114,11 @@ public class CoAPLDPTestSuiteServer extends CoAPLDPServer {
     	CoAPLDPIndirectContainer ic = createIndirectContainer("ic", "resource", SSN_XG.System.toString(), SSN_XG.hasSubSystem.toString(), SSN_XG.attachedSystem.toString());
     	ic.setRDFTitle("LDP-CoAP Indirect Container"); 
         ic.getMemberResource().setRDFTitle("LDP-IC Member Resource");
+    }
+    
+    private void showResourceTree() {
+    	for(Resource r : this.getRoot().getChildren()) {
+    		System.out.println(r.getURI());
+    	}
     }
 }

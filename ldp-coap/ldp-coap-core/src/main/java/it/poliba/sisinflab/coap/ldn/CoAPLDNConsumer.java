@@ -1,6 +1,7 @@
 package it.poliba.sisinflab.coap.ldn;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.Iterator;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 import org.eclipse.californium.core.coap.Request;
+import org.eclipse.californium.elements.exception.ConnectorException;
 import org.eclipse.californium.core.coap.CoAP.Code;
 import org.eclipse.californium.core.coap.CoAP.ResponseCode;
 import org.eclipse.rdf4j.model.Model;
@@ -22,18 +24,30 @@ import it.poliba.sisinflab.coap.ldp.LDP;
 import it.poliba.sisinflab.coap.ldp.client.CoAPLDPClient;
 
 public class CoAPLDNConsumer extends CoAPLDPClient {
-	
+
 	public CoapResponse sendGETRequest(String coap2http, String uri, int accept) {
 		Request req = new Request(Code.GET);
 		req.setURI(coap2http);
 		req.getOptions().setAccept(accept);
 		req.getOptions().setProxyUri(uri);
-		return this.advanced(req);
+		try {
+			return this.advanced(req);
+		} catch (ConnectorException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public CoapResponse sendGETRequest(String target, int accept) {
 		this.setURI(target);
-		return this.get(accept);
+		try {
+			return this.get(accept);
+		} catch (ConnectorException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public CoapResponse sendHEADRequest(String coap2http, String target) {
@@ -41,7 +55,13 @@ public class CoAPLDNConsumer extends CoAPLDPClient {
 		req.getOptions().getUriQuery().add("ldp=head");
 		req.setURI(coap2http);
 		req.getOptions().setProxyUri(target);
-		return this.advanced(req);
+		try {
+			return this.advanced(req);
+		} catch (ConnectorException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public CoapResponse sendHEADRequest(String target) {

@@ -16,7 +16,7 @@ LDP-CoAP functionalities can be tested using the [W3C Test Suite for LDP](http:/
 Modules
 -------------
 
-LDP-CoAP (version 1.2.x) consists of the following sub-projects:
+LDP-CoAP (version 1.3.x) consists of the following sub-projects:
 
 - _ldp-coap-core_: basic framework implementation including the proposed LDP-CoAP mapping;
 - _ldp-coap-test_: includes reference client/server implementation used to test the framework according to the test suites cited above;

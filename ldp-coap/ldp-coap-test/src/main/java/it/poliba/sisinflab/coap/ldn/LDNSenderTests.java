@@ -7,7 +7,6 @@ import org.apache.commons.io.FileUtils;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.Utils;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
-import it.poliba.sisinflab.coap.ldn.CoAPLDNSender;
 import it.poliba.sisinflab.coap.ldp.LDPCrossProxy;
 
 public class LDNSenderTests {

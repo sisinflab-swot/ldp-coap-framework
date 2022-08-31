@@ -24,8 +24,8 @@ public class FreeMemoryHandler extends LDPDataHandler {
 		double free;
 		try {
 			free = SystemInfo.getMemoryFree();
-			mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, SSN_XG.hasValue.toString(), free);
-	    	mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, DCTERMS.CREATED.toString(), new Date());
+			mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, SSN_XG.hasValue.stringValue(), free);
+	    	mng.updateRDFLiteralStatement(mng.getBaseURI() + resource, DCTERMS.CREATED.stringValue(), new Date());
 		} catch (NumberFormatException | IOException | InterruptedException e) {
 			e.printStackTrace();
 		}    	

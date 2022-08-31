@@ -1,7 +1,10 @@
 package it.poliba.sisinflab.coap.ldp.client;
 
+import java.io.IOException;
+
 import org.eclipse.californium.core.CoapClient;
 import org.eclipse.californium.core.CoapResponse;
+import org.eclipse.californium.elements.exception.ConnectorException;
 
 public class CoAPLDPClient extends CoapClient {
 	
@@ -12,7 +15,13 @@ public class CoAPLDPClient extends CoapClient {
 		else
 			uri = uri + "?ldp=head";
 		super.setURI(uri);
-		return super.get();
+		try {
+			return super.get();
+		} catch (ConnectorException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public CoapResponse option() {
@@ -22,7 +31,13 @@ public class CoAPLDPClient extends CoapClient {
 		else
 			uri = uri + "?ldp=options";
 		super.setURI(uri);
-		return super.get();
+		try {
+			return super.get();
+		} catch (ConnectorException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public CoapResponse patch(String payload, int format, byte[]... etags) {
@@ -32,7 +47,13 @@ public class CoAPLDPClient extends CoapClient {
 		else
 			uri = uri + "?ldp=patch";
 		super.setURI(uri);
-		return super.putIfMatch(payload, format, etags);
+		try {
+			return super.putIfMatch(payload, format, etags);
+		} catch (ConnectorException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

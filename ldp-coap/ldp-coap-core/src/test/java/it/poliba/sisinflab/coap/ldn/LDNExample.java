@@ -3,9 +3,6 @@ package it.poliba.sisinflab.coap.ldn;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
 
-import it.poliba.sisinflab.coap.ldn.CoAPLDNReceiver;
-import it.poliba.sisinflab.coap.ldn.CoAPLDNSender;
-
 public class LDNExample {
 	
 	final static String BASE_URI = "coap://192.168.2.16:5688";	
